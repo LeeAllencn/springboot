@@ -11,6 +11,8 @@
 
     <modules>
         <module>springboot-demo</module>
+        <module>springboot-jpa</module>
+        <module>springboot-security</module>
     </modules>
 
 </project>
