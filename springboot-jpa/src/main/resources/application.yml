@@ -7,7 +7,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true    # ÉèÖÃ
+    show-sql: true    # è®¾ç½®hibernateæ“ä½œæ—¶æ§åˆ¶å°æ˜¾ç¤ºå…¶çœŸå®çš„sqlè¯­å¥
   jackson:
     serialization:
-      indent_output: true   #¸ñÊ½»¯¿ØÖÆÆ÷Êä³öµÄjson×Ö·û´®
+      indent_output: true   # æ ¼å¼åŒ–æ§åˆ¶å™¨è¾“å‡ºçš„jsonå­—ç¬¦ä¸²
