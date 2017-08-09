@@ -16,6 +16,7 @@
         <module>springboot-websocket</module>
         <module>springboot-redis</module>
         <module>springboot-cache</module>
+        <module>springboot-transactional</module>
     </modules>
 
 </project>
