@@ -15,6 +15,7 @@
         <module>springboot-security</module>
         <module>springboot-websocket</module>
         <module>springboot-redis</module>
+        <module>springboot-cache</module>
     </modules>
 
 </project>
