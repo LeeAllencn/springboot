@@ -17,6 +17,7 @@
         <module>springboot-redis</module>
         <module>springboot-cache</module>
         <module>springboot-transactional</module>
+        <module>springboot-rest</module>
     </modules>
 
 </project>

@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring_boot_jpa
+    username: root
+    password: adminpwd
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true    # 设置hibernate操作时控制台显示其真实的sql语句
+  jackson:
+    serialization:
+      indent_output: true   # 格式化控制器输出的json字符串
+  data:
+    rest:
+      base-path: /api # 定制根路径:http://localhost:8080/api/people
+
+debug: true
