@@ -19,6 +19,7 @@
         <module>springboot-transactional</module>
         <module>springboot-rest</module>
         <module>springboot-tomcat</module>
+        <module>springboot-mybatis</module>
     </modules>
 
 </project>
