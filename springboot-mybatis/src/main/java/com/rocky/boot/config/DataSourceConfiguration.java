@@ -35,7 +35,7 @@ public class DataSourceConfiguration {
         druidDataSource.setPassword(env.getProperty("spring.datasource.password"));
         druidDataSource.setFilters("config");
         Properties properties = new Properties();
-        properties.put("config.decrypt", "true");
+        //properties.put("config.decrypt", "true");
         druidDataSource.setConnectProperties(properties);
         return druidDataSource;
     }

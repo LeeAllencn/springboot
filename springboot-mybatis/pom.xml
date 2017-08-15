@@ -35,18 +35,37 @@
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-		 <!--mybatis 包-->
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>3.2.8</version>
-		</dependency>
+		 <!--&lt;!&ndash;mybatis 包&ndash;&gt;-->
+		<!--<dependency>-->
+		<!--<groupId>org.mybatis</groupId>-->
+		<!--<artifactId>mybatis</artifactId>-->
+		<!--<version>3.2.8</version>-->
+		<!--</dependency>-->
 
-		<!--mybatis spring 插件 -->
+		<!--&lt;!&ndash;mybatis spring 插件 &ndash;&gt;-->
+		<!--<dependency>-->
+		<!--<groupId>org.mybatis</groupId>-->
+		<!--<artifactId>mybatis-spring</artifactId>-->
+		<!--<version>1.2.2</version>-->
+		<!--</dependency>-->
+
+		<!--mybatis-->
 		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-			<version>1.2.2</version>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<!--mapper-->
+		<dependency>
+			<groupId>tk.mybatis</groupId>
+			<artifactId>mapper-spring-boot-starter</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<!--pagehelper-->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -73,6 +92,15 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
 	</build>
 
 
