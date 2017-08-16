@@ -36,6 +36,8 @@ public class DataSourceConfiguration {
         druidDataSource.setFilters("config");
         Properties properties = new Properties();
         //properties.put("config.decrypt", "true");
+        properties.put("config.decrypt",env.getProperty("druid.config.decrypt"));
+        properties.put("config.decrypt.key",env.getProperty("druid.config.decrypt.key"));
         druidDataSource.setConnectProperties(properties);
         return druidDataSource;
     }
