@@ -20,6 +20,7 @@
         <module>springboot-rest</module>
         <module>springboot-tomcat</module>
         <module>springboot-mybatis</module>
+        <module>springboot-upload-file</module>
     </modules>
 
 </project>
