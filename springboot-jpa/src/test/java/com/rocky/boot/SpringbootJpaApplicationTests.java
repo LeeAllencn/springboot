@@ -29,7 +29,6 @@ public class SpringbootJpaApplicationTests {
 		personRepository.delete(person);
 		personRepository.count();
 		personRepository.exists(8L);
-		personRepository.
 		// ...
 	}
 }
