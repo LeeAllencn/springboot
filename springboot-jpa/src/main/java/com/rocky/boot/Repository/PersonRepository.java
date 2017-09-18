@@ -1,6 +1,8 @@
 package com.rocky.boot.Repository;
 
 import com.rocky.boot.model.Person;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -24,4 +26,9 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
     //4 使用@NamedQuery查询，注意在实体类中做@NamedQuery的定义
     Person withNameAndAddressNamedQuery(String name,String address);
+
+    //分页查询
+    Page<Person> findAll(Pageable pageable);
+
+    Page<Person> findByAge(int age, Pageable pageable);
 }
