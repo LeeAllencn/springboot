@@ -9,3 +9,4 @@ RabbitMQ 即一个消息队列，主要是用来实现应用程序的异步和�
 ### 多对多使用
 ### 高级使用
 对象、Topic Exchange、Fanout Exchange
+
