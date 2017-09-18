@@ -24,6 +24,7 @@
         <module>springboot-jms</module>
         <module>springboot-web</module>
         <module>springboot-rabbitmq</module>
+        <module>springboot-timing</module>
     </modules>
 
 </project>
