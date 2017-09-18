@@ -2,15 +2,15 @@ spring:
   mail:
     host: smtp.qq.com # 邮箱服务器地址
     username: 1798522201@qq.com # 用户名
-    password:  # 密码
+    password: jgrouvaxujdcfcef # 密码
     default-encoding: UTF-8
-#    properties:
-#      mail:
-#        smtp:
-#          auth: true
-#          starttls:
-#            enable: true
-#            required: true
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
 mail:
   fromMail:
     addr: 1798522201@qq.com
