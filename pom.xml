@@ -23,6 +23,7 @@
         <module>springboot-upload-file</module>
         <module>springboot-jms</module>
         <module>springboot-web</module>
+        <module>springboot-rabbitmq</module>
     </modules>
 
 </project>
