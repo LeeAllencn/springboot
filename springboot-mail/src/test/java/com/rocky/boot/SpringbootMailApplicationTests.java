@@ -16,7 +16,7 @@ public class SpringbootMailApplicationTests {
 
 	@Test
 	public void testSimpleMail() throws Exception {
-		mailService.sendSimpleMail("13342437205@163.com","test simple mail"," hello this is simple mail");
+		mailService.sendSimpleMail("","test simple mail"," hello this is simple mail");
 	}
 
 	//TODO
@@ -27,14 +27,14 @@ public class SpringbootMailApplicationTests {
 				"    <h3>hello world ! 这是一封Html邮件!</h3>\n" +
 				"</body>\n" +
 				"</html>";
-		mailService.sendHtmlMail("13342437205@163.com","test simple mail",content);
+		mailService.sendHtmlMail("","test simple mail",content);
 	}
 
 	//TODO
 	@Test
 	public void sendAttachmentsMail() {
 		String filePath= "images/test.jpg";
-		mailService.sendAttachmentsMail("13342437205@163.com", "主题：带附件的邮件", "有附件，请查收！", filePath);
+		mailService.sendAttachmentsMail("", "主题：带附件的邮件", "有附件，请查收！", filePath);
 	}
 
 	//TODO
@@ -44,7 +44,7 @@ public class SpringbootMailApplicationTests {
 		String content="<html><body>这是有图片的邮件：<img src=\'cid:" + rscId + "\' ></body></html>";
 		String imgPath = "images/test.jpg";
 
-		mailService.sendInlineResourceMail("13342437205@163.com", "主题：这是有图片的邮件", content, imgPath, rscId);
+		mailService.sendInlineResourceMail("", "主题：这是有图片的邮件", content, imgPath, rscId);
 	}
 
 	@Test
