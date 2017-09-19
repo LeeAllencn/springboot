@@ -26,6 +26,7 @@
         <module>springboot-rabbitmq</module>
         <module>springboot-timing</module>
         <module>springboot-mail</module>
+        <module>springboot-shiro</module>
     </modules>
 
 </project>
