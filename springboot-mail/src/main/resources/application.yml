@@ -1,7 +1,7 @@
 spring:
   mail:
     host: smtp.qq.com # 邮箱服务器地址
-    username:  # 用户名
+    username: example1@qq.com # 用户名
     password:  # 密码
     default-encoding: UTF-8
     properties:
@@ -13,4 +13,4 @@ spring:
             required: true
 mail:
   fromMail:
-    addr:
+    addr: example1@qq.com

@@ -14,12 +14,13 @@ public class SpringbootMailApplicationTests {
 	@Autowired
 	private MailService mailService;
 
+	private String to = "example@163.com";
+
 	@Test
 	public void testSimpleMail() throws Exception {
-		mailService.sendSimpleMail("","test simple mail"," hello this is simple mail");
+		mailService.sendSimpleMail(to,"test simple mail 0919"," hello this is simple mail 0919");
 	}
 
-	//TODO
 	@Test
 	public void testHtmlMail() throws Exception {
 		String content="<html>\n" +
@@ -27,24 +28,22 @@ public class SpringbootMailApplicationTests {
 				"    <h3>hello world ! 这是一封Html邮件!</h3>\n" +
 				"</body>\n" +
 				"</html>";
-		mailService.sendHtmlMail("","test simple mail",content);
+		mailService.sendHtmlMail(to,"test simple mail",content);
 	}
 
-	//TODO
 	@Test
 	public void sendAttachmentsMail() {
-		String filePath= "images/test.jpg";
-		mailService.sendAttachmentsMail("", "主题：带附件的邮件", "有附件，请查收！", filePath);
+		String filePath= "C:\\Users\\DON\\Desktop\\testattach.txt";
+		mailService.sendAttachmentsMail(to, "主题：带附件的邮件", "有附件，请查收！", filePath);
 	}
 
-	//TODO
 	@Test
 	public void sendInlineResourceMail() {
 		String rscId = "lee006";
 		String content="<html><body>这是有图片的邮件：<img src=\'cid:" + rscId + "\' ></body></html>";
-		String imgPath = "images/test.jpg";
+		String imgPath = "C:\\Users\\DON\\Desktop\\test.jpg";
 
-		mailService.sendInlineResourceMail("", "主题：这是有图片的邮件", content, imgPath, rscId);
+		mailService.sendInlineResourceMail(to, "主题：这是有图片的邮件", content, imgPath, rscId);
 	}
 
 	@Test
