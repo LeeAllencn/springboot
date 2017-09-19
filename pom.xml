@@ -27,6 +27,7 @@
         <module>springboot-timing</module>
         <module>springboot-mail</module>
         <module>springboot-shiro</module>
+        <module>springboot-swagger</module>
     </modules>
 
 </project>
