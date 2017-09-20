@@ -28,6 +28,7 @@
         <module>springboot-mail</module>
         <module>springboot-shiro</module>
         <module>springboot-swagger</module>
+        <module>springboot-log4j</module>
     </modules>
 
 </project>
