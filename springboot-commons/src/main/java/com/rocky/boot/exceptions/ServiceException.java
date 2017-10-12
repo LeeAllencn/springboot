@@ -1,4 +1,6 @@
-package com.rocky.boot.exception;
+package com.rocky.boot.exceptions;
+
+import com.rocky.boot.exceptions.BaseRuntimeException;
 
 /**
  * Created by Rocky on 2017-10-10.

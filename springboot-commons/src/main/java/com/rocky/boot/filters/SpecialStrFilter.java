@@ -1,7 +1,7 @@
 package com.rocky.boot.filters;
 
 import com.alibaba.fastjson.JSONObject;
-import com.rocky.boot.exception.ServiceException;
+import com.rocky.boot.exceptions.ServiceException;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.*;

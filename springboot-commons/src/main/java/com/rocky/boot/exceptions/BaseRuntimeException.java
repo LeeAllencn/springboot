@@ -1,4 +1,4 @@
-package com.rocky.boot.exception;
+package com.rocky.boot.exceptions;
 
 /**
  * Created by Rocky on 2017-10-10.
