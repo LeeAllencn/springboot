@@ -6,6 +6,8 @@ import com.rocky.boot.service.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Rocky on 2017-08-14.
  */
@@ -18,5 +20,10 @@ public class PersonServiceImpl implements IPersonService {
     @Override
     public Person queryById(int id) {
         return personDao.selectById(id);
+    }
+
+    @Override
+    public List<Person> queryAll() {
+        return personDao.selectAll();
     }
 }
