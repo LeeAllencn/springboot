@@ -2,6 +2,7 @@ package com.rocky.boot.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -188,6 +189,21 @@ public class DateUtil {
             }
         }
         return timeStr;
+    }
+
+    //日期加减操作
+    public static String add8Hour(String time) throws ParseException {
+        if(StringUtils.isBlank(time)) {
+            return null;
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        Date date = null;
+        Calendar c = Calendar.getInstance();
+        c.setTime(dateFormat.parse(time));
+        c.add(Calendar.HOUR, 8); //对年月日进行加减操作，减法就将amout改为负数
+        date = c.getTime();
+        String subTime = dateFormat.format(date);
+        return subTime;
     }
 
     public static void main(String[] args) {
