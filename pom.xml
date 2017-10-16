@@ -31,6 +31,7 @@
         <module>springboot-log4j</module>
         <module>springboot-mybatis-multidatasource</module>
         <module>springboot-commons</module>
+        <module>springboot-mongodb</module>
     </modules>
 
 </project>
