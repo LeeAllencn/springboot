@@ -100,3 +100,14 @@ if (opType == CREATE) {
 - 不要出现乱七八糟的参数，如参数里面有request，response就不好测试
 - 把函数写小一点
 - 要有单独测试每一个函数的习惯
+
+# 常用架包
+### org.apache.commons.lang3
+```
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.4</version>
+</dependency>
+```
+常用类：RandomUtils、StringUtils等
