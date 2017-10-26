@@ -111,3 +111,11 @@ if (opType == CREATE) {
 </dependency>
 ```
 常用类：RandomUtils、StringUtils等
+
+# 使用Collections.sort()对List\<Object\>进行排序
+
+```
+实体类
+自定义比较器，实现接口Comparator
+Collections.sort(list, comparator)实现排序
+```
