@@ -112,6 +112,8 @@ if (opType == CREATE) {
 ```
 常用类：RandomUtils、StringUtils等
 
+[StringUtils 工具类的常用方法](http://www.open-open.com/lib/view/open1326333409999.html) 
+
 # 使用Collections.sort()对List\<Object\>进行排序
 
 ```
