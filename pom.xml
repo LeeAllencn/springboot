@@ -33,6 +33,11 @@
         <module>springboot-mybatis-multidatasource</module>
         <module>springboot-commons</module>
         <module>springboot-mongodb</module>
+        <module>springboot-jsp</module>
+
+
+
+
     </modules>
 
 </project>
