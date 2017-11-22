@@ -2,7 +2,7 @@ spring:
   application:
     name: springboot-rabbitmq
   rabbitmq:
-    host: lix3-rabbitmqservice.caas.haihangyun.cn
-    port: 30988
+    host:
+    port:  # 5672 或者其映射端口
     username: guest
     password: guest
