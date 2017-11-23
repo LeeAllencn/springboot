@@ -35,7 +35,7 @@
         <module>springboot-mongodb</module>
         <module>springboot-jsp</module>
         <module>springboot-lombok</module>
-
+        <module>springboot-cors</module>
 
 
     </modules>
