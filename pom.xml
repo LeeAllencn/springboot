@@ -34,7 +34,7 @@
         <module>springboot-commons</module>
         <module>springboot-mongodb</module>
         <module>springboot-jsp</module>
-
+        <module>springboot-lombok</module>
 
 
 
