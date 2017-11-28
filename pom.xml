@@ -37,7 +37,7 @@
         <module>springboot-lombok</module>
         <module>springboot-cors</module>
         <module>springboot-validator</module>
-
+        <module>springboot-api-project-seed</module>
     </modules>
 
 </project>
