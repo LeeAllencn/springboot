@@ -46,6 +46,12 @@ Apache Shiro是一个功能强大、灵活的，开源的安全框架。它可�
 
 我们需要实现Realms的Authentication 和 Authorization。其中 Authentication 是用来验证用户身份，Authorization 是授权访问控制，用于对用户进行的操作授权，证明该用户是否允许进行当前操作，如访问某个链接，某个资源文件等。
 
+## shiro完整架构图
+
+![shiro.png](http://s1.wailian.download/2017/12/04/shiro.png)
+
+
+
 # RBAC
 
 RBAC 是基于角色的访问控制（Role-Based Access Control ）在 RBAC 中，权限与角色相关联，用户通过成为适当角色的成员而得到这些角色的权限。这就极大地简化了权限的管理。这样管理都是层级相互依赖的，权限赋予给角色，而把角色又赋予用户，这样的权限设计很清楚，管理起来很方便。
@@ -107,7 +113,7 @@ public class ShiroConfig {
         //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
         filterChainDefinitionMap.put("/**", "authc");
       
-        // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
+        // 设置未认证时的跳转url，如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
         shiroFilterFactoryBean.setLoginUrl("/login");
         // 登录成功后要跳转的链接
         shiroFilterFactoryBean.setSuccessUrl("/index");
@@ -297,4 +303,226 @@ public void login(@RequestParam("username")String username, @RequestParam("passw
 	}
 }
 ```
+
+# 注入缓存
+
+- 问题：不断的访问http://localhost:8085/userInfo/userAdd ，控制台不断出现权限配置-->MyShiroRealm.doGetAuthorizationInfo()
+- 需求：这说明我们不断的访问权限信息，但是实际中我们的权限信息是不怎么会改变的，所以我们希望是第一次访问，然后进行缓存处理
+
+
+## pom包依赖
+
+```
+<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-ehcache -->
+<dependency>
+    <groupId>org.apache.shiro</groupId>
+    <artifactId>shiro-ehcache</artifactId>
+    <version>1.3.2</version>
+</dependency>
+<!--
+包含支持UI模版（Velocity，FreeMarker，JasperReports），
+邮件服务，
+脚本服务(JRuby)，
+缓存Cache（EHCache），
+任务计划Scheduling（uartz）。
+-->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context-support</artifactId>
+</dependency>
+```
+
+## 缓存配置
+
+```java
+/**
+ * shiro缓存管理器;
+ * 需要注入对应的其它的实体类中：
+ * 1、安全管理器：securityManager
+ * 可见securityManager是整个shiro的核心；
+ * @return
+ */
+@Bean
+public EhCacheManager ehCacheManager(){
+    System.out.println("ShiroConfiguration.getEhCacheManager()");
+    EhCacheManager cacheManager = new EhCacheManager();
+    cacheManager.setCacheManagerConfigFile("classpath:config/ehcache-shiro.xml");
+    returncacheManager;
+}
+/**
+ * 将缓存对象注入到SecurityManager中
+ */
+@Bean
+public SecurityManager securityManager(){
+    DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager();
+    //设置realm.
+    securityManager.setRealm(myShiroRealm());
+
+    //注入缓存管理器;
+    securityManager.setCacheManager(ehCacheManager());//这个如果执行多次，也是同样的一个对象;
+
+    returnsecurityManager;
+}
+```
+
+##  添加缓存配置文件ehcache-shiro.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache name="es">
+ 
+    <diskStore path="java.io.tmpdir"/>
+   
+    <!--
+       name:缓存名称。
+       maxElementsInMemory:缓存最大数目
+       maxElementsOnDisk：硬盘最大缓存个数。 
+       eternal:对象是否永久有效，一但设置了，timeout将不起作用。 
+       overflowToDisk:是否保存到磁盘，当系统当机时
+       timeToIdleSeconds:设置对象在失效前的允许闲置时间（单位：秒）。仅当eternal=false对象不是永久有效时使用，可选属性，默认值是0，也就是可闲置时间无穷大。
+       timeToLiveSeconds:设置对象在失效前允许存活时间（单位：秒）。最大时间介于创建时间和失效时间之间。仅当eternal=false对象不是永久有效时使用，默认是0.，也就是对象存活时间无穷大。
+       diskPersistent：是否缓存虚拟机重启期数据 Whether the disk store persists between restarts of the Virtual Machine. The default value is false. 
+       diskSpoolBufferSizeMB：这个参数设置DiskStore（磁盘缓存）的缓存区大小。默认是30MB。每个Cache都应该有自己的一个缓冲区。 
+       diskExpiryThreadIntervalSeconds：磁盘失效线程运行时间间隔，默认是120秒。
+       memoryStoreEvictionPolicy：当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）。 
+        clearOnFlush：内存数量最大时是否清除。
+         memoryStoreEvictionPolicy:
+            Ehcache的三种清空策略;
+            FIFO，first in first out，这个是大家最熟的，先进先出。
+            LFU， Less Frequently Used，就是上面例子中使用的策略，直白一点就是讲一直以来最少被使用的。如上面所讲，缓存的元素有一个hit属性，hit值最小的将会被清出缓存。
+            LRU，Least Recently Used，最近最少使用的，缓存的元素有一个时间戳，当缓存容量满了，而又需要腾出地方来缓存新的元素的时候，那么现有缓存元素中时间戳离当前时间最远的元素将被清出缓存。
+    -->
+     <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="false"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            />
+           
+           
+    <!-- 登录记录缓存锁定10分钟 -->
+    <cache name="passwordRetryCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+   
+</ehcache>
+```
+
+# 记住密码
+
+```java
+/**
+ * cookie对象;
+ * @return
+ */
+@Bean
+public SimpleCookie rememberMeCookie(){
+    System.out.println("ShiroConfiguration.rememberMeCookie()");
+    //这个参数是cookie的名称，对应前端的checkbox的name = rememberMe
+    SimpleCookie simpleCookie = new SimpleCookie("rememberMe");
+    //<!-- 记住我cookie生效时间30天 ,单位秒;-->
+    simpleCookie.setMaxAge(259200);
+    return simpleCookie;
+}
+
+/**
+ * cookie管理对象;
+ * @return
+ */
+@Bean
+public CookieRememberMeManager rememberMeManager(){
+    System.out.println("ShiroConfiguration.rememberMeManager()");
+    CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
+    cookieRememberMeManager.setCookie(rememberMeCookie());
+    return cookieRememberMeManager;
+}
+
+// 将rememberMeManager注入到SecurityManager中
+@Bean
+public SecurityManager securityManager(){
+    DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager();
+    //设置realm.
+    securityManager.setRealm(myShiroRealm());
+
+    //注入缓存管理器;
+    securityManager.setCacheManager(ehCacheManager());//这个如果执行多次，也是同样的一个对象;
+
+    //注入记住我管理器;
+    securityManager.setRememberMeManager(rememberMeManager());
+
+    return securityManager;
+}
+
+
+@Bean
+public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager){
+    System.out.println("ShiroConfiguration.shirFilter()");
+    ShiroFilterFactoryBean shiroFilterFactoryBean  = new ShiroFilterFactoryBean();
+
+    // 必须设置 SecurityManager 
+    shiroFilterFactoryBean.setSecurityManager(securityManager);
+
+
+
+    //拦截器.
+    Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
+
+    //配置退出过滤器,其中的具体的退出代码Shiro已经替我们实现了
+    filterChainDefinitionMap.put("/logout", "logout");
+
+
+    //配置记住我或认证通过可以访问的地址
+    filterChainDefinitionMap.put("/index", "user");
+    filterChainDefinitionMap.put("/", "user");
+
+
+    //<!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
+    //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
+    filterChainDefinitionMap.put("/**", "authc");
+
+    // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
+    shiroFilterFactoryBean.setLoginUrl("/login");
+    // 登录成功后要跳转的链接
+    shiroFilterFactoryBean.setSuccessUrl("/index");
+    //未授权界面;
+    shiroFilterFactoryBean.setUnauthorizedUrl("/403");
+
+    shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+    return shiroFilterFactoryBean;
+}
+```
+
+主要是加入了：
+
+//配置记住我或认证通过可以访问的地址
+
+filterChainDefinitionMap.put("/index", "user");
+
+filterChainDefinitionMap.put("/", "user");
+
+ 
+
+修改登录界面加入rememberMe复选框：
+
+在login.html中加入：
+
+<P><input type="checkbox" name="rememberMe" />记住我</P>
+
+这时候运行程序，登录之后跳转到http://localhost:8085/index页面，然后我们关闭浏览器重新打开，然后直接访问/index还是可以访问的，说明我们写的记住密码已经生效了，如果访问http://localhost:8085/userInfo/userAdd的话还是需要重新登录的。
+
+
+
+
+
+
+
+
 

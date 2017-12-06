@@ -1,13 +1,14 @@
 package com.rocky.boot.entry;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Rocky on 2017-09-19.
  */
 @Entity
-public class SysRole {
+public class SysRole implements Serializable {
     @Id
     @GeneratedValue
     private Integer id; // 编号

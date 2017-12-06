@@ -6,9 +6,19 @@
 </head>
 <body>
 错误信息：<h4 th:text="${msg}"></h4>
-<form action="" method="post">
+<form action="/login" method="post">
     <p>账号：<input type="text" name="username" value="admin"/></p>
     <p>密码：<input type="text" name="password" value="123456"/></p>
+    <div class="form-group" id="verifyCodeP">
+        <label class="sr-only" for="verifyCode">验证码</label>
+        <p style="white-space:nowrap; ">
+            <input class="form-username" type="text" name="verifyCode" id="verifyCode"  maxlength="4" style="width: 100px; " />
+            <img id="verifyCodeImg" class="form-username" style="margin: 0 4px;" src="/verifycode"
+                 onclick="this.src='/verifycode?t='+(new Date()).getTime();"
+                 style="cursor: pointer;" />
+        </p>
+    </div>
+    <P><input type="checkbox" name="rememberMe" />记住我</P>
     <p><input type="submit" value="登录"/></p>
 </form>
 </body>
