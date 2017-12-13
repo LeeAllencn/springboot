@@ -30,3 +30,5 @@ Swagger 是一个规范和完整的框架，用于生成、描述、调用和可
 
 # 访问
 http://localhost:8080/swagger-ui.html
+
+> [使用Swagger2构建强大的RESTful API文档](http://blog.didispace.com/springbootswagger2/)
