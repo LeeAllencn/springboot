@@ -1,5 +1,5 @@
 # AOP
-先了解AOP的相关术语:
+### AOP的相关术语:
 
 1.通知(Advice):
 
@@ -153,7 +153,7 @@ public class UserService {
     - 使用@AfterReturning在切入点return内容之后切入内容（可以用来对处理返回值做一些加工处理）
     - 使用@Around在切入点前后切入内容，并自己控制何时执行切入点自身的内容
     - 使用@AfterThrowing用来处理当切入内容部分抛出异常之后的处理逻辑
-    
+
 ### 优化：AOP切面中的同步问题
 引入ThreadLocal对象
 
