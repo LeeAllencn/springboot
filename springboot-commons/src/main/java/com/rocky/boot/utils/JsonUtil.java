@@ -3,6 +3,9 @@ package com.rocky.boot.utils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +15,10 @@ import java.util.Map;
  * Created by Rocky on 2017-10-10.
  */
 public class JsonUtil {
+
+    public static final Logger LOGGER = LoggerFactory.getLogger(JsonUtil.class);
+
+    public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     /**
      * json转list
@@ -86,6 +93,34 @@ public class JsonUtil {
 
     public static String obj2JsonStr(Object obj){
         return JSON.toJSONString(obj);
+    }
+
+    /**
+     * 将 POJO 转为 JSON
+     */
+    public static <T> String toJson(T obj) {
+        String json;
+        try {
+            json = OBJECT_MAPPER.writeValueAsString(obj);
+        } catch (Exception e) {
+            LOGGER.error("convert POJO to JSON failure", e);
+            throw new RuntimeException(e);
+        }
+        return json;
+    }
+
+    /**
+     * 将 JSON 转为 POJO
+     */
+    public static <T> T fromJson(String json,Class<T> type) {
+        T pojo;
+        try {
+            pojo = OBJECT_MAPPER.readValue(json, type);
+        } catch (Exception e) {
+            LOGGER.error("convert JSON to POJO failure", e);
+            throw new RuntimeException(e);
+        }
+        return pojo;
     }
 
     public static void main(String args[]){
