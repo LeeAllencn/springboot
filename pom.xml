@@ -42,6 +42,9 @@
         <module>springboot-webhook</module>
         <module>springboot-aop</module>
         <module>springboot-elasticsearch</module>
+        <module>springboot-dubbo-api</module>
+        <module>springboot-dubbo-provider</module>
+        <module>springboot-dubbo-customer</module>
     </modules>
 
 </project>
