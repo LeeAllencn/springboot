@@ -45,6 +45,7 @@
         <module>springboot-dubbo-api</module>
         <module>springboot-dubbo-provider</module>
         <module>springboot-dubbo-customer</module>
+        <module>springboot-design-patterns</module>
     </modules>
 
 </project>
