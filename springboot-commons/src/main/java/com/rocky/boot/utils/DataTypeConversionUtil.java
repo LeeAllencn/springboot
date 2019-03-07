@@ -40,7 +40,9 @@ public class DataTypeConversionUtil {
                 // 属性默认设置的类型为String，如果需要设置其他类型，自己单独判断后设置
                 if (field.getType() == Long.class) {
                     field.set(obj, Long.valueOf(map.get(field.getName()).toString()));
-                }else if (field.getType() == Date.class) {
+                } else if (field.getType() == Byte.class) {
+                    field.set(obj, Byte.valueOf(map.get(field.getName()).toString()));
+                } else if (field.getType() == Date.class) {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     field.set(obj, sdf.parse(map.get(field.getName()).toString()));
                 } else {
