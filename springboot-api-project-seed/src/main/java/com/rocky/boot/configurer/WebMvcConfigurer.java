@@ -6,6 +6,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
 
+import com.rocky.boot.core.CustomExcption;
 import com.rocky.boot.core.Result;
 import com.rocky.boot.core.ResultCode;
 import com.rocky.boot.core.ServiceException;
@@ -67,6 +68,8 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
                 if (e instanceof ServiceException) {//业务失败的异常，如“账号或密码错误”
                     result.setCode(ResultCode.FAIL).setMessage(e.getMessage());
                     logger.info(e.getMessage());
+                } else if (e instanceof CustomExcption) {   // 自定义异常，此处接收异常，并进行统一处理
+                    result.setCode(ResultCode.FAIL).setMessage(e.getMessage());
                 } else if (e instanceof NoHandlerFoundException) {
                     result.setCode(ResultCode.NOT_FOUND).setMessage("接口 [" + request.getRequestURI() + "] 不存在");
                 } else if (e instanceof ServletException) {
