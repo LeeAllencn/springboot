@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/spring_boot_security
+    url: jdbc:mysql://192.168.0.86:3306/spring_boot_security
     username: root
-    password: adminpwd
+    password:
   thymeleaf:
     cache: false
   jpa:
@@ -17,3 +17,7 @@ logging:
       springframework:
         security: INFO
 
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 604800

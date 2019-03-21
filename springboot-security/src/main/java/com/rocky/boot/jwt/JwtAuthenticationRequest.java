@@ -1,4 +1,4 @@
-package com.rocky.boot.springbootsecurityjwt.security;
+package com.rocky.boot.jwt;
 
 import java.io.Serializable;
 
