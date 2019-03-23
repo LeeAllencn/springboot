@@ -4,7 +4,8 @@ import com.rocky.boot.jwt.JwtAuthenticationRequest;
 import com.rocky.boot.jwt.JwtAuthenticationResponse;
 import com.rocky.boot.jwt.JwtTokenUtil;
 import com.rocky.boot.jwt.JwtUser;
-import com.rocky.boot.model.SysUser;
+import com.rocky.boot.model.User;
+import com.rocky.boot.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,8 +39,25 @@ public class AuthenticationRestController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+    @Autowired
+    private IUserService userService;
+
     @Value("${jwt.header}")
     private String tokenHeader;
+
+    /**
+     * 用户注册
+     * @param user
+     * @return
+     */
+    @PostMapping("/registration")
+    public ResponseEntity<?> userRegistration(@RequestBody User user) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        String encodePassword = bCryptPasswordEncoder.encode(user.getPassword().trim());
+        user.setPassword(encodePassword);
+        userService.addUser(user);
+        return ResponseEntity.ok("注册用户成功!");
+    }
 
     /**
      * 用户登录
@@ -64,7 +83,12 @@ public class AuthenticationRestController {
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
 
-    /*@GetMapping("/refresh")
+    /**
+     * 刷新token
+     * @param request
+     * @return
+     */
+    @GetMapping("/refresh")
     public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         String username = jwtTokenUtil.getUsernameFromToken(token);
@@ -76,13 +100,18 @@ public class AuthenticationRestController {
         }else {
             return ResponseEntity.ok(new JwtAuthenticationResponse(null));
         }
-    }*/
+    }
 
+    /**
+     * 获取用户信息
+     * @param request
+     * @return
+     */
     @GetMapping
-    public ResponseEntity<?> getCurrentUserInfo(HttpServletRequest request) {
+    public ResponseEntity<?> getCurrentUserInfoFromToken(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        SysUser user = (SysUser) userDetailsService.loadUserByUsername(username);
+        JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
         return ResponseEntity.ok(user);
     }
 }

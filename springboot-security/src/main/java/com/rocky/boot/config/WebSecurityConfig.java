@@ -3,6 +3,7 @@ package com.rocky.boot.config;
 import com.rocky.boot.jwt.JwtAuthenticationEntryPoint;
 import com.rocky.boot.jwt.JwtAuthenticationTokenFilter;
 import com.rocky.boot.security.CustomUserService;
+import com.rocky.boot.service.impl.JwtUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +11,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
@@ -23,13 +26,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{//1 需继�
 	
 	@Bean
 	UserDetailsService customUserService(){ //2 注册自定义CustomUserService的bean
-		return new CustomUserService();
+//		return new CustomUserService();
+		return new JwtUserDetailsServiceImpl();
 	}
 
-	/*@Bean
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
 	public JwtAuthenticationTokenFilter authenticationTokenFilterBean() {
 		return new JwtAuthenticationTokenFilter();
-	}*/
+	}
 
 	/**
 	 * 用户认证
@@ -39,7 +48,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{//1 需继�
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		//3 添加自定义的user detail service 认证
-		auth.userDetailsService(customUserService());
+		auth
+				.userDetailsService(customUserService())
+				.passwordEncoder(passwordEncoder());
 		
 	}
 
@@ -62,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{//1 需继�
 //                .antMatchers("/user/**").hasAnyRole("ROLE_ADMIN", "ROLE_USER")
 				// 请求匹配/auth/**，用户可任意访问
 				.antMatchers("/user/auth/**").permitAll()
-				.antMatchers("/user/**").permitAll()
+				.antMatchers("/user/registration/**").permitAll()
 				// 其余所有的请求都需要认证后（登录后）才能访问
 				.anyRequest().authenticated() //4 所有请求需要认证即登录后才能访问
 				.and()
@@ -74,7 +85,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{//1 需继�
 				.logout().permitAll(); //6 定制注销行为，注销请求可任意访问
 
 		// Custom JWT based security filter
-//		http
-//				.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+		http
+				.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 	}
 }
