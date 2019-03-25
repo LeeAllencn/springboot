@@ -5,10 +5,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by Rocky on 2017-09-18.
+ *
+ * @author Rocky
+ * @date 2017-09-18
  */
 @Configuration
-public class RabbitConfig {
+public class RabbitMqConfig {
 
     @Bean
     public Queue Queue() {

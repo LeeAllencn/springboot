@@ -1,7 +1,7 @@
 package com.rocky.boot;
 
-import com.rocky.boot.Hello.HelloSender;
 import com.rocky.boot.fanout.FanoutSender;
+import com.rocky.boot.hello.HelloSender;
 import com.rocky.boot.many.LeeSender1;
 import com.rocky.boot.many.LeeSender2;
 import com.rocky.boot.model.User;

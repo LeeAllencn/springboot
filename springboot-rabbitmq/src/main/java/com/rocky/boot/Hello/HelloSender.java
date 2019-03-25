@@ -1,4 +1,4 @@
-package com.rocky.boot.Hello;
+package com.rocky.boot.hello;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * Created by Rocky on 2017-09-18.
+ *
+ * @author Rocky
+ * @date 2017-09-18
  */
 @Component
 public class HelloSender {

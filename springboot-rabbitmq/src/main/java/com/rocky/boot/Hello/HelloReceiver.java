@@ -1,11 +1,13 @@
-package com.rocky.boot.Hello;
+package com.rocky.boot.hello;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by Rocky on 2017-09-18.
+ *
+ * @author Rocky
+ * @date 2017-09-18
  */
 @Component
 @RabbitListener(queues = "hello")
