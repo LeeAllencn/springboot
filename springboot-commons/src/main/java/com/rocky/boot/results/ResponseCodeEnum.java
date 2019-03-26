@@ -3,6 +3,8 @@ package com.rocky.boot.results;
 /**
  * @author rocky
  * @Description: 状态码枚举
+ * 这里的枚举信息会直接展示给用户，主要用户友好性，不需要声明那些用户看不懂的信息
+ * 如果需要给开发者看错误信息，直接返回失败，再打个服务器log
  * @Date: Created in 2019/3/14
  */
 public enum ResponseCodeEnum {
