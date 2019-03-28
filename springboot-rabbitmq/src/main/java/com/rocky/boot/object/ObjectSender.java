@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by Rocky on 2017-09-18.
+ *
+ * @author Rocky
+ * @date 2017-09-18
  */
 @Component
 public class ObjectSender {

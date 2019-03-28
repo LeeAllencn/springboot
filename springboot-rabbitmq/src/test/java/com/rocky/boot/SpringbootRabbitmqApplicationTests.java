@@ -35,6 +35,10 @@ public class SpringbootRabbitmqApplicationTests {
 	@Autowired
 	private TopicSender topicSender;
 
+	/**
+	 * 基本测试
+	 * @throws Exception
+	 */
 	@Test
 	public void hello() throws Exception {
 		helloSender.send();
@@ -55,6 +59,10 @@ public class SpringbootRabbitmqApplicationTests {
 		}
 	}
 
+	/**
+	 * 发送对象
+	 * @throws Exception
+	 */
 	@Test
 	public void sendOject() throws Exception {
 		User user=new User();
@@ -63,6 +71,10 @@ public class SpringbootRabbitmqApplicationTests {
 		ObjectSender.send(user);
 	}
 
+	/**
+	 * fanout exchange test
+	 * @throws Exception
+	 */
 	@Test
 	public void fanoutSender() throws Exception {
 		fanoutSender.send();

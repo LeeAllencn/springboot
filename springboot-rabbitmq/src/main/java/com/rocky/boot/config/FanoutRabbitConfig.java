@@ -8,11 +8,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by Rocky on 2017-09-18.
+ *  Fanout交换器配置
+ * @author Rocky
+ * @date 2017-09-18
  */
 @Configuration
 public class FanoutRabbitConfig {
 
+    /**
+     * 定义三个队列
+     */
     @Bean
     public Queue AMessage() {
         return new Queue("fanout.A");
@@ -28,11 +33,17 @@ public class FanoutRabbitConfig {
         return new Queue("fanout.C");
     }
 
+    /**
+     * 定义一个交换器
+     */
     @Bean
     FanoutExchange fanoutExchange() {
         return new FanoutExchange("fanoutExchange");
     }
 
+    /**
+     * 将三个队列和交换器绑定
+     */
     @Bean
     Binding bindingExchangeA(Queue AMessage, FanoutExchange fanoutExchange) {
         return BindingBuilder.bind(AMessage).to(fanoutExchange);

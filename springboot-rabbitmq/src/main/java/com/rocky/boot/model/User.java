@@ -3,7 +3,9 @@ package com.rocky.boot.model;
 import java.io.Serializable;
 
 /**
- * Created by Rocky on 2017-09-18.
+ *
+ * @author Rocky
+ * @date 2017-09-18
  */
 public class User implements Serializable {
 
