@@ -103,6 +103,24 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+
+		<!--mybatis-plus代码生成器插件start-->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-generator</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity-engine-core</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!--mybatis-plus代码生成器插件end-->
     </dependencies>
 
 	<build>
