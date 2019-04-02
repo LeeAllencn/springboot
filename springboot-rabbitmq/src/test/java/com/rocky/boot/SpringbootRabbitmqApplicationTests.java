@@ -1,5 +1,6 @@
 package com.rocky.boot;
 
+import com.rocky.boot.dlx.DlxSender;
 import com.rocky.boot.fanout.FanoutSender;
 import com.rocky.boot.hello.HelloSender;
 import com.rocky.boot.many.LeeSender1;
@@ -34,6 +35,9 @@ public class SpringbootRabbitmqApplicationTests {
 
 	@Autowired
 	private TopicSender topicSender;
+
+	@Autowired
+	private DlxSender dlxSender;
 
 	/**
 	 * 基本测试
@@ -93,6 +97,14 @@ public class SpringbootRabbitmqApplicationTests {
 	@Test
 	public void topic2() throws Exception {
 		topicSender.send2();
+	}
+
+	/**
+	 * 死信队列测试
+	 */
+	@Test
+	public void dlx() {
+		dlxSender.send();
 	}
 
 	@Test
