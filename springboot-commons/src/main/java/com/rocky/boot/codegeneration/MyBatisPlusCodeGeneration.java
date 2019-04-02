@@ -87,6 +87,7 @@ public class MyBatisPlusCodeGeneration {
                 .setEntityLombokModel(false)
                 .setNaming(NamingStrategy.underline_to_camel)
                 .setEntityTableFieldAnnotationEnable(true)
+                .setEntityColumnConstant(true)
                 .setInclude(tableNames);
 
         new AutoGenerator().setGlobalConfig(globalConfig)
