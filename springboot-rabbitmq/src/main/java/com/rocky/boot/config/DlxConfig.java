@@ -47,7 +47,7 @@ public class DlxConfig {
      */
     @Bean
     public Binding normalBinding() {
-        return new Binding("queue.normal", Binding.DestinationType.QUEUE, "exchange.normal", "routingkey.normal", null);
+        return new Binding("queue.normal", Binding.DestinationType.QUEUE, "exchange.normal", "", null);
     }
 
     /**

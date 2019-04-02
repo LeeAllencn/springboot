@@ -1,5 +1,6 @@
 package com.rocky.boot;
 
+import com.rocky.boot.delay.DelaySender;
 import com.rocky.boot.dlx.DlxSender;
 import com.rocky.boot.fanout.FanoutSender;
 import com.rocky.boot.hello.HelloSender;
@@ -38,6 +39,9 @@ public class SpringbootRabbitmqApplicationTests {
 
 	@Autowired
 	private DlxSender dlxSender;
+
+	@Autowired
+	private DelaySender delaySender;
 
 	/**
 	 * 基本测试
@@ -105,6 +109,14 @@ public class SpringbootRabbitmqApplicationTests {
 	@Test
 	public void dlx() {
 		dlxSender.send();
+	}
+
+	/**
+	 * 延迟队列测试
+	 */
+	@Test
+	public void delay() {
+		delaySender.send();
 	}
 
 	@Test
