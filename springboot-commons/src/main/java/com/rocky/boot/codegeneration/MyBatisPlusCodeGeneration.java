@@ -24,6 +24,12 @@ public class MyBatisPlusCodeGeneration {
      * 包名
      */
     private final static String PACKAGE_NAME = "com.rocky.boot";
+
+    /**
+     * 数据表前缀
+     */
+    private final static String TABLE_PREFIX = "";
+
     /**
      * 服务接口名称命名 eg:UserService or IUserService
      */
@@ -88,6 +94,7 @@ public class MyBatisPlusCodeGeneration {
                 .setNaming(NamingStrategy.underline_to_camel)
                 .setEntityTableFieldAnnotationEnable(true)
                 .setEntityColumnConstant(true)
+                .setTablePrefix(TABLE_PREFIX)
                 .setInclude(tableNames);
 
         new AutoGenerator().setGlobalConfig(globalConfig)
