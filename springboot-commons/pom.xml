@@ -121,6 +121,26 @@
 			<scope>runtime</scope>
 		</dependency>
 		<!--mybatis-plus代码生成器插件end-->
+
+		<!--mybatis代码生成器插件start-->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>RELEASE</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.generator</groupId>
+			<artifactId>mybatis-generator-core</artifactId>
+			<version>RELEASE</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>tk.mybatis</groupId>
+			<artifactId>mapper</artifactId>
+			<version>3.4.2</version>
+		</dependency>
+		<!--mybatis代码生成器插件end-->
     </dependencies>
 
 	<build>
