@@ -2,10 +2,10 @@ package com.rocky.boot.codegeneration;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
-import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
+import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
+import com.baomidou.mybatisplus.generator.config.rules.IColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 /**
@@ -40,6 +40,10 @@ public class MyBatisPlusCodeGeneration {
     private final static String DATASOURCE_DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
     private final static String[] TABLE_NAMES = new String[]{"user"};
 
+    private final static String KEY_DATE = "date";
+
+    private final static String KEY_TIME = "time";
+
     public static void main(String[] args) {
         System.out.println("start...");
         generateByTables(TABLE_NAMES);
@@ -66,6 +70,16 @@ public class MyBatisPlusCodeGeneration {
         // 数据源配置
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setDbType(DbType.MYSQL)
+                .setTypeConvert(new MySqlTypeConvert(){
+                    // 自定义数据库表字段类型转换
+                    @Override
+                    public IColumnType processTypeConvert(GlobalConfig globalConfig, String fieldType) {
+                        if (fieldType.toLowerCase().contains(KEY_DATE) || fieldType.toLowerCase().contains(KEY_TIME)) {
+                            return DbColumnType.DATE;
+                        }
+                        return super.processTypeConvert(globalConfig, fieldType);
+                    }
+                })
                 .setUrl(DATASOURCE_URL)
                 .setUsername(DATASOURCE_USERNAME)
                 .setPassword(DATASOURCE_PASSWORD)
@@ -90,10 +104,10 @@ public class MyBatisPlusCodeGeneration {
          * include：需要包含的表名，允许正则表达式（与exclude二选一配置）
          */
         strategyConfig.setCapitalMode(true)
-                .setEntityLombokModel(false)
+//                .setEntityLombokModel(true)
                 .setNaming(NamingStrategy.underline_to_camel)
                 .setEntityTableFieldAnnotationEnable(true)
-                .setEntityColumnConstant(true)
+//                .setEntityColumnConstant(true)
                 .setTablePrefix(TABLE_PREFIX)
                 .setInclude(tableNames);
 
