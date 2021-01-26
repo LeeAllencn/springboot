@@ -47,6 +47,7 @@
         <module>springboot-dubbo-customer</module>
         <module>springboot-design-patterns</module>
         <module>springboot-activiti</module>
+        <module>springboot-javabase</module>
     </modules>
 
 </project>
