@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.rocky.boot</groupId>
+        <artifactId>springboot-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../springboot-parent/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>springboot-common</artifactId>
+    <version>${springboot.version}</version>
+    <name>springboot-common</name>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

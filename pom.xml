@@ -10,6 +10,12 @@
     <packaging>pom</packaging>
 
     <modules>
+        <!-- 业务模块管理 -->
+        <module>springboot-parent</module>
+        <module>springboot-common</module>
+        <module>springboot-api-service</module>
+
+        <!-- 其他技术栈模块管理 -->
         <module>springboot-demo</module>
         <module>springboot-jpa</module>
         <module>springboot-security</module>

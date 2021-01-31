@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.rocky.boot</groupId>
+    <artifactId>springboot-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>springboot-parent</name>
+    <description>A directory for version management of public jar packages</description>
+
+    <!-- 公共属性和版本的配置 -->
+    <properties>
+
+        <springboot.version>0.0.1-SNAPSHOT</springboot.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <mybatis-plus.version>3.4.2</mybatis-plus.version>
+        <sleuth.version>3.0.1</sleuth.version>
+
+        <!--        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>-->
+        <!--        <commons-lang3.version>3.11</commons-lang3.version>-->
+        <!--        <okhttp.version>3.9.0</okhttp.version>-->
+        <!--        <jackson-databind.version>2.8.6</jackson-databind.version>-->
+        <!--        <fastjson.version>1.2.31</fastjson.version>-->
+        <!--        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>-->
+        <!--        <aspectjweaver.version>1.8.9</aspectjweaver.version>-->
+        <!--        <svnkit.version>1.8.12</svnkit.version>-->
+        <!--        <guava.version>RELEASE</guava.version>-->
+        <!--        <mybatis-plus-generator.version>3.1.0</mybatis-plus-generator.version>-->
+        <!--        <velocity-engine-core.version>2.0</velocity-engine-core.version>-->
+        <!--        <freemarker.version>RELEASE</freemarker.version>-->
+        <!--        <mybatis-generator-core.version>RELEASE</mybatis-generator-core.version>-->
+        <!--        <mapper.version>3.4.2</mapper.version>-->
+    </properties>
+
+    <!-- 公共jar包依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-sleuth</artifactId>
+                <version>${sleuth.version}</version>
+            </dependency>
+
+            <!--            <dependency>-->
+            <!--                <groupId>org.apache.commons</groupId>-->
+            <!--                <artifactId>commons-lang3</artifactId>-->
+            <!--                <version>${commons-lang3.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            <dependency>-->
+            <!--                <groupId>com.squareup.okhttp3</groupId>-->
+            <!--                <artifactId>okhttp</artifactId>-->
+            <!--                <version>${okhttp.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            &lt;!&ndash;json util&ndash;&gt;-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.fasterxml.jackson.core</groupId>-->
+            <!--                <artifactId>jackson-databind</artifactId>-->
+            <!--                <version>${jackson-databind.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            <dependency>-->
+            <!--                <groupId>com.alibaba</groupId>-->
+            <!--                <artifactId>fastjson</artifactId>-->
+            <!--                <version>${fastjson.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            &lt;!&ndash; https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 &ndash;&gt;-->
+            <!--            <dependency>-->
+            <!--                <groupId>io.springfox</groupId>-->
+            <!--                <artifactId>springfox-swagger2</artifactId>-->
+            <!--                <version>${springfox-swagger2.version}</version>-->
+            <!--            </dependency>-->
+            <!--            &lt;!&ndash; https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui &ndash;&gt;-->
+            <!--            <dependency>-->
+            <!--                <groupId>io.springfox</groupId>-->
+            <!--                <artifactId>springfox-swagger-ui</artifactId>-->
+            <!--                <version>${springfox-swagger2.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            &lt;!&ndash;javax.servlet.http.HttpServletResponse&ndash;&gt;-->
+            <!--            <dependency>-->
+            <!--                <groupId>javax.servlet</groupId>-->
+            <!--                <artifactId>javax.servlet-api</artifactId>-->
+            <!--                <version>${javax.servlet-api.version}</version>-->
+            <!--                <scope>provided</scope>-->
+            <!--            </dependency>-->
+
+
+            <!--            &lt;!&ndash; aop &ndash;&gt;-->
+            <!--            &lt;!&ndash; https://mvnrepository.com/artifact/org.aspectj/aspectjweaver &ndash;&gt;-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.aspectj</groupId>-->
+            <!--                <artifactId>aspectjweaver</artifactId>-->
+            <!--                <version>${aspectjweaver.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            &lt;!&ndash;svn&ndash;&gt;-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.tmatesoft.svnkit</groupId>-->
+            <!--                <artifactId>svnkit</artifactId>-->
+            <!--                <version>${svnkit.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            <dependency>-->
+            <!--                <groupId>com.google.guava</groupId>-->
+            <!--                <artifactId>guava</artifactId>-->
+            <!--                <version>${guava.version}</version>-->
+            <!--                <scope>compile</scope>-->
+            <!--            </dependency>-->
+
+            <!--mybatis-plus代码生成器插件start-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.baomidou</groupId>-->
+            <!--                <artifactId>mybatis-plus-generator</artifactId>-->
+            <!--                <version>${mybatis-plus-generator.version}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.apache.velocity</groupId>-->
+            <!--                <artifactId>velocity-engine-core</artifactId>-->
+            <!--                <version>${velocity-engine-core.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            &lt;!&ndash;mybatis-plus代码生成器插件end&ndash;&gt;-->
+
+            <!--            &lt;!&ndash;mybatis代码生成器插件start&ndash;&gt;-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.freemarker</groupId>-->
+            <!--                <artifactId>freemarker</artifactId>-->
+            <!--                <version>${freemarker.version}</version>-->
+            <!--                <scope>compile</scope>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.mybatis.generator</groupId>-->
+            <!--                <artifactId>mybatis-generator-core</artifactId>-->
+            <!--                <version>${mybatis-generator-core.version}</version>-->
+            <!--                <scope>compile</scope>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>tk.mybatis</groupId>-->
+            <!--                <artifactId>mapper</artifactId>-->
+            <!--                <version>${mapper.version}</version>-->
+            <!--            </dependency>-->
+            <!--            &lt;!&ndash;mybatis代码生成器插件end&ndash;&gt;-->
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
