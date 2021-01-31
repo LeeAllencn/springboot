@@ -40,7 +40,6 @@
         <module>springboot-commons</module>
         <module>springboot-mongodb</module>
         <module>springboot-jsp</module>
-        <module>springboot-lombok</module>
         <module>springboot-cors</module>
         <module>springboot-validator</module>
         <module>springboot-api-project-seed</module>
