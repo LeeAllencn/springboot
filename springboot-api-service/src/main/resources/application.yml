@@ -7,9 +7,9 @@ spring:
   application:
     name: api-service
 
-  # 数据源配置
+  # 数据源配置(使用unicode编码；字符集为UTF-8；防止0000-00-00...等异常日期参数值的异常，转为null处理；不适用SSL连接；防止MyBatis Generator 生成器把其他数据库的同名表生成下来的问题；设置时区为GMT+8)
   datasource:
-    url: jdbc:mysql://192.168.1.104:3306/db_springboot?serverTimezone=GMT%2b8
+    url: jdbc:mysql://192.168.1.104:3306/db_springboot?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&nullCatalogMeansCurrent=true&serverTimezone=GMT%2b8
     username: root
     password: adminpwd
     driver-class-name: com.mysql.cj.jdbc.Driver

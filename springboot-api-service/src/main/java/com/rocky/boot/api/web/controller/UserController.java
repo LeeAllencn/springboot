@@ -7,6 +7,7 @@ import com.rocky.boot.api.web.response.UserListResp;
 import com.rocky.boot.common.model.BaseResult;
 import com.rocky.boot.common.model.PageResult;
 import com.rocky.boot.common.model.ResultGenerator;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -24,8 +25,8 @@ public class UserController {
     private IUserService userService;
 
     @PostMapping
-    public BaseResult<Void> createUser(@RequestBody UserCreateReq userCreateReq) {
-        userService.createUser(userCreateReq);
+    public BaseResult<Void> createUser(@RequestBody @Validated UserCreateReq userCreateReq) {
+//        userService.createUser(userCreateReq);
         return ResultGenerator.genSuccessResult();
     }
 

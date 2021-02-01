@@ -28,6 +28,8 @@
 
         <mybatis-plus.version>3.4.2</mybatis-plus.version>
         <sleuth.version>3.0.1</sleuth.version>
+        <hutool.version>5.5.2</hutool.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
 
         <!--        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>-->
         <!--        <commons-lang3.version>3.11</commons-lang3.version>-->
@@ -49,16 +51,32 @@
     <dependencyManagement>
         <dependencies>
 
+            <!-- mybatis-plus -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
 
+            <!-- 链路跟踪 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-sleuth</artifactId>
                 <version>${sleuth.version}</version>
+            </dependency>
+
+            <!-- hutool java工具类库 -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- 参数校验 -->
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation-api.version}</version>
             </dependency>
 
             <!--            <dependency>-->
