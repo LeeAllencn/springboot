@@ -23,15 +23,19 @@ public class UserCreateReq {
     /**
      * 密码
      */
+    @NotNull(message = "密码不能为空")
+    @Size(min = 6, message = "密码长度不能低于6个字符")
     private String password;
 
     /**
      * 性别：0-女；1-男
      */
+    @NotNull(message = "性别不能为空")
     private Boolean sex;
 
     /**
      * 电话号码
      */
+    @NotNull(message = "电话不能为空")
     private String telephone;
 }
