@@ -14,6 +14,7 @@
         <module>springboot-parent</module>
         <module>springboot-common</module>
         <module>springboot-api-service</module>
+        <module>springboot-flowable-service</module>
 
         <!-- 其他技术栈模块管理 -->
         <module>springboot-demo</module>
