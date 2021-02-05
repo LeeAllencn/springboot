@@ -42,7 +42,6 @@
         <module>springboot-mongodb</module>
         <module>springboot-jsp</module>
         <module>springboot-cors</module>
-        <module>springboot-validator</module>
         <module>springboot-api-project-seed</module>
         <module>springboot-promethues</module>
         <module>springboot-webhook</module>
