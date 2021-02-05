@@ -1,5 +1,6 @@
 package com.rocky.boot.api.web.request;
 
+import com.rocky.boot.common.validator.EnumParameterValidator;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -7,7 +8,7 @@ import javax.validation.constraints.Size;
 
 /**
  * @author rocky
- * Description:
+ * Description: 创建用户请求模型
  * Created in 2021/1/30
  */
 @Data
@@ -31,6 +32,7 @@ public class UserCreateReq {
      * 性别：0-女；1-男
      */
     @NotNull(message = "性别不能为空")
+    @EnumParameterValidator(values = "0,1", message = "性别只能传0或1")
     private Boolean sex;
 
     /**
