@@ -1,3 +1,6 @@
+# swagger 访问
+http://localhost:8081/swagger-ui.html
+
 # 项目构建
 
 # 项目结构介绍
