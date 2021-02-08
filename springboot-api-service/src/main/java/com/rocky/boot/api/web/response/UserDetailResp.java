@@ -1,5 +1,7 @@
 package com.rocky.boot.api.web.response;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
@@ -10,34 +12,24 @@ import java.util.Date;
  * Created in 2021/1/29
  */
 @Data
+@ApiModel(value = "用户详情响应模型")
 public class UserDetailResp {
-    /**
-     * 用户ID
-     */
+
+    @ApiModelProperty(value = "用户ID")
     private Integer id;
 
-    /**
-     * 用户名
-     */
+    @ApiModelProperty(value = "用户名")
     private String username;
 
-    /**
-     * 性别：0-女；1-男
-     */
+    @ApiModelProperty(value = "性别：0-女；1-男")
     private Boolean sex;
 
-    /**
-     * 电话号码
-     */
+    @ApiModelProperty(value = "电话号码")
     private String telephone;
 
-    /**
-     * 创建时间
-     */
+    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
-    /**
-     * 更新时间
-     */
+    @ApiModelProperty(value = "更新时间")
     private Date updateTime;
 }

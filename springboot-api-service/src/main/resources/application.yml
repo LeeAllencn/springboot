@@ -25,3 +25,9 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+
+  # 生产环境设置为false，其他环境设置为true
+  swagger:
+    api:
+      enable: true
+    base-package: com.rocky.boot.api.web.controller
