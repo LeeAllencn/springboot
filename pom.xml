@@ -17,7 +17,6 @@
         <module>springboot-flowable-service</module>
 
         <!-- 其他技术栈模块管理 -->
-        <module>springboot-demo</module>
         <module>springboot-jpa</module>
         <module>springboot-security</module>
         <module>springboot-websocket</module>
