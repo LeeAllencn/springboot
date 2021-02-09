@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- <root>是必选节点，用来指定最基础的日志输出级别，只有一个 level 属性，用于设置打印级别 -->
+    <!-- <property>节点：用于定义变量，有两个属性：name,value -->
+    <!-- <appender>节点：用来格式化日志输出的节点，有两个属性：name,class -->
+    <!-- <logger>节点：用来设置一个包或具体的某一个类的日志打印级别、以及指定<appender> -->
+
+    <!-- 链接：https://github.com/spring-projects/spring-boot/tree/v2.4.2/spring-boot-project/spring-boot/src/main/resources/org/springframework/boot/logging/logback -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <!-- 定义日志文件存储位置 -->
+    <property name="LOG_PATH" value="${LOG_PATH:-/var/log/api-service}"/>
+
+    <!-- 文件输出,时间窗口滚动 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${HOSTNAME}.log</file>
+        <!-- 输出格式, FILE_LOG_PATTERN为 include defaults.xml中的配置 -->
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <!-- 文件滚动模式 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 日志文件输出的文件名,可设置文件类型为zip,开启文件压缩 -->
+            <fileNamePattern>${LOG_PATH}/%d{yyyyMMdd}/${HOSTNAME}.%i.log.zip</fileNamePattern>
+            <!-- 日志文件保留天数 -->
+            <MaxHistory>30</MaxHistory>
+            <!-- 按日志文件大小分割同一天的 -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>512MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="ch.qos.logback" level="WARN"/>
+
+</configuration>

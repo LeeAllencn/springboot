@@ -31,3 +31,6 @@ spring:
     api:
       enable: true
     base-package: com.rocky.boot.api.web.controller
+
+logging:
+  config: classpath:logback-spring.xml
