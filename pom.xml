@@ -28,7 +28,6 @@
         <module>springboot-mybatis</module>
         <module>springboot-upload-file</module>
         <module>springboot-jms</module>
-        <module>springboot-web</module>
         <module>springboot-rabbitmq</module>
         <module>springboot-timing</module>
         <module>springboot-mail</module>
