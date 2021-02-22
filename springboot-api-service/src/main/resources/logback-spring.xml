@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <!-- <root>是必选节点，用来指定最基础的日志输出级别，只有一个 level 属性，用于设置打印级别 -->
     <!-- <property>节点：用于定义变量，有两个属性：name,value -->
     <!-- <appender>节点：用来格式化日志输出的节点，有两个属性：name,class -->
     <!-- <logger>节点：用来设置一个包或具体的某一个类的日志打印级别、以及指定<appender> -->
+    <!-- <root>是必选节点，用来指定最基础的日志输出级别，只有一个 level 属性，用于设置打印级别 -->
 
     <!-- 链接：https://github.com/spring-projects/spring-boot/tree/v2.4.2/spring-boot-project/spring-boot/src/main/resources/org/springframework/boot/logging/logback -->
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
@@ -36,6 +36,7 @@
     <logger name="ch.qos.logback" level="WARN"/>
 
     <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </root>
 
