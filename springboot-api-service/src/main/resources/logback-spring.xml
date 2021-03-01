@@ -36,6 +36,7 @@
     <logger name="ch.qos.logback" level="WARN"/>
 
     <root level="INFO">
+        <!-- 输出控制台日志 -->
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </root>

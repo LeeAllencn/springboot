@@ -22,7 +22,8 @@ public class EnumParameterValidatorClass implements ConstraintValidator<EnumPara
         Boolean flag = false;
         String[] valueArray = values.split(",");
         for (String value : valueArray) {
-            if (value.equals(o)) {
+            Boolean temp = Boolean.valueOf(value);
+            if (temp.equals(o)) {
                 flag = true;
                 break;
             }

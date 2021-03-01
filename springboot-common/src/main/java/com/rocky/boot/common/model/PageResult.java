@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author rocky
  * Description: 返回分页模型
@@ -14,14 +16,14 @@ import lombok.Data;
 public class PageResult<T> {
 
     @ApiModelProperty(value = "返回数据")
-    private T data;
+    private List<T> data;
 
     @ApiModelProperty(value = "当前页码")
-    private Integer currentPage;
+    private long currentPage;
 
     @ApiModelProperty(value = "当前页显示数量")
-    private Integer pageSize;
+    private long pageSize;
 
     @ApiModelProperty(value = "数据总数量")
-    private Integer total;
+    private long total;
 }

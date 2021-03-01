@@ -2,9 +2,11 @@ package com.rocky.boot.api.web.controller;
 
 import com.rocky.boot.api.service.IUserService;
 import com.rocky.boot.api.web.request.UserCreateReq;
+import com.rocky.boot.api.web.request.UserUpdateReq;
 import com.rocky.boot.api.web.response.UserDetailResp;
 import com.rocky.boot.api.web.response.UserListResp;
 import com.rocky.boot.common.model.BaseResult;
+import com.rocky.boot.common.model.PageParam;
 import com.rocky.boot.common.model.PageResult;
 import com.rocky.boot.common.model.ResultGenerator;
 import io.swagger.annotations.Api;
@@ -32,7 +34,7 @@ public class UserController {
     @ApiOperation(value = "创建用户")
     @PostMapping
     public BaseResult<Void> createUser(@RequestBody @Validated UserCreateReq userCreateReq) {
-//        userService.createUser(userCreateReq);
+        userService.saveUser(userCreateReq);
         return ResultGenerator.genSuccessResult();
     }
 
@@ -41,8 +43,9 @@ public class UserController {
             @ApiImplicitParam(name = "search", value = "按照用户名称模糊查询", dataType = "string", paramType = "query")
     })
     @GetMapping
-    public BaseResult<PageResult<UserListResp>> getUserList(@RequestParam String search) {
-        return ResultGenerator.genSuccessResult(null);
+    public BaseResult<PageResult<UserListResp>> getUserList(@RequestParam(value = "search", required = false) String search, PageParam pageParam) {
+        PageResult<UserListResp> userListRespPageResult = userService.listUsers(search, pageParam);
+        return ResultGenerator.genSuccessResult(userListRespPageResult);
     }
 
     @ApiOperation(value = "获取用户详情")
@@ -51,7 +54,7 @@ public class UserController {
     })
     @GetMapping("/{userId}")
     public BaseResult<UserDetailResp> getUserDetail(@PathVariable Integer userId) {
-        UserDetailResp userDetailResp = userService.getUserDetail(userId);
+        UserDetailResp userDetailResp = userService.getUser(userId);
         return ResultGenerator.genSuccessResult(userDetailResp);
     }
 
@@ -60,8 +63,9 @@ public class UserController {
             @ApiImplicitParam(name = "userId", value = "用户ID", paramType = "path", required = true)
     })
     @PutMapping("/{userId}")
-    public BaseResult<Void> editUserInfo(@PathVariable Integer userId) {
-        return ResultGenerator.genSuccessResult(null);
+    public BaseResult<Void> editUserInfo(@PathVariable Integer userId, @RequestBody @Validated UserUpdateReq userUpdateReq) {
+        userService.updateUser(userId, userUpdateReq);
+        return ResultGenerator.genSuccessResult();
     }
 
     @ApiOperation(value = "删除用户")
@@ -70,7 +74,8 @@ public class UserController {
     })
     @DeleteMapping("/{userId}")
     public BaseResult<Void> deleteUser(@PathVariable Integer userId) {
-        return ResultGenerator.genSuccessResult(null);
+        userService.deleteUser(userId);
+        return ResultGenerator.genSuccessResult();
     }
 
 }

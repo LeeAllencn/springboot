@@ -1,14 +1,24 @@
 package com.rocky.boot.api.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.rocky.boot.api.mapper.UserMapper;
 import com.rocky.boot.api.model.User;
 import com.rocky.boot.api.service.IUserService;
 import com.rocky.boot.api.web.request.UserCreateReq;
+import com.rocky.boot.api.web.request.UserUpdateReq;
 import com.rocky.boot.api.web.response.UserDetailResp;
+import com.rocky.boot.api.web.response.UserListResp;
+import com.rocky.boot.common.model.PageParam;
+import com.rocky.boot.common.model.PageResult;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.stream.Collectors;
 
 /**
  * @author rocky
@@ -22,7 +32,7 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public UserDetailResp getUserDetail(Integer userId) {
+    public UserDetailResp getUser(Integer userId) {
         UserDetailResp userDetailResp = new UserDetailResp();
         User user = userMapper.selectById(userId);
         BeanUtils.copyProperties(user, userDetailResp);
@@ -30,9 +40,42 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void createUser(UserCreateReq userCreateReq) {
+    public void saveUser(UserCreateReq userCreateReq) {
         User newUser = new User();
         BeanUtils.copyProperties(userCreateReq, newUser);
+        Date date = new Date();
+        newUser.setCreateTime(date);
+        newUser.setUpdateTime(date);
         userMapper.insert(newUser);
+    }
+
+    @Override
+    public PageResult<UserListResp> listUsers(String search, PageParam pageParam) {
+        Page<User> userPage = new Page<>(pageParam.getPageNum(), pageParam.getPageSize());
+        LambdaQueryWrapper<User> userLambdaQueryWrapper = new LambdaQueryWrapper<User>().like(StringUtils.isNotBlank(search), User::getUsername, search);
+        IPage<User> userIPage = userMapper.selectPage(userPage, userLambdaQueryWrapper);
+        PageResult<UserListResp> userListRespPageResult = new PageResult<>();
+        userListRespPageResult.setCurrentPage(userIPage.getCurrent());
+        userListRespPageResult.setPageSize(userIPage.getSize());
+        userListRespPageResult.setTotal(userIPage.getTotal());
+        userListRespPageResult.setData(userIPage.getRecords().stream().map(item -> {
+            UserListResp userListResp = new UserListResp();
+            BeanUtils.copyProperties(item, userListResp);
+            return userListResp;
+        }).collect(Collectors.toList()));
+        return userListRespPageResult;
+    }
+
+    @Override
+    public void updateUser(Integer userId, UserUpdateReq userUpdateReq) {
+        User user = userMapper.selectById(userId);
+        BeanUtils.copyProperties(userUpdateReq, user);
+        user.setUpdateTime(new Date());
+        userMapper.updateById(user);
+    }
+
+    @Override
+    public void deleteUser(Integer userId) {
+        userMapper.deleteById(userId);
     }
 }

@@ -34,3 +34,8 @@ spring:
 # 日志文件配置
 logging:
   config: classpath:logback-spring.xml
+
+# 控制台打印mybatis语句日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
