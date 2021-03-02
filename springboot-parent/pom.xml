@@ -33,6 +33,7 @@
         <commons-lang3.version>3.11</commons-lang3.version>
         <flowable.version>6.6.0</flowable.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <grpc-spring-boot-starter.version>2.11.0.RELEASE</grpc-spring-boot-starter.version>
 
         <!--        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>-->
         <!--        <commons-lang3.version>3.11</commons-lang3.version>-->
@@ -103,6 +104,18 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${springfox-swagger2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-server-spring-boot-starter</artifactId>
+                <version>${grpc-spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-client-spring-boot-starter</artifactId>
+                <version>${grpc-spring-boot-starter.version}</version>
             </dependency>
 
             <!--            <dependency>-->

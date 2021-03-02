@@ -15,6 +15,8 @@
         <module>springboot-common</module>
         <module>springboot-api-service</module>
         <module>springboot-flowable-service</module>
+        <module>springboot-grpc-server</module>
+        <module>springboot-grpc-client</module>
 
         <!-- 其他技术栈模块管理 -->
         <module>springboot-jpa</module>
