@@ -22,7 +22,6 @@
         <module>springboot-jpa</module>
         <module>springboot-security</module>
         <module>springboot-websocket</module>
-        <module>springboot-redis</module>
         <module>springboot-cache</module>
         <module>springboot-transactional</module>
         <module>springboot-rest</module>
