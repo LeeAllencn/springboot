@@ -61,7 +61,7 @@ public class MyBatisCodeGeneration {
      */
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/db_springboot?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&nullCatalogMeansCurrent=true&serverTimezone=GMT%2b8";
     private static final String JDBC_USERNAME = "root";
-    private static final String JDBC_PASSWORD = "adminpwd";
+    private static final String JDBC_PASSWORD = "";
     private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
     /**
      * TODO @author
