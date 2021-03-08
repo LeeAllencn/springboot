@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
+ * @author rocky
  * Created by Rocky on 2017-09-15.
  */
 @Configuration

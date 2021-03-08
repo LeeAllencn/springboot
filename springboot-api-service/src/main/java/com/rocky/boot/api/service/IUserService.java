@@ -14,13 +14,38 @@ import com.rocky.boot.common.model.PageResult;
  */
 public interface IUserService {
 
+    /**
+     * 获取用户详情
+     *
+     * @param userId
+     * @return
+     */
     UserDetailResp getUser(Integer userId);
 
+    /**
+     * 创建用户
+     * @param userCreateReq
+     */
     void saveUser(UserCreateReq userCreateReq);
 
+    /**
+     * 获取用户列表
+     * @param search
+     * @param pageParam
+     * @return
+     */
     PageResult<UserListResp> listUsers(String search, PageParam pageParam);
 
+    /**
+     * 更新用户
+     * @param userId
+     * @param userUpdateReq
+     */
     void updateUser(Integer userId, UserUpdateReq userUpdateReq);
 
+    /**
+     * 删除用户
+     * @param userId
+     */
     void deleteUser(Integer userId);
 }

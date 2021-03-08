@@ -53,12 +53,12 @@ public class UserServiceImpl implements IUserService {
     public PageResult<UserListResp> listUsers(String search, PageParam pageParam) {
         Page<User> userPage = new Page<>(pageParam.getPageNum(), pageParam.getPageSize());
         LambdaQueryWrapper<User> userLambdaQueryWrapper = new LambdaQueryWrapper<User>().like(StringUtils.isNotBlank(search), User::getUsername, search);
-        IPage<User> userIPage = userMapper.selectPage(userPage, userLambdaQueryWrapper);
+        IPage<User> userPageResult = userMapper.selectPage(userPage, userLambdaQueryWrapper);
         PageResult<UserListResp> userListRespPageResult = new PageResult<>();
-        userListRespPageResult.setCurrentPage(userIPage.getCurrent());
-        userListRespPageResult.setPageSize(userIPage.getSize());
-        userListRespPageResult.setTotal(userIPage.getTotal());
-        userListRespPageResult.setData(userIPage.getRecords().stream().map(item -> {
+        userListRespPageResult.setCurrentPage(userPageResult.getCurrent());
+        userListRespPageResult.setPageSize(userPageResult.getSize());
+        userListRespPageResult.setTotal(userPageResult.getTotal());
+        userListRespPageResult.setData(userPageResult.getRecords().stream().map(item -> {
             UserListResp userListResp = new UserListResp();
             BeanUtils.copyProperties(item, userListResp);
             return userListResp;

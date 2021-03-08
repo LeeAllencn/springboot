@@ -34,7 +34,7 @@ public class ControllerAspect {
      * 定义一个切面
      */
     @Pointcut("execution(public * com.rocky.boot.api.web.controller..*.*(..))")
-    public void ControllerAspect() {
+    public void controllerAspect() {
     }
 
     /**
@@ -42,7 +42,7 @@ public class ControllerAspect {
      *
      * @param joinPoint
      */
-    @Before("ControllerAspect()")
+    @Before("controllerAspect()")
     public void doBefore(JoinPoint joinPoint) {
         startTime.set(System.currentTimeMillis());
         // TODO 获取用户信息，临时使用admin
@@ -55,12 +55,13 @@ public class ControllerAspect {
      *
      * @param controllerResult
      */
-    @AfterReturning(pointcut = "ControllerAspect()", returning = "controllerResult")
+    @AfterReturning(pointcut = "controllerAspect()", returning = "controllerResult")
     public void doAfterReturning(Object controllerResult) {
         if (controllerResult != null && controllerResult instanceof BaseResult) {
             BaseResult baseResult = (BaseResult) controllerResult;
             baseResult.setRequestId(MDC.get(KeyConstants.TRACE_ID));
         }
         log.info("类型:{} URL:{} 执行结束，总耗时{}毫秒", request.getMethod(), request.getRequestURI(), System.currentTimeMillis() - startTime.get());
+        startTime.remove();
     }
 }
