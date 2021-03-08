@@ -34,7 +34,6 @@
         <module>springboot-mail</module>
         <module>springboot-shiro</module>
         <module>springboot-mybatis-multidatasource</module>
-        <module>springboot-commons</module>
         <module>springboot-mongodb</module>
         <module>springboot-jsp</module>
         <module>springboot-cors</module>
