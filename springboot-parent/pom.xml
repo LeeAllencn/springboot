@@ -34,6 +34,7 @@
         <flowable.version>6.6.0</flowable.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
         <grpc-spring-boot-starter.version>2.11.0.RELEASE</grpc-spring-boot-starter.version>
+        <guava.version>RELEASE</guava.version>
 
         <!--        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>-->
         <!--        <commons-lang3.version>3.11</commons-lang3.version>-->
@@ -43,7 +44,6 @@
         <!--        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>-->
         <!--        <aspectjweaver.version>1.8.9</aspectjweaver.version>-->
         <!--        <svnkit.version>1.8.12</svnkit.version>-->
-        <!--        <guava.version>RELEASE</guava.version>-->
         <!--        <mybatis-plus-generator.version>3.1.0</mybatis-plus-generator.version>-->
         <!--        <velocity-engine-core.version>2.0</velocity-engine-core.version>-->
         <!--        <freemarker.version>RELEASE</freemarker.version>-->
@@ -118,6 +118,13 @@
                 <version>${grpc-spring-boot-starter.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
             <!--            <dependency>-->
             <!--                <groupId>org.apache.commons</groupId>-->
             <!--                <artifactId>commons-lang3</artifactId>-->
@@ -165,13 +172,6 @@
             <!--                <groupId>org.tmatesoft.svnkit</groupId>-->
             <!--                <artifactId>svnkit</artifactId>-->
             <!--                <version>${svnkit.version}</version>-->
-            <!--            </dependency>-->
-
-            <!--            <dependency>-->
-            <!--                <groupId>com.google.guava</groupId>-->
-            <!--                <artifactId>guava</artifactId>-->
-            <!--                <version>${guava.version}</version>-->
-            <!--                <scope>compile</scope>-->
             <!--            </dependency>-->
 
             <!--mybatis-plus代码生成器插件start-->
