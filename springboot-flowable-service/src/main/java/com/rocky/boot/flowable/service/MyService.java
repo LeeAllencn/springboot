@@ -23,12 +23,18 @@ public class MyService {
     @Autowired
     private TaskService taskService;
 
-    @Transactional
+    /**
+     * Exception异常时，数据回滚
+     */
+    @Transactional(rollbackFor = {Exception.class})
     public void startProcess() {
         runtimeService.startProcessInstanceByKey("oneTaskProcess");
     }
 
-    @Transactional
+    /**
+     * Exception异常时，数据回滚
+     */
+    @Transactional(rollbackFor = {Exception.class})
     public List<Task> getTasks(String assignee) {
         return taskService.createTaskQuery().taskAssignee(assignee).list();
     }
