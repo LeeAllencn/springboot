@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * @author rocky
  * Created by Rocky on 2017-10-10.
  */
 @Slf4j
@@ -127,7 +128,7 @@ public class JsonUtil {
         return pojo;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         List<String> list = new ArrayList<>();
         list.add("20161227101817");
         list.add("20161227102112");

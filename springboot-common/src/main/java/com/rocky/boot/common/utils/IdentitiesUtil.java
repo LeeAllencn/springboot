@@ -6,6 +6,7 @@ import java.util.UUID;
 /**
  * 封装各种生成唯一性ID算法的工具类.
  * <p>
+ * @author rocky
  * Created by Rocky on 2017-10-25.
  */
 public class IdentitiesUtil {

@@ -2,10 +2,20 @@ package com.rocky.boot.common.enums;
 
 import lombok.Getter;
 
+/**
+ * @author rocky
+ */
 @Getter
 public enum AppStatusEnum {
 
+    /**
+     *
+     */
     CREATING("Creating", "创建中"),
+
+    /**
+     *
+     */
     RUNNING("Running", "运行中"),
     PENDING("Pending", "部署中"),
     FAILED("Failed", "失败"),

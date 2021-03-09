@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
+ * @author rocky
  * Created by Rocky on 2017-10-10.
  */
 public class FileUtil {
@@ -44,7 +45,13 @@ public class FileUtil {
         }
     }
 
-    //文件拷贝(采用FileInputStream和FileOutputStream批量读写效果好)
+    /**
+     * 文件拷贝(采用FileInputStream和FileOutputStream批量读写效果好)
+     *
+     * @param srcFile
+     * @param destFile
+     * @throws IOException
+     */
     public static void copyFile(File srcFile, File destFile) throws IOException {
         if (!srcFile.exists()) {
             throw new IllegalArgumentException("文件" + srcFile + "不存在");

@@ -44,48 +44,38 @@ import java.util.Iterator;
  */
 
 /**
+ * @author rocky
  * Created by Rocky on 2018-02-01.
  * <p>
  * 功能：读取svn文件内容，后期可以改成一个静态方法，封装成一个工具类
  */
 public class SvnUtil {
-    /*
+
+    /**
      * args parameter is used to obtain a repository location URL, user's
      * account name & password to authenticate him to the server, the file path
      * in the rpository (the file path should be relative to the the
      * path/to/repository part of the repository location URL).
+     * @param args
      */
     public static void main(String[] args) {
-        /*
-         * Default values:
-         */
+        // Default values:
         String url = "http://svn.svnkit.com/repos/svnkit/trunk";
         String name = "anonymous";
         String password = "anonymous";
         String filePath = "www/license.html";
-        /*
-         * Initializes the library (it must be done before ever using the
-         * library itself)
-         */
+
+        // Initializes the library (it must be done before ever using the library itself)
         setupLibrary();
 
         if (args != null) {
-            /*
-             * Obtains a repository location URL
-             */
+            // Obtains a repository location URL
             url = (args.length >= 1) ? args[0] : url;
-            /*
-             * Obtains a file path
-             */
+            // Obtains a file path
             filePath = (args.length >= 2) ? args[1] : filePath;
-            /*
-             * Obtains an account name (will be used to authenticate the user to
-             * the server)
-             */
+            // Obtains an account name (will be used to authenticate the user to the server)
             name = (args.length >= 3) ? args[2] : name;
-            /*
-             * Obtains a password
-             */
+            // Obtains a password
             password = (args.length >= 4) ? args[3] : password;
         }
         SVNRepository repository = null;
@@ -98,12 +88,8 @@ public class SvnUtil {
              */
             repository = SVNRepositoryFactory.create(SVNURL.parseURIEncoded(url));
         } catch (SVNException svne) {
-            /*
-             * Perhaps a malformed URL is the cause of this exception
-             */
-            System.err
-                    .println("error while creating an SVNRepository for the location '"
-                            + url + "': " + svne.getMessage());
+            // Perhaps a malformed URL is the cause of this exception
+            System.err.println("error while creating an SVNRepository for the location '" + url + "': " + svne.getMessage());
             System.exit(1);
         }
 
@@ -123,7 +109,7 @@ public class SvnUtil {
          *
          * You may also skip this point - anonymous access will be used.
          */
-        ISVNAuthenticationManager authManager = SVNWCUtil.createDefaultAuthenticationManager(name, password);
+        ISVNAuthenticationManager authManager = SVNWCUtil.createDefaultAuthenticationManager(name, password.toCharArray());
         repository.setAuthenticationManager(authManager);
 
         /*
@@ -146,8 +132,7 @@ public class SvnUtil {
                 System.err.println("There is no entry at '" + url + "'.");
                 System.exit(1);
             } else if (nodeKind == SVNNodeKind.DIR) {
-                System.err.println("The entry at '" + url
-                        + "' is a directory while a file was expected.");
+                System.err.println("The entry at '" + url + "' is a directory while a file was expected.");
                 System.exit(1);
             }
             /*
@@ -174,20 +159,14 @@ public class SvnUtil {
          * file property and says if the file is a text (true) or not (false).
          */
         boolean isTextType = SVNProperty.isTextMimeType(mimeType);
-
         Iterator iterator = fileProperties.nameSet().iterator();
-        /*
-         * Displays file properties.
-         */
+        // Displays file properties.
         while (iterator.hasNext()) {
             String propertyName = (String) iterator.next();
             String propertyValue = fileProperties.getStringValue(propertyName);
-            System.out.println("File property: " + propertyName + "="
-                    + propertyValue);
+            System.out.println("File property: " + propertyName + "=" + propertyValue);
         }
-        /*
-         * Displays the file contents in the console if the file is a text.
-         */
+        // Displays the file contents in the console if the file is a text.
         if (isTextType) {
             System.out.println("File contents:");
             System.out.println();
@@ -197,12 +176,9 @@ public class SvnUtil {
                 ioe.printStackTrace();
             }
         } else {
-            System.out
-                    .println("File contents can not be displayed in the console since the mime-type property says that it's not a kind of a text file.");
+            System.out.println("File contents can not be displayed in the console since the mime-type property says that it's not a kind of a text file.");
         }
-        /*
-         * Gets the latest revision number of the repository
-         */
+        // Gets the latest revision number of the repository
         long latestRevision = -1;
         try {
             latestRevision = repository.getLatestRevision();
@@ -210,13 +186,12 @@ public class SvnUtil {
             System.err.println("error while fetching the latest repository revision: " + svne.getMessage());
             System.exit(1);
         }
-        System.out.println("");
         System.out.println("---------------------------------------------");
         System.out.println("Repository latest revision: " + latestRevision);
         System.exit(0);
     }
 
-    /*
+    /**
      * Initializes the library to work with a repository via
      * different protocols.
      */

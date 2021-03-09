@@ -12,6 +12,9 @@ import java.text.MessageFormat;
 @Getter
 public enum ResultCode {
 
+    /**
+     *
+     */
     SUCCESS("A00000", "SUCCESS", 200),
     PARAMETER_VERIFICATION_FAILED("A00400", "Parameter Verification Failed : [{0}]", 400),
     NOT_FOUND("A00404", "Not Found : [{0}]", 404),
@@ -38,7 +41,12 @@ public enum ResultCode {
         this.statusCode = statusCode;
     }
 
-    // 包装web提示信息
+    /**
+     * 包装web提示信息
+     *
+     * @param args
+     * @return
+     */
     public String getWebMessage(Object... args) {
         if (args != null && args.length > 0) {
             return MessageFormat.format(getMessage(), args);

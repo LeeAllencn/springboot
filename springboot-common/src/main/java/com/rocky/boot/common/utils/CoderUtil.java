@@ -9,6 +9,7 @@ import java.net.URLEncoder;
 
 /**
  * 编码工具类
+ * @author rocky
  */
 @Slf4j
 public class CoderUtil {
@@ -16,7 +17,7 @@ public class CoderUtil {
     /**
      * 将URL编码
      */
-    public static String encodeURL(String source) {
+    public static String encodeUrl(String source) {
         String target;
         try {
             target = URLEncoder.encode(source, "UTF-8");
@@ -30,7 +31,7 @@ public class CoderUtil {
     /**
      * 将URL解码
      */
-    public static String decodeURL(String source) {
+    public static String decodeUrl(String source) {
         String target;
         try {
             target = URLDecoder.decode(source, "UTF-8");
@@ -47,9 +48,10 @@ public class CoderUtil {
      * @param key byte[]
      * @return
      */
-    public static String encodeBASE64(byte[] key) {
-        if (key == null)
+    public static String encodeBase64(byte[] key) {
+        if (key == null) {
             return null;
+        }
         return (new BASE64Encoder().encode(key));
     }
 
@@ -60,9 +62,10 @@ public class CoderUtil {
      * @return
      * @throws Exception
      */
-    public static String encryptBASE64(String key) throws Exception {
-        if (key == null)
+    public static String encryptBase64(String key) throws Exception {
+        if (key == null) {
             return null;
+        }
         return (new BASE64Encoder()).encode(key.getBytes());
     }
 
@@ -73,9 +76,10 @@ public class CoderUtil {
      * @return
      * @throws Exception
      */
-    public static String decryptBASE64(String key) throws Exception {
-        if (key == null)
+    public static String decryptBase64(String key) throws Exception {
+        if (key == null) {
             return null;
+        }
         BASE64Decoder decoder = new BASE64Decoder();
         byte[] b = decoder.decodeBuffer(key);
         return new String(b);
@@ -83,13 +87,13 @@ public class CoderUtil {
 
     public static void main(String[] args) throws Exception {
         String str = "rocky";
-        String str1 = CoderUtil.encryptBASE64(str);
-        String str2 = CoderUtil.decryptBASE64(str1);
+        String str1 = CoderUtil.encryptBase64(str);
+        String str2 = CoderUtil.decryptBase64(str1);
         System.out.println(str1);
         System.out.println(str2);
-        String str3 = CoderUtil.encodeBASE64(new byte[]{'l', 'e', 'e'});
+        String str3 = CoderUtil.encodeBase64(new byte[]{'l', 'e', 'e'});
         System.out.println(str3);
-        System.out.println(CoderUtil.decryptBASE64(str3));
+        System.out.println(CoderUtil.decryptBase64(str3));
     }
 
 }

@@ -19,7 +19,7 @@ public class EnumParameterValidatorClass implements ConstraintValidator<EnumPara
 
     @Override
     public boolean isValid(Object o, ConstraintValidatorContext constraintValidatorContext) {
-        Boolean flag = false;
+        boolean flag = false;
         String[] valueArray = values.split(",");
         for (String value : valueArray) {
             Boolean temp = Boolean.valueOf(value);

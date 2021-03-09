@@ -10,11 +10,17 @@ import java.util.Locale;
 
 /**
  * Created by Rocky on 2017-10-10.
+ * @author rocky
  */
 public class DateUtil {
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String TIEM_FORMAT = "HH:mm:ss";
+
+    private static final int TEN = 10;
+    private static final int TWENTY_FOUR = 24;
+    private static final int SIXTY = 60;
+    private static final int ONE_THOUSAND = 1000;
 
     /**
      * 功能：自定义日期的格式
@@ -135,23 +141,27 @@ public class DateUtil {
         String interval = null;
         //用现在距离1970年的时间间隔new Date().getTime()减去以前的时间距离1970年的时间间隔date.getTime()得出的就是以前的时间与现在时间的时间间隔
         Date now = new Date();
-        long time = now.getTime() - date.getTime();    //得出的时间间隔的单位是毫秒
-        if (time / 1000 < 10 && time / 1000 >= 0) {
+        //得出的时间间隔的单位是毫秒
+        long time = now.getTime() - date.getTime();
+        if (time / ONE_THOUSAND < TEN && time / ONE_THOUSAND >= 0) {
             //如果时间间隔小于10秒则显示“刚刚”
             interval = "刚刚";
-        } else if (time / 1000 < 60 && time / 1000 >= 10) {
+        } else if (time / ONE_THOUSAND < SIXTY && time / ONE_THOUSAND >= TEN) {
             //如果时间间隔大于10秒、小于60秒则显示多少秒前
-            int second = (int) ((time % 60000) / 1000);    //得出的时间间隔的单位是秒
+            //得出的时间间隔的单位是秒
+            int second = (int) ((time % 60000) / 1000);
             interval = second + "秒前";
-        } else if (time / 60000 < 60 && time / 60000 >= 0) {
+        } else if (time / (ONE_THOUSAND * SIXTY) < SIXTY && time / (ONE_THOUSAND * SIXTY) >= 0) {
             //如果时间间隔小于60分钟则显示多少分钟前
-            int minute = (int) ((time % 3600000) / 60000);    //得出的时间间隔的单位是分钟
+            //得出的时间间隔的单位是分钟
+            int minute = (int) ((time % 3600000) / 60000);
             interval = minute + "分钟前";
-        } else if (time / 3600000 < 24 && time / 3600000 >= 0) {
+        } else if (time / (ONE_THOUSAND * SIXTY * SIXTY) < TWENTY_FOUR && time / (ONE_THOUSAND * SIXTY * SIXTY) >= 0) {
             //如果时间间隔小于24小时则显示多少小时前
-            int hour = (int) (time / 3600000);    //得出的时间间隔的单位是小时
+            //得出的时间间隔的单位是小时
+            int hour = (int) (time / 3600000);
             interval = hour + "小时前";
-        } else if (time / 3600000 >= 24) {
+        } else if (time / (ONE_THOUSAND * SIXTY * SIXTY) >= TWENTY_FOUR) {
             //如果时间间隔大于24小时，则显示正常的时间，但是不显示秒
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             interval = sdf.format(date);
@@ -173,8 +183,9 @@ public class DateUtil {
         int hour = 0;
         int minute = 0;
         int second = 0;
-        if (time < 0)
+        if (time < 0) {
             return "0秒";
+        }
         else if (time == 0) {
             return "小于1秒";
         } else {
@@ -185,13 +196,14 @@ public class DateUtil {
                 if (second >= 1) {
                     timeStr = second + "秒";
                 }
-            } else if (minute < 60) {
+            } else if (minute < SIXTY) {
                 second = time % 60;
                 timeStr = minute + "分" + second + "秒";
             } else {
                 hour = minute / 60;
-                if (hour > 24)
+                if (hour > TWENTY_FOUR) {
                     return "大于1天";
+                }
                 minute = minute % 60;
                 second = time - hour * 3600 - minute * 60;
                 timeStr = hour + "时" + minute + "分" + second + "秒";
@@ -200,7 +212,13 @@ public class DateUtil {
         return timeStr;
     }
 
-    //日期加减操作
+    /**
+     * 日期加减操作
+     *
+     * @param time
+     * @return
+     * @throws ParseException
+     */
     public static String add8Hour(String time) throws ParseException {
         if (StringUtils.isBlank(time)) {
             return null;
@@ -209,7 +227,8 @@ public class DateUtil {
         Date date = null;
         Calendar c = Calendar.getInstance();
         c.setTime(dateFormat.parse(time));
-        c.add(Calendar.HOUR, 8); //对年月日进行加减操作，减法就将amout改为负数
+        //对年月日进行加减操作，减法就将amout改为负数
+        c.add(Calendar.HOUR, 8);
         date = c.getTime();
         String subTime = dateFormat.format(date);
         return subTime;

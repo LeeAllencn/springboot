@@ -26,8 +26,8 @@ public class StringOperation {
         System.out.println(subStr);
 
         //3.忽略字符串的前导空格和尾部空格:trim()
-        String trim_str = str.trim();
-        System.out.println(trim_str);
+        String trimStr = str.trim();
+        System.out.println(trimStr);
 
         //4.字符串替换：replace() and replaceAll() and 正则表达式的应用
         String newStr = str.replace("go", "GO");
@@ -46,13 +46,13 @@ public class StringOperation {
         System.out.println(flag);
 
         //7.字母大小写切换:toLowerCase() and toUpperCase()
-        String str_upper = str.toUpperCase();
-        System.out.println(str_upper);
+        String strUpper = str.toUpperCase();
+        System.out.println(strUpper);
 
         //8.字符串分割:split()
-        String[] str_split = str.split(";");
-        System.out.println(str_split.length);
-        for (String var : str_split) {
+        String[] strSplit = str.split(";");
+        System.out.println(strSplit.length);
+        for (String var : strSplit) {
             System.out.println(var);
         }
 

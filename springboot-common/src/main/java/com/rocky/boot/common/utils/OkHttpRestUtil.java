@@ -10,15 +10,22 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * @author rocky
  * Created by Rocky on 2017-10-10.
  */
-public class OKHttpRestUtil {
+public class OkHttpRestUtil {
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private static OkHttpClient client = new OkHttpClient.Builder().connectTimeout(5, TimeUnit.MINUTES)
             .readTimeout(5, TimeUnit.MINUTES).writeTimeout(5, TimeUnit.MINUTES).build();
 
-    //get request
+    /**
+     * get request
+     *
+     * @param url
+     * @return
+     * @throws IOException
+     */
     public static String get(String url) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
@@ -38,7 +45,14 @@ public class OKHttpRestUtil {
         return map;
     }
 
-    //post request
+    /**
+     * post request
+     * @param url
+     * @param token
+     * @param obj
+     * @return
+     * @throws IOException
+     */
     public static Map<?, ?> post(String url, String token, Object obj) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(obj);
@@ -67,7 +81,14 @@ public class OKHttpRestUtil {
         return resultMap;
     }
 
-    //put request
+    /**
+     * put request
+     * @param url
+     * @param token
+     * @param obj
+     * @return
+     * @throws IOException
+     */
     public static Map<?, ?> put(String url, String token, Object obj) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         String content = mapper.writeValueAsString(obj);
@@ -86,7 +107,13 @@ public class OKHttpRestUtil {
         return map;
     }
 
-    //delete request
+    /**
+     * delete request
+     * @param url
+     * @param token
+     * @return
+     * @throws IOException
+     */
     public static Map<?, ?> delete(String url, String token) throws IOException {
         Request request = new Request.Builder()
                 .addHeader("Authorization", token)
@@ -99,7 +126,14 @@ public class OKHttpRestUtil {
         return map;
     }
 
-    //upload file to service
+    /**
+     * upload file to service
+     * @param url
+     * @param token
+     * @param binary
+     * @return
+     * @throws IOException
+     */
     public static Map<?, ?> uploadBinary(String url, String token, File binary) throws IOException {
         RequestBody body = RequestBody.create(MediaType.parse("application/octet-stream"), binary);
         Request request = new Request.Builder()
