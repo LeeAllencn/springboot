@@ -208,7 +208,7 @@ public class MyBatisCodeGeneration {
         try {
             freemarker.template.Configuration cfg = getConfiguration();
 
-            Map<String, Object> data = new HashMap<>();
+            Map<String, Object> data = new HashMap<>(16);
             data.put("date", DATE);
             data.put("author", AUTHOR);
             String modelNameUpperCamel = StringUtils.isEmpty(modelName) ? tableNameConvertUpperCamel(tableName) : modelName;
@@ -240,7 +240,7 @@ public class MyBatisCodeGeneration {
         try {
             freemarker.template.Configuration cfg = getConfiguration();
 
-            Map<String, Object> data = new HashMap<>();
+            Map<String, Object> data = new HashMap<>(16);
             data.put("date", DATE);
             data.put("author", AUTHOR);
             String modelNameUpperCamel = StringUtils.isEmpty(modelName) ? tableNameConvertUpperCamel(tableName) : modelName;
@@ -253,7 +253,8 @@ public class MyBatisCodeGeneration {
             if (!file.getParentFile().exists()) {
                 file.getParentFile().mkdirs();
             }
-            //cfg.getTemplate("controller-restful.ftl").process(data, new FileWriter(file));
+
+            // 可用controller-restful.ftl模板替换
             cfg.getTemplate("controller.ftl").process(data, new FileWriter(file));
 
             System.out.println(modelNameUpperCamel + "Controller.java 生成成功");
