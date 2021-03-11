@@ -15,6 +15,7 @@ import com.rocky.boot.common.model.PageResult;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -39,6 +40,12 @@ public class UserServiceImpl implements IUserService {
         return userDetailResp;
     }
 
+    /**
+     * 当有Exception异常时，数据回滚
+     *
+     * @param userCreateReq 用户创建请求
+     */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveUser(UserCreateReq userCreateReq) {
         User newUser = new User();
