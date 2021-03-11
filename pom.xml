@@ -24,7 +24,6 @@
         <module>springboot-security</module>
         <module>springboot-websocket</module>
         <module>springboot-cache</module>
-        <module>springboot-rest</module>
         <module>springboot-tomcat</module>
         <module>springboot-mybatis</module>
         <module>springboot-upload-file</module>
