@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: springboot-quartz
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_springboot?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&nullCatalogMeansCurrent=true&serverTimezone=GMT%2b8
+    username: root
+    password: adminpwd
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # Quartz Configuration:https://www.quartz-scheduler.org/documentation/
+  quartz:
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: clusteredScheduler
+            instanceId: AUTO
+          #          jobStore:
+          #            dataSource: mysql_db
+          #            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+          #            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+          #            tablePrefix: QRTZ_
+          #            isClustered: false
+          #            clusterCheckinInterval: 10000
+          #            useProperties: false
+          #            acquireTriggersWithinLock: true
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 50
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
+    #          dataSource:
+    #            mysql_db:
+    #              URL: jdbc:mysql://localhost:3306/db_springboot?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&nullCatalogMeansCurrent=true&serverTimezone=GMT%2b8
+    #              user: root
+    #              password: adminpwd
+    #              driver: com.mysql.cj.jdbc.Driver
+    #    job-store-type: jdbc
+    #    jdbc:
+    #      initialize-schema: always
+    job:
+      trigger-time:
+        sampleUpdateJob: "0 */1 * * * ?"
