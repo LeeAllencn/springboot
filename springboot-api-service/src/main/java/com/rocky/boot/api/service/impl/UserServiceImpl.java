@@ -3,6 +3,7 @@ package com.rocky.boot.api.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.rocky.boot.api.aop.MethodLogRecord;
 import com.rocky.boot.api.mapper.UserMapper;
 import com.rocky.boot.api.model.User;
 import com.rocky.boot.api.service.IUserService;
@@ -32,6 +33,12 @@ public class UserServiceImpl implements IUserService {
     @Resource
     private UserMapper userMapper;
 
+    /**
+     * @param userId
+     * @return
+     * @MethodLogRecord(key = "userId") 用于注解类切面的测试
+     */
+    @MethodLogRecord(key = "userId")
     @Override
     public UserDetailResp getUser(Integer userId) {
         UserDetailResp userDetailResp = new UserDetailResp();
