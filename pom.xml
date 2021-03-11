@@ -38,7 +38,6 @@
         <module>springboot-api-project-seed</module>
         <module>springboot-promethues</module>
         <module>springboot-webhook</module>
-        <module>springboot-aop</module>
         <module>springboot-elasticsearch</module>
         <module>springboot-dubbo-api</module>
         <module>springboot-dubbo-provider</module>
