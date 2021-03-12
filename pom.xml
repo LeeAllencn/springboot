@@ -14,10 +14,14 @@
         <module>springboot-parent</module>
         <module>springboot-common</module>
         <module>springboot-api-service</module>
+        <module>springboot-openapi-service</module>
         <module>springboot-flowable-service</module>
+        <module>springboot-quartz</module>
+        <module>springboot-external-client</module>
+        <module>springboot-code-generation</module>
+        <module>springboot-grpc-interfaces</module>
         <module>springboot-grpc-server</module>
         <module>springboot-grpc-client</module>
-        <module>springboot-code-generation</module>
 
         <!-- 其他技术栈模块管理 -->
         <module>springboot-jpa</module>
