@@ -75,11 +75,4 @@ public class FloatingOperationUtil {
         BigDecimal b2 = BigDecimal.valueOf(v2);
         return b1.divide(b2, DEF_DIV_SCALE, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
-
-    public static void main(String[] args) {
-        System.out.println(add(0.05, 0.01));
-        System.out.println(sub(1.0, 0.42));
-        System.out.println(mul(4.015, 100));
-        System.out.println(div(123.3, 100));
-    }
 }

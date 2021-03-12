@@ -6,7 +6,6 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,71 +20,62 @@ public class JsonUtil {
 
     /**
      * json转list
-     *
-     * @param jsonStr
-     * @return
+     * @param jsonStr json
+     * @return list
      */
     public static List<?> json2List(String jsonStr) {
-        List<?> list = JSON.parseArray(jsonStr);
-        return list;
+        return JSON.parseArray(jsonStr);
     }
 
     /**
      * json转list（实体）
-     *
-     * @param jsonStr
-     * @param clazz
-     * @param <T>
-     * @return
+     * @param jsonStr json
+     * @param clazz clazz
+     * @param <T> object
+     * @return list
      */
     public static <T> List<T> json2List(String jsonStr, Class<T> clazz) {
-        List<T> list = JSON.parseArray(jsonStr, clazz);
-        return list;
+        return JSON.parseArray(jsonStr, clazz);
     }
 
 
     /**
      * list转json
      *
-     * @param list
-     * @return
+     * @param list list
+     * @return json
      */
     public static String list2Json(List<?> list) {
-        String json = JSON.toJSONString(list, SerializerFeature.DisableCircularReferenceDetect);
-        return json;
+        return JSON.toJSONString(list, SerializerFeature.DisableCircularReferenceDetect);
     }
 
     /**
      * json转map
-     *
-     * @param json
-     * @return
+     * @param json json
+     * @return map
      */
-    public static Map<String, String> json2Map(String json) {
-        Map<String, String> map = (Map<String, String>) JSON.parse(json);
-        return map;
+    public static Map<?, ?> json2Map(String json) {
+        return JSON.parseObject(json, Map.class);
     }
 
     /**
      * map转json
      *
-     * @param map
-     * @return
+     * @param map map
+     * @return json
      */
     public static String map2Json(Map<?, ?> map) {
-        String json = JSON.toJSONString(map, true);
-        return json;
+        return JSON.toJSONString(map, true);
     }
 
     /**
      * json转jsonObject
      *
-     * @param json
-     * @return
+     * @param json json
+     * @return jsonObject
      */
     public static JSONObject json2Obj(String json) {
-        JSONObject obj = JSON.parseObject(json);
-        return obj;
+        return JSON.parseObject(json);
     }
 
     public static <T> T json2Obj(String json, Class<T> cls) {
@@ -126,12 +116,5 @@ public class JsonUtil {
             throw new RuntimeException(e);
         }
         return pojo;
-    }
-
-    public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("20161227101817");
-        list.add("20161227102112");
-        System.out.println(JsonUtil.list2Json(list));
     }
 }

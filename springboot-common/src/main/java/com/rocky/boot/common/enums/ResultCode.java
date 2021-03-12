@@ -45,7 +45,7 @@ public enum ResultCode {
      * 包装web提示信息
      *
      * @param args 参数
-     * @return
+     * @return String
      */
     public String getWebMessage(Object... args) {
         if (args != null && args.length > 0) {
