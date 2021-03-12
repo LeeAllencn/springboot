@@ -56,7 +56,7 @@ public class OkHttpRestUtil {
     public static Map<?, ?> post(String url, String token, Object obj) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(obj);
-        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), json);
+        RequestBody body = RequestBody.create(json, MediaType.parse("application/json;charset=UTF-8"));
         Request request = new Request.Builder()
                 .addHeader("Authorization", token)
                 .url(url)
@@ -70,7 +70,7 @@ public class OkHttpRestUtil {
 
     public static Map<?, ?> post(String url, String token, String json) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        RequestBody body = RequestBody.create(JSON, json);
+        RequestBody body = RequestBody.create(json, JSON);
         Request request = new Request.Builder()
                 .addHeader("Authorization", "Bearer " + token)
                 .url(url)
@@ -92,7 +92,7 @@ public class OkHttpRestUtil {
     public static Map<?, ?> put(String url, String token, Object obj) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         String content = mapper.writeValueAsString(obj);
-        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), content);
+        RequestBody body = RequestBody.create(content, MediaType.parse("application/json;charset=UTF-8"));
         Request request = new Request.Builder()
                 .addHeader("Authorization", token)
                 .url(url)
@@ -135,7 +135,7 @@ public class OkHttpRestUtil {
      * @throws IOException
      */
     public static Map<?, ?> uploadBinary(String url, String token, File binary) throws IOException {
-        RequestBody body = RequestBody.create(MediaType.parse("application/octet-stream"), binary);
+        RequestBody body = RequestBody.create(binary, MediaType.parse("application/octet-stream"));
         Request request = new Request.Builder()
                 .addHeader("Authorization", token)
                 .url(url)

@@ -53,3 +53,15 @@ logging:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# okhttp配置
+springboot:
+  okhttp:
+    connectTimeout: 60000
+    readTimeout: 60000
+    writeTimeout: 60000
+    maxIdleConnections: 30
+    keepAliveDuration: 5
+    logLevel: BODY
+
+
