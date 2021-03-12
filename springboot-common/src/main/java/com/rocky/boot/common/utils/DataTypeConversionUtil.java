@@ -8,17 +8,17 @@ import java.util.Map;
 
 /**
  * @author rocky
- * @Description: 数据类型转换
- * @Date: Created in 2019/3/1
+ * Description: 数据类型转换
+ * Date: Created in 2019/3/1
  */
 public class DataTypeConversionUtil {
 
     /**
      * Map转javabean
      *
-     * @param map
-     * @param beanClass
-     * @return
+     * @param map map
+     * @param beanClass class
+     * @return Object
      */
     public static Object map2Object(Map<String, Object> map, Class<?> beanClass) {
         if (map == null) {

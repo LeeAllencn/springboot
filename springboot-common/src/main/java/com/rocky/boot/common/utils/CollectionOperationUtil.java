@@ -1,6 +1,9 @@
 package com.rocky.boot.common.utils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author rocky
@@ -14,28 +17,15 @@ public class CollectionOperationUtil {
      *
      * @param list 列表
      */
-    private static void removeDuplicateWithOrder(List list) {
-        Set set = new HashSet();
-        List newList = new ArrayList();
-        for (Iterator iter = list.iterator(); iter.hasNext(); ) {
-            Object element = iter.next();
+    public static <E> void removeDuplicateWithOrder(List<E> list) {
+        Set<E> set = new HashSet<>();
+        List<E> newList = new ArrayList<>();
+        for (E element : list) {
             if (set.add(element)) {
                 newList.add(element);
             }
         }
         list.clear();
         list.addAll(newList);
-    }
-
-    public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("beijing");
-        list.add("beijing");
-        list.add("shenyang");
-        list.add("shenyang");
-        list.add("wuhan");
-        System.out.println(list.toString());
-        CollectionOperationUtil.removeDuplicateWithOrder(list);
-        System.out.println(list.toString());
     }
 }

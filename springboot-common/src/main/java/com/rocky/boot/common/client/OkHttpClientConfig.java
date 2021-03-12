@@ -31,7 +31,5 @@ public class OkHttpClientConfig {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         builder.addInterceptor(loggingInterceptor);
         return builder.build();
-
-
     }
 }

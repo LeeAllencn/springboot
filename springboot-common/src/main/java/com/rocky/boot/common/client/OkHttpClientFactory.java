@@ -2,9 +2,9 @@ package com.rocky.boot.common.client;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -12,7 +12,6 @@ import javax.net.ssl.X509TrustManager;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Arrays;
 
@@ -24,13 +23,13 @@ import java.util.Arrays;
 @Component
 public class OkHttpClientFactory {
 
-    @Autowired
+    @Resource
     private OkHttpClient okHttpClient;
 
     /**
      * 新建一个客户端Builder
      *
-     * @return
+     * @return OkHttpClient.Builder
      */
     public OkHttpClient.Builder newBuilder() {
         return okHttpClient.newBuilder();
@@ -39,7 +38,7 @@ public class OkHttpClientFactory {
     /**
      * 新建一个客户端
      *
-     * @return
+     * @return OkHttpClient
      */
     public OkHttpClient newClient() {
         return okHttpClient.newBuilder().build();
@@ -48,18 +47,18 @@ public class OkHttpClientFactory {
     /**
      * 新建一个SSL客户端
      *
-     * @param interceptors
-     * @return
+     * @param interceptors 拦截器
+     * @return OkHttpClient
      */
     public OkHttpClient newSslClient(Interceptor... interceptors) {
         X509TrustManager xtm = new X509TrustManager() {
             @Override
-            public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+            public void checkClientTrusted(X509Certificate[] x509Certificates, String s) {
 
             }
 
             @Override
-            public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+            public void checkServerTrusted(X509Certificate[] x509Certificates, String s) {
 
             }
 
@@ -73,9 +72,7 @@ public class OkHttpClientFactory {
         try {
             sslContext = SSLContext.getInstance("SSL");
             sslContext.init(null, new TrustManager[]{xtm}, new SecureRandom());
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (KeyManagementException e) {
+        } catch (NoSuchAlgorithmException | KeyManagementException e) {
             e.printStackTrace();
         }
 
@@ -85,9 +82,12 @@ public class OkHttpClientFactory {
         if (interceptors != null) {
             builder.interceptors().addAll(Arrays.asList(interceptors));
         }
-        OkHttpClient okHttpClient = builder.sslSocketFactory(sslContext.getSocketFactory(), xtm)
-                .hostnameVerifier(hostnameVerifier)
-                .build();
+        OkHttpClient okHttpClient = null;
+        if (sslContext != null) {
+            okHttpClient = builder.sslSocketFactory(sslContext.getSocketFactory(), xtm)
+                    .hostnameVerifier(hostnameVerifier)
+                    .build();
+        }
         return okHttpClient;
     }
 }

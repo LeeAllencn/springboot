@@ -233,8 +233,4 @@ public class DateUtil {
         String subTime = dateFormat.format(date);
         return subTime;
     }
-
-    public static void main(String[] args) {
-
-    }
 }

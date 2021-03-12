@@ -3,9 +3,9 @@ package com.rocky.boot.common.base;
 import java.util.*;
 
 /**
- * @Author: Rocky
- * @Description: 集合的基础操作
- * @Date: Created in 12:02 2018/6/23
+ * @author : Rocky
+ * Description: 集合的基础操作
+ * Created in
  */
 public class CollectionBaseOperation {
 
@@ -18,9 +18,7 @@ public class CollectionBaseOperation {
         map.put("Martin", 20);
 
         // 键值对entrySet()遍历
-        Iterator<Map.Entry<String, Object>> iteratorEntry = map.entrySet().iterator();
-        while (iteratorEntry.hasNext()) {
-            Map.Entry<String, Object> entry = iteratorEntry.next();
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue();
             System.out.print(key + ":" + value + " ");
@@ -29,9 +27,7 @@ public class CollectionBaseOperation {
         System.out.println();
 
         // 键keySet()遍历
-        Iterator<String> iteratorKey = map.keySet().iterator();
-        while (iteratorKey.hasNext()) {
-            String key = iteratorKey.next();
+        for (String key : map.keySet()) {
             Object value = map.get(key);
             System.out.print(key + ":" + value + " ");
         }
@@ -41,33 +37,11 @@ public class CollectionBaseOperation {
         System.out.println("*** 2.规则集Set ***");
         // 散列集HashSet:不重复元素，不保持插入时的顺序
         Set<String> hashSet = new HashSet<>();
-        hashSet.add("和平");
-        hashSet.add("龙湾");
-        hashSet.add("潜江");
-        hashSet.add("武汉");
-        hashSet.add("沈阳");
-        hashSet.add("北京");
-        Iterator<String> iteratorHashSet = hashSet.iterator();
-        while (iteratorHashSet.hasNext()) {
-            System.out.print(iteratorHashSet.next() + " ");
-        }
-
-        System.out.println();
+        traverseSet(hashSet);
 
         // 链式散列集LinkedHashSet:不重复元素，保持插入时的顺序
         Set<String> linkedHashSet = new LinkedHashSet<>();
-        linkedHashSet.add("和平");
-        linkedHashSet.add("龙湾");
-        linkedHashSet.add("潜江");
-        linkedHashSet.add("武汉");
-        linkedHashSet.add("沈阳");
-        linkedHashSet.add("北京");
-        Iterator<String> iteratorLinkedHashSet = linkedHashSet.iterator();
-        while (iteratorLinkedHashSet.hasNext()) {
-            System.out.print(iteratorLinkedHashSet.next() + " ");
-        }
-
-        System.out.println();
+        traverseSet(linkedHashSet);
 
         System.out.println("*** 3.线性表：ArrayList，LinkedList：重复元素，有序 ***");
         List<Integer> arrayList = new ArrayList<>();
@@ -91,5 +65,19 @@ public class CollectionBaseOperation {
         Collections.reverse(list);
         System.out.println(list);
 
+    }
+
+    private static void traverseSet(Set<String> set) {
+        set.add("和平");
+        set.add("龙湾");
+        set.add("潜江");
+        set.add("武汉");
+        set.add("沈阳");
+        set.add("北京");
+        for (String value : set) {
+            System.out.print(value + " ");
+        }
+
+        System.out.println();
     }
 }

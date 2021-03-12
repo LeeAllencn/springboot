@@ -46,6 +46,7 @@
         <mapper.version>3.4.2</mapper.version>
         <mybatis-plus-generator.version>3.4.1</mybatis-plus-generator.version>
         <velocity-engine-core.version>2.0</velocity-engine-core.version>
+        <slf4j-nop.version>1.7.2</slf4j-nop.version>
 
     </properties>
 
@@ -198,6 +199,12 @@
                 <version>${velocity-engine-core.version}</version>
             </dependency>
             <!--mybatis-plus代码生成器插件end-->
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-nop</artifactId>
+                <version>${slf4j-nop.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

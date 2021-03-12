@@ -16,14 +16,14 @@ public class IdentitiesUtil {
     /**
      * 封装JDK自带的UUID, 通过Random数字生成, 中间有-分割.
      */
-    public static String uuid() {
+    public static String uuidWithSplitLine() {
         return UUID.randomUUID().toString();
     }
 
     /**
      * 封装JDK自带的UUID, 通过Random数字生成, 中间无-分割.
      */
-    public static String uuid2() {
+    public static String uuidWithOutSplitLine() {
         return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
