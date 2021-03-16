@@ -27,8 +27,8 @@ public class MethodLogAspect {
     /**
      * 方法执行之前执行，也就是在spring管理的对象的方法前执行前执行此方法
      *
-     * @param point
-     * @param userId
+     * @param point JoinPoint
+     * @param userId 用户id
      */
     @Before("annotationPointCut() && args(userId,..)")
     public void beforeMethod(JoinPoint point, Integer userId) {
@@ -43,7 +43,7 @@ public class MethodLogAspect {
     /**
      * AfterReturning 是目标方法执行且返回后执行， rvt 方法的返回值
      *
-     * @param rvt
+     * @param rvt 返回结果
      */
     @AfterReturning(value = "annotationPointCut()", returning = "rvt")
     public void afterMethod(Object rvt) {
@@ -52,9 +52,9 @@ public class MethodLogAspect {
     }
 
     /**
-     * @param pjp
-     * @param log
-     * @throws Throwable
+     * @param pjp ProceedingJoinPoint
+     * @param log log
+     * @throws Throwable 异常
      */
     @Around("annotationPointCut()&& @annotation(log)")
     public Object aroundMethod(ProceedingJoinPoint pjp, MethodLogRecord log) throws Throwable {

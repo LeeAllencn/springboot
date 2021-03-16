@@ -40,7 +40,7 @@ public class ControllerAspect {
     /**
      * controller执行之前
      *
-     * @param joinPoint
+     * @param joinPoint JoinPoint
      */
     @Before("controllerAspect()")
     public void doBefore(JoinPoint joinPoint) {
@@ -53,11 +53,11 @@ public class ControllerAspect {
     /**
      * controller执行之后
      *
-     * @param controllerResult
+     * @param controllerResult Object
      */
     @AfterReturning(pointcut = "controllerAspect()", returning = "controllerResult")
     public void doAfterReturning(Object controllerResult) {
-        if (controllerResult != null && controllerResult instanceof BaseResult) {
+        if (controllerResult instanceof BaseResult) {
             BaseResult baseResult = (BaseResult) controllerResult;
             baseResult.setRequestId(MDC.get(KeyConstants.TRACE_ID));
         }

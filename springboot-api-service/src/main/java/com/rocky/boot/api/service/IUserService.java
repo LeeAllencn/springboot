@@ -17,35 +17,35 @@ public interface IUserService {
     /**
      * 获取用户详情
      *
-     * @param userId
-     * @return
+     * @param userId userId
+     * @return UserDetailResp
      */
     UserDetailResp getUser(Integer userId);
 
     /**
      * 创建用户
-     * @param userCreateReq
+     * @param userCreateReq userCreateReq
      */
     void saveUser(UserCreateReq userCreateReq);
 
     /**
      * 获取用户列表
-     * @param search
-     * @param pageParam
-     * @return
+     * @param search search
+     * @param pageParam pageParam
+     * @return PageResult<UserListResp>
      */
     PageResult<UserListResp> listUsers(String search, PageParam pageParam);
 
     /**
      * 更新用户
-     * @param userId
-     * @param userUpdateReq
+     * @param userId userId
+     * @param userUpdateReq userUpdateReq
      */
     void updateUser(Integer userId, UserUpdateReq userUpdateReq);
 
     /**
      * 删除用户
-     * @param userId
+     * @param userId userId
      */
     void deleteUser(Integer userId);
 }

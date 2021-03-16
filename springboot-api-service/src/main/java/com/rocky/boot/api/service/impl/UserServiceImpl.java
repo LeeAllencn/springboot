@@ -34,9 +34,9 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
 
     /**
-     * @param userId
-     * @return
-     * @MethodLogRecord(key = "userId") 用于注解类切面的测试
+     * MethodLogRecord(key = "userId") 用于注解类切面的测试
+     * @param userId 用户id
+     * @return UserDetailResp
      */
     @MethodLogRecord(key = "userId")
     @Override

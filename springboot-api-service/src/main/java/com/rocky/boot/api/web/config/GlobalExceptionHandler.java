@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
             BindException bindException = (BindException) e;
             List<FieldError> fieldErrors = bindException.getFieldErrors();
             StringBuilder builder = new StringBuilder();
-            fieldErrors.forEach(item -> builder.append(item.getField() + ":" + item.getDefaultMessage() + ";\n"));
+            fieldErrors.forEach(item -> builder.append(item.getField()).append(":").append(item.getDefaultMessage()).append(";\n"));
             baseResult = ResultGenerator.getFailResult(ResultCode.PARAMETER_VERIFICATION_FAILED, builder.toString());
             response.setStatus(ResultCode.PARAMETER_VERIFICATION_FAILED.getStatusCode());
         } else if (e instanceof NoHandlerFoundException) {
