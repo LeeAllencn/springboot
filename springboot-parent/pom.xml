@@ -48,12 +48,19 @@
         <velocity-engine-core.version>2.0</velocity-engine-core.version>
         <slf4j-nop.version>1.7.2</slf4j-nop.version>
         <kubernetes-client.version>5.2.0</kubernetes-client.version>
+        <protobuf-java-util.version>3.12.0</protobuf-java-util.version>
 
     </properties>
 
     <!-- 公共jar包依赖管理 -->
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java-util</artifactId>
+                <version>${protobuf-java-util.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>io.fabric8</groupId>
