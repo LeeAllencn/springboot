@@ -18,10 +18,6 @@ import java.util.stream.Collectors;
  */
 public class LambdaOperation {
 
-    public static void filter(List names, Predicate condition) {
-        names.stream().filter((name) -> (condition.test(name))).forEach(System.out::println);
-    }
-
     public static void main(String[] args) {
 
         // example1 使用lambda表达式对列表进行迭代
@@ -32,10 +28,10 @@ public class LambdaOperation {
         List<String> languages = Arrays.asList("Java", "Scala", "C++", "Haskell", "Lisp");
 
         System.out.println("Languages which starts with J :");
-        filter(languages, (Predicate<String>) (str) -> str.startsWith("J"));
+        filter(languages, (str) -> str.startsWith("J"));
 
         System.out.println("Languages which ends with a ");
-        filter(languages, (Predicate<String>) (str) -> str.endsWith("a"));
+        filter(languages, (str) -> str.endsWith("a"));
 
         System.out.println("Print all languages :");
         filter(languages, (str) -> true);
@@ -44,7 +40,7 @@ public class LambdaOperation {
         filter(languages, (str) -> false);
 
         System.out.println("Print language whose length greater than 4:");
-        filter(languages, (Predicate<String>) (str) -> str.length() > 4);
+        filter(languages, (str) -> str.length() > 4);
 
         // example3 使用lambda表达式的Map和Reduce示例
         List<Integer> costBeforeTax = Arrays.asList(100, 200, 300, 400, 500);
@@ -76,5 +72,7 @@ public class LambdaOperation {
         System.out.println("Average of all prime numbers : " + intSummaryStatistics.getAverage());
     }
 
-
+    private static void filter(List<String> languages, Predicate<String> condition) {
+        languages.stream().filter(condition).forEach(System.out::println);
+    }
 }
