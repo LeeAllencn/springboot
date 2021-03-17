@@ -47,12 +47,19 @@
         <mybatis-plus-generator.version>3.4.1</mybatis-plus-generator.version>
         <velocity-engine-core.version>2.0</velocity-engine-core.version>
         <slf4j-nop.version>1.7.2</slf4j-nop.version>
+        <kubernetes-client.version>5.2.0</kubernetes-client.version>
 
     </properties>
 
     <!-- 公共jar包依赖管理 -->
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>io.fabric8</groupId>
+                <artifactId>kubernetes-client</artifactId>
+                <version>${kubernetes-client.version}</version>
+            </dependency>
 
             <!-- mybatis-plus -->
             <dependency>
