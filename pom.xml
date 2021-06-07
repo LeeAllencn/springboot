@@ -48,6 +48,7 @@
         <module>springboot-dubbo-customer</module>
         <module>springboot-design-patterns</module>
         <module>springboot-kubernetes</module>
+        <module>springboot-routing</module>
     </modules>
 
 </project>
