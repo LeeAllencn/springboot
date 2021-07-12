@@ -1,4 +1,4 @@
-package com.rocky.boot.common.base;
+package com.rocky.boot.common.base.thread;
 
 import cn.hutool.core.thread.NamedThreadFactory;
 
