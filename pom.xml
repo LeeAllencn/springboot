@@ -33,7 +33,6 @@
         <module>springboot-upload-file</module>
         <module>springboot-jms</module>
         <module>springboot-rabbitmq</module>
-        <module>springboot-mail</module>
         <module>springboot-shiro</module>
         <module>springboot-mybatis-multidatasource</module>
         <module>springboot-mongodb</module>
