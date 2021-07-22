@@ -30,11 +30,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!-- springboot支持tomcat组件 -->
-		<!--<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-		</dependency>-->
 		<!-- spring boot tomcat jsp 支持开启 -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
