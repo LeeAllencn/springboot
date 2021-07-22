@@ -7,7 +7,7 @@ http://localhost:8081/swagger-ui.html
 - src/main/java 程序开发以及主程序入口
 - src/main/resources 配置文件
 - src/test/java 测试程序
-### spingboot建议的目录
+### springboot建议的目录
 - 1、Application.java 建议放到根目录下面,主要用于做一些框架配置
 - 2、domain目录主要用于实体（Entity）与数据访问层（Repository）
 - 3、service 层主要是业务类代码
@@ -78,3 +78,7 @@ logging.level.包名=级别(eg.INFO/DEBUG/ERROR)
 # Gradle 构建工具
 
 # WebJars
+
+# 其他
+注意：若使用QQ邮箱发送邮件，则需要修改为spring.mail.host=smtp.qq.com，同时spring.mail.password改为QQ邮箱的授权码。
+QQ邮箱->设置->账户->POP3/SMTP服务:开启服务后会获得QQ的授权码

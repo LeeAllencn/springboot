@@ -37,7 +37,7 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("api service项目 RESTful APIs")
+                .title("api service项目 Restful APIs")
                 .description("api service项目后台api接口文档")
                 .version("1.0")
                 .build();

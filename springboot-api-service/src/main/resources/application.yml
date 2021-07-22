@@ -45,6 +45,20 @@ spring:
       enable: true
     base-package: com.rocky.boot.api.web.controller
 
+  # 发送邮件配置
+  mail:
+    host: smtp.qq.com # qq邮箱服务器地址
+    username: example1@qq.com # 用户名
+    password:  # QQ的授权码
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
 # 日志文件配置
 logging:
   config: classpath:logback-spring.xml
@@ -64,4 +78,7 @@ springboot:
     keepAliveDuration: 5
     logLevel: BODY
 
-
+# 发送人邮件配置
+mail:
+  fromMail:
+    addr: example1@qq.com
