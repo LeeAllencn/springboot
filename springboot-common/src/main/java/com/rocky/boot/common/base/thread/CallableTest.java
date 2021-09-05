@@ -16,28 +16,30 @@ public class CallableTest implements Callable<Integer> {
     private final static Integer MAX = 10;
 
     @Override
-    public Integer call() {
+    public Integer call() throws InterruptedException {
         int sum = 0;
         for (int i = 0; i < MAX; i ++) {
             sum += i;
         }
+        Thread.sleep(5 * 1000);
         System.out.println(Thread.currentThread().getName() + " return: " + sum);
+        System.out.println("任" + System.currentTimeMillis());
         return sum;
     }
 
     public static void main(String[] args) {
 
         // 使用方式一：FutureTask
-        CallableTest callableTest = new CallableTest();
-        FutureTask<Integer> futureTask = new FutureTask<>(callableTest);
-        ThreadPoolExecutor threadPoolExecutor = ThreadPoolUtil.createThreadPool(CallableTest.class);
-        threadPoolExecutor.execute(futureTask);
-        threadPoolExecutor.shutdown();
-        try {
-            System.out.println("线程返回的结果:" + futureTask.get());
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
+//        CallableTest callableTest = new CallableTest();
+//        FutureTask<Integer> futureTask = new FutureTask<>(callableTest);
+//        ThreadPoolExecutor threadPoolExecutor = ThreadPoolUtil.createThreadPool(CallableTest.class);
+//        threadPoolExecutor.execute(futureTask);
+//        threadPoolExecutor.shutdown();
+//        try {
+//            System.out.println("线程返回的结果:" + futureTask.get());
+//        } catch (InterruptedException | ExecutionException e) {
+//            e.printStackTrace();
+//        }
 
         // 使用方式二：ListenableFuture
         // 创建一个线程池service
@@ -45,6 +47,7 @@ public class CallableTest implements Callable<Integer> {
         // 创建一个ListeningExecutorService实例
         ListeningExecutorService executorService = MoreExecutors.listeningDecorator(delegate);
         // 提交一个可监听的线程
+        System.out.println("前" + System.currentTimeMillis());
         ListenableFuture<Integer> listenableFuture = executorService.submit(new CallableTest());
         // 线程结果处理回调函数
         Futures.addCallback(listenableFuture, new FutureCallback<Integer>() {
@@ -60,6 +63,7 @@ public class CallableTest implements Callable<Integer> {
             }
         } , executorService);
 
-        executorService.shutdown();
+        System.out.println("后" + System.currentTimeMillis());
+        System.out.println("任务结束");
     }
 }
