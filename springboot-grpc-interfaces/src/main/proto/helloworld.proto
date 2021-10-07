@@ -22,3 +22,9 @@ message HelloRequest {
 message HelloReply {
     string message = 1;
 }
+
+message Proto3DefaultValue {
+    string str = 1;
+    int32 number = 2;
+    bool flag = 3;
+}

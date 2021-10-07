@@ -9,5 +9,7 @@ import lombok.Data;
 @Data
 public class Hello {
 
-    private String name;
+    private String str;
+    private Integer number;
+    private Boolean flag;
 }

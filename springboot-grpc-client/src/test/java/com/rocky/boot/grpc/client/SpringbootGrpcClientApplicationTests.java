@@ -4,6 +4,7 @@ import com.rocky.boot.common.utils.GrpcBeanUtils;
 import com.rocky.boot.common.utils.JsonUtil;
 import com.rocky.boot.grpc.interfaces.HelloRequest;
 import com.rocky.boot.grpc.interfaces.MyServiceGrpc;
+import com.rocky.boot.grpc.interfaces.Proto3DefaultValue;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,11 +34,8 @@ class SpringbootGrpcClientApplicationTests {
     // proto3 字段默认值转换为pojo对象被忽略问题修复测试
     @Test
     void toPojoTest() throws IOException {
-        String name = "";
-        HelloRequest request = HelloRequest.newBuilder()
-                .setName(name)
-                .build();
-        Hello hello = GrpcBeanUtils.toPojoBean(request, Hello.class);
+        Proto3DefaultValue defaultValue = Proto3DefaultValue.newBuilder().build();
+        Hello hello = GrpcBeanUtils.toPojoBean(defaultValue, Hello.class);
         System.out.println(JsonUtil.toJson(hello));
     }
 
