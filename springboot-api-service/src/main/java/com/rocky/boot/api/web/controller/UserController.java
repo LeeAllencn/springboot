@@ -1,5 +1,6 @@
 package com.rocky.boot.api.web.controller;
 
+import com.rocky.boot.api.annotation.OperationalAudit;
 import com.rocky.boot.api.service.IUserService;
 import com.rocky.boot.api.web.request.UserCreateReq;
 import com.rocky.boot.api.web.request.UserUpdateReq;
@@ -33,6 +34,7 @@ public class UserController {
 
     @ApiOperation(value = "创建用户")
     @PostMapping
+//    @OperationalAudit(operate = "创建用户", resourceName = "username", paramType = "body_json", queryClass = "com.rocky.boot.api.mapper.UserMapper")
     public BaseResult<Void> createUser(@RequestBody @Validated UserCreateReq userCreateReq) {
         userService.saveUser(userCreateReq);
         return ResultGenerator.genSuccessResult();
