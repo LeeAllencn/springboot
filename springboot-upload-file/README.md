@@ -1,0 +1,1 @@
+https://www.javacodemonk.com/multipart-file-upload-spring-boot-resttemplate-9f837ffe
