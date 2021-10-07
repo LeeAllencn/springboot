@@ -51,7 +51,7 @@ public class GrpcBeanUtils {
         if (destPojoClass == null) {
             throw new IllegalArgumentException("No destination pojo class specified");
         }
-        String json = JsonFormat.printer().print(sourceMessage);
+        String json = JsonFormat.printer().includingDefaultValueFields().print(sourceMessage);
         return new Gson().fromJson(json, destPojoClass);
     }
 }

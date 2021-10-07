@@ -44,6 +44,12 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.rocky.boot</groupId>
+            <artifactId>springboot-common</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
