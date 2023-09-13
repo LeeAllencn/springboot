@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rocky.boot.code.generation.mapper.ActRuTimerJobMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.rocky.boot.flowable.model.ActRuTimerJob">
+        <id column="ID_" property="id" />
+        <result column="REV_" property="rev" />
+        <result column="CATEGORY_" property="category" />
+        <result column="TYPE_" property="type" />
+        <result column="LOCK_EXP_TIME_" property="lockExpTime" />
+        <result column="LOCK_OWNER_" property="lockOwner" />
+        <result column="EXCLUSIVE_" property="exclusive" />
+        <result column="EXECUTION_ID_" property="executionId" />
+        <result column="PROCESS_INSTANCE_ID_" property="processInstanceId" />
+        <result column="PROC_DEF_ID_" property="procDefId" />
+        <result column="ELEMENT_ID_" property="elementId" />
+        <result column="ELEMENT_NAME_" property="elementName" />
+        <result column="SCOPE_ID_" property="scopeId" />
+        <result column="SUB_SCOPE_ID_" property="subScopeId" />
+        <result column="SCOPE_TYPE_" property="scopeType" />
+        <result column="SCOPE_DEFINITION_ID_" property="scopeDefinitionId" />
+        <result column="CORRELATION_ID_" property="correlationId" />
+        <result column="RETRIES_" property="retries" />
+        <result column="EXCEPTION_STACK_ID_" property="exceptionStackId" />
+        <result column="EXCEPTION_MSG_" property="exceptionMsg" />
+        <result column="DUEDATE_" property="duedate" />
+        <result column="REPEAT_" property="repeat" />
+        <result column="HANDLER_TYPE_" property="handlerType" />
+        <result column="HANDLER_CFG_" property="handlerCfg" />
+        <result column="CUSTOM_VALUES_ID_" property="customValuesId" />
+        <result column="CREATE_TIME_" property="createTime" />
+        <result column="TENANT_ID_" property="tenantId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID_, REV_, CATEGORY_, TYPE_, LOCK_EXP_TIME_, LOCK_OWNER_, EXCLUSIVE_, EXECUTION_ID_, PROCESS_INSTANCE_ID_, PROC_DEF_ID_, ELEMENT_ID_, ELEMENT_NAME_, SCOPE_ID_, SUB_SCOPE_ID_, SCOPE_TYPE_, SCOPE_DEFINITION_ID_, CORRELATION_ID_, RETRIES_, EXCEPTION_STACK_ID_, EXCEPTION_MSG_, DUEDATE_, REPEAT_, HANDLER_TYPE_, HANDLER_CFG_, CUSTOM_VALUES_ID_, CREATE_TIME_, TENANT_ID_
+    </sql>
+
+</mapper>

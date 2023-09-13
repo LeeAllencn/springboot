@@ -52,12 +52,30 @@
         <retrofit.version>2.9.0</retrofit.version>
         <converter-gson.version>2.9.0</converter-gson.version>
         <httpclinet.version>4.5.13</httpclinet.version>
+        <collections.version>3.2.2</collections.version>
+        <feign-okhttp.version>12.2</feign-okhttp.version>
+        <spring-cloud-openfeign>4.0.1</spring-cloud-openfeign>
     </properties>
 
     <!-- 公共jar包依赖管理 -->
     <dependencyManagement>
         <dependencies>
 
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${spring-cloud-openfeign}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-okhttp</artifactId>
+                <version>${feign-okhttp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${collections.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.squareup.retrofit2</groupId>
                 <artifactId>retrofit</artifactId>

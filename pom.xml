@@ -16,6 +16,7 @@
         <module>springboot-api-service</module>
         <module>springboot-openapi-service</module>
         <module>springboot-flowable-service</module>
+        <module>springboot-flowable-customer</module>
         <module>springboot-quartz</module>
         <module>springboot-external-client</module>
         <module>springboot-code-generation</module>
@@ -46,6 +47,7 @@
         <module>springboot-design-patterns</module>
         <module>springboot-kubernetes</module>
         <module>springboot-routing</module>
+        <module>springboot-flowable-api</module>
     </modules>
 
 </project>
