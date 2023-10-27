@@ -4,7 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.rocky.boot.interfaces.HelloService;
 
 /**
- * @author lixin
+ * @author rocky
  * @Description:
  * @Date: Created in 2018/9/5
  */

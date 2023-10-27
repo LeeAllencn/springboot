@@ -14,6 +14,6 @@ public class SpringbootDubboCustomerApplication {
         ConfigurableApplicationContext ctx = SpringApplication.run(SpringbootDubboCustomerApplication.class, args);
         ServiceProxy proxy = ctx.getBean(ServiceProxy.class);
         //调用服务
-        System.out.println(proxy.helloService.sayHello("lixin"));
+        System.out.println(proxy.helloService.sayHello("rocky"));
     }
 }

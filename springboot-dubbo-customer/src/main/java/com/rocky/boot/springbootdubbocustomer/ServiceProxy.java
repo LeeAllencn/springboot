@@ -5,7 +5,7 @@ import com.rocky.boot.interfaces.HelloService;
 import org.springframework.stereotype.Component;
 
 /**
- * @author lixin
+ * @author rocky
  * @Description:
  * @Date: Created in 2018/9/5
  */
