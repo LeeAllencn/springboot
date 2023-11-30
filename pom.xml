@@ -48,6 +48,7 @@
         <module>springboot-kubernetes</module>
         <module>springboot-routing</module>
         <module>springboot-flowable-api</module>
+        <module>springboot-liteflow</module>
     </modules>
 
 </project>
