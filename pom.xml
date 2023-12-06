@@ -49,6 +49,7 @@
         <module>springboot-routing</module>
         <module>springboot-flowable-api</module>
         <module>springboot-liteflow</module>
+        <module>springboot-assembly</module>
     </modules>
 
 </project>
