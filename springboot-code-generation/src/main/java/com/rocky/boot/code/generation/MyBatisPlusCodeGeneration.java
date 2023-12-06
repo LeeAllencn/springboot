@@ -19,7 +19,7 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
  */
 public class MyBatisPlusCodeGeneration {
 
-    // TODO 自定义修改开始
+    // TODO ======自定义修改开始
     /**
      * 作者
      */
@@ -31,8 +31,9 @@ public class MyBatisPlusCodeGeneration {
 
     /**
      * 文件输出目录
+     * private final static String OUTPUT_DIR = System.getProperty("user.dir") + "/springboot-code-generation/src/main/java";
      */
-    private final static String OUTPUT_DIR = System.getProperty("user.dir") + "/springboot-code-generation/src/main/java";
+    private final static String OUTPUT_DIR = "C:\\Users\\Administrator\\Desktop";
 
     /**
      * 数据表前缀
@@ -43,17 +44,23 @@ public class MyBatisPlusCodeGeneration {
      * 服务接口名称命名 eg:UserService or IUserService
      */
     private final static Boolean SERVICE_INTERFACE_NAME_START_WITH_I = true;
+
+    /**
+     * 数据源信息
+     */
     private final static String DATASOURCE_URL = "jdbc:mysql://localhost:3306/db_springboot?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&nullCatalogMeansCurrent=true&serverTimezone=GMT%2b8";
     private final static String DATASOURCE_USERNAME = "root";
     private final static String DATASOURCE_PASSWORD = "";
     private final static String DATASOURCE_DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
     private final static String[] TABLE_NAMES = new String[]{"user"};
 
+    /**
+     * 用作数据类型转换
+     */
     private final static String KEY_DATE = "date";
-
     private final static String KEY_TIME = "time";
 
-    // TODO 自定义修改结束
+    // TODO ======自定义修改结束
 
     public static void main(String[] args) {
         System.out.println("start...");
@@ -108,13 +115,12 @@ public class MyBatisPlusCodeGeneration {
 
         // 数据库表配置
         StrategyConfig strategyConfig = new StrategyConfig();
-
         // isCapitalMode:是否大写命名
         // entityLombokModel:是否为lombok模型
         // naming:数据库表映射到实体的命名策略
         // include：需要包含的表名，允许正则表达式（与exclude二选一配置）
         strategyConfig.setCapitalMode(true)
-//                .setEntityLombokModel(true)
+                .setEntityLombokModel(true)
                 .setNaming(NamingStrategy.underline_to_camel)
                 .setEntityTableFieldAnnotationEnable(true)
 //                .setEntityColumnConstant(true)
