@@ -1,6 +1,9 @@
 package com.rocky.boot.common.base;
 
+import cn.hutool.json.JSONUtil;
+
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author : Rocky
@@ -65,6 +68,22 @@ public class CollectionBaseOperation {
         Collections.reverse(list);
         System.out.println(list);
 
+        System.out.println("*** 6.对象列表，多属性判断重复 ***");
+        User user1 = new User("zhangsan", 19);
+        User user2 = new User("lisi", 19);
+        User user3 = new User("lisi", 20);
+        User user4 = new User("wangwu", 21);
+        User user5 = new User("zhangsan", 19);
+        List<User> userList = new ArrayList<>();
+        userList.add(user1);
+        userList.add(user2);
+        userList.add(user3);
+        userList.add(user4);
+        userList.add(user5);
+        System.out.println(JSONUtil.toJsonStr(userList));
+        userList = userList.stream().collect(Collectors
+                .collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(o -> o.getName() + "," + o.getAge()))), ArrayList::new));
+        System.out.println(JSONUtil.toJsonStr(userList));
     }
 
     private static void traverseSet(Set<String> set) {
@@ -79,5 +98,31 @@ public class CollectionBaseOperation {
         }
 
         System.out.println();
+    }
+
+    static class User {
+        private String name;
+        private int age;
+
+        public User(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
     }
 }
