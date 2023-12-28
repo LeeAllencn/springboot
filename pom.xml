@@ -50,6 +50,8 @@
         <module>springboot-flowable-api</module>
         <module>springboot-liteflow</module>
         <module>springboot-assembly</module>
+        <module>springboot-netty-server</module>
+        <module>springboot-netty-client</module>
     </modules>
 
 </project>
