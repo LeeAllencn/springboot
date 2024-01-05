@@ -1,9 +1,8 @@
 package com.rocky.boot.common.base;
 
-import java.util.Arrays;
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.Optional;
+import cn.hutool.json.JSONUtil;
+
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -70,6 +69,23 @@ public class LambdaOperation {
         System.out.println("Lowest prime number in List : " + intSummaryStatistics.getMin());
         System.out.println("Sum of all prime numbers : " + intSummaryStatistics.getSum());
         System.out.println("Average of all prime numbers : " + intSummaryStatistics.getAverage());
+
+        // example8 分组
+        User user1 = new User("Jack", 19);
+        User user2 = new User("Tom", 19);
+        User user3 = new User("Marry", 21);
+        User user4 = new User("Joe", 19);
+        User user5 = new User("Rocky", 21);
+        List<User> userList = new ArrayList<>();
+        userList.add(user1);
+        userList.add(user2);
+        userList.add(user3);
+        userList.add(user4);
+        userList.add(user5);
+        Map<Integer, List<User>> listMap = userList.stream().collect(Collectors.groupingBy(User::getAge));
+        Map<Integer, Long> longMap = userList.stream().collect(Collectors.groupingBy(User::getAge, Collectors.counting()));
+        System.out.println(JSONUtil.toJsonStr(listMap));
+        System.out.println(JSONUtil.toJsonStr(longMap));
     }
 
     private static void filter(List<String> languages, Predicate<String> condition) {
