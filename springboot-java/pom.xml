@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.rocky.boot</groupId>
+        <artifactId>springboot-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../springboot-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>springboot-java</artifactId>
+    <version>${springboot.version}</version>
+    <name>springboot-java</name>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.rocky.boot</groupId>
+            <artifactId>springboot-common</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+
+        <!--svn-->
+        <dependency>
+            <groupId>org.tmatesoft.svnkit</groupId>
+            <artifactId>svnkit</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jna</artifactId>
+                    <groupId>net.java.dev.jna</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jsch.agentproxy.svnkit-trilead-ssh2</artifactId>
+                    <groupId>com.jcraft</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,4 +1,4 @@
-package com.rocky.boot.common.utils;
+package com.rocky.boot.java.util;
 
 import org.tmatesoft.svn.core.*;
 import org.tmatesoft.svn.core.auth.ISVNAuthenticationManager;
@@ -11,7 +11,6 @@ import org.tmatesoft.svn.core.wc.SVNWCUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Iterator;
 
 /*
  * This example shows how to fetch a file and its properties from the repository
@@ -56,7 +55,7 @@ public class SvnUtil {
      * account name & password to authenticate him to the server, the file path
      * in the rpository (the file path should be relative to the the
      * path/to/repository part of the repository location URL).
-     * @param args
+     * @param args args
      */
     public static void main(String[] args) {
         // Default values:
@@ -159,10 +158,8 @@ public class SvnUtil {
          * file property and says if the file is a text (true) or not (false).
          */
         boolean isTextType = SVNProperty.isTextMimeType(mimeType);
-        Iterator iterator = fileProperties.nameSet().iterator();
         // Displays file properties.
-        while (iterator.hasNext()) {
-            String propertyName = (String) iterator.next();
+        for (String propertyName : fileProperties.nameSet()) {
             String propertyValue = fileProperties.getStringValue(propertyName);
             System.out.println("File property: " + propertyName + "=" + propertyValue);
         }

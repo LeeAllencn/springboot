@@ -53,6 +53,7 @@
         <module>springboot-netty-server</module>
         <module>springboot-netty-client</module>
         <module>springboot-function</module>
+        <module>springboot-java</module>
     </modules>
 
 </project>

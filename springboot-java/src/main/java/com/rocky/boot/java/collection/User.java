@@ -1,4 +1,4 @@
-package com.rocky.boot.common.base;
+package com.rocky.boot.java.collection;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

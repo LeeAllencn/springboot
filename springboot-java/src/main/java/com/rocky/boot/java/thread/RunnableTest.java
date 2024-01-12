@@ -1,4 +1,4 @@
-package com.rocky.boot.common.base.thread;
+package com.rocky.boot.java.thread;
 
 import com.rocky.boot.common.utils.ThreadPoolUtil;
 
