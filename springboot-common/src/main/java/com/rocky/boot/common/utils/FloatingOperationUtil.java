@@ -3,13 +3,13 @@ package com.rocky.boot.common.utils;
 import java.math.BigDecimal;
 
 /**
- * @Author: Rocky
- * @Description: 浮点数的基本运算
+ * @author Rocky
+ * Description: 浮点数的基本运算
  * 注：
  * 1.通常建议优先使用基于String参数的构造器来创建BigDecimal对象
  * 2.不要直接使用double浮点数参数的构造器来创建BigDecimal对象，同样会发生精度丢失的问题
  * 3.通过BigDecimal.valueOf(double value)静态方法来创建BigDecimal对象
- * @Date: Created in 13:39 2018/6/23
+ * @date Created in 13:39 2018/6/23
  */
 public class FloatingOperationUtil {
 
@@ -27,9 +27,9 @@ public class FloatingOperationUtil {
     /**
      * 提供精确的加法运算:add()
      *
-     * @param v1
-     * @param v2
-     * @return
+     * @param v1 值1
+     * @param v2 值2
+     * @return double
      */
     public static double add(double v1, double v2) {
         BigDecimal b1 = BigDecimal.valueOf(v1);
@@ -40,9 +40,9 @@ public class FloatingOperationUtil {
     /**
      * 提供精确的减法运算:subtract()
      *
-     * @param v1
-     * @param v2
-     * @return
+     * @param v1 值1
+     * @param v2 值2
+     * @return double
      */
     public static double sub(double v1, double v2) {
         BigDecimal b1 = BigDecimal.valueOf(v1);
@@ -53,9 +53,9 @@ public class FloatingOperationUtil {
     /**
      * 提供精确的乘法运算:multiply()
      *
-     * @param v1
-     * @param v2
-     * @return
+     * @param v1 值1
+     * @param v2 值2
+     * @return double
      */
     public static double mul(double v1, double v2) {
         BigDecimal b1 = BigDecimal.valueOf(v1);
@@ -66,9 +66,9 @@ public class FloatingOperationUtil {
     /**
      * 提供精确的除法运算:divide()
      *
-     * @param v1
-     * @param v2
-     * @return
+     * @param v1 值1
+     * @param v2 值2
+     * @return double
      */
     public static double div(double v1, double v2) {
         BigDecimal b1 = BigDecimal.valueOf(v1);

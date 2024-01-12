@@ -9,7 +9,7 @@ import org.junit.Test;
  */
 public class CoderUtilTest {
 
-    private String str = "rocky";
+    private final String str = "rocky";
 
     @Test
     public void encodeUrl() {

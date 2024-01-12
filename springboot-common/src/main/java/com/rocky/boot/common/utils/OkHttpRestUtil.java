@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,22 +17,22 @@ import java.util.concurrent.TimeUnit;
 public class OkHttpRestUtil {
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    private static OkHttpClient client = new OkHttpClient.Builder().connectTimeout(5, TimeUnit.MINUTES)
+    private static final OkHttpClient CLIENT = new OkHttpClient.Builder().connectTimeout(5, TimeUnit.MINUTES)
             .readTimeout(5, TimeUnit.MINUTES).writeTimeout(5, TimeUnit.MINUTES).build();
 
     /**
      * get request
      *
-     * @param url
-     * @return
-     * @throws IOException
+     * @param url url
+     * @return String
+     * @throws IOException 异常
      */
     public static String get(String url) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-        Response response = client.newCall(request).execute();
-        return response.body().string();
+        Response response = CLIENT.newCall(request).execute();
+        return Objects.requireNonNull(response.body()).string();
     }
 
     public static Map<?, ?> get(String url, String token) throws IOException {
@@ -39,19 +40,18 @@ public class OkHttpRestUtil {
                 .addHeader("Authorization", token)
                 .url(url)
                 .build();
-        Response response = client.newCall(request).execute();
+        Response response = CLIENT.newCall(request).execute();
         ObjectMapper mapper = new ObjectMapper();
-        Map<?, ?> map = mapper.readValue(response.body().string(), Map.class);
-        return map;
+        return mapper.readValue(Objects.requireNonNull(response.body()).string(), Map.class);
     }
 
     /**
      * post request
-     * @param url
-     * @param token
-     * @param obj
-     * @return
-     * @throws IOException
+     * @param url url
+     * @param token token
+     * @param obj obj
+     * @return Map
+     * @throws IOException 异常
      */
     public static Map<?, ?> post(String url, String token, Object obj) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -62,10 +62,9 @@ public class OkHttpRestUtil {
                 .url(url)
                 .post(body)
                 .build();
-        System.out.println("------------------" + client.connectTimeoutMillis() / 1000 + "--------------------------" + client.readTimeoutMillis() / 1000);
-        Response response = client.newCall(request).execute();
-        Map<?, ?> map = mapper.readValue(response.body().string(), Map.class);
-        return map;
+        System.out.println("------------------" + CLIENT.connectTimeoutMillis() / 1000 + "--------------------------" + CLIENT.readTimeoutMillis() / 1000);
+        Response response = CLIENT.newCall(request).execute();
+        return mapper.readValue(Objects.requireNonNull(response.body()).string(), Map.class);
     }
 
     public static Map<?, ?> post(String url, String token, String json) throws IOException {
@@ -76,18 +75,17 @@ public class OkHttpRestUtil {
                 .url(url)
                 .post(body)
                 .build();
-        Response response = client.newCall(request).execute();
-        Map<?, ?> resultMap = mapper.readValue(response.body().string(), Map.class);
-        return resultMap;
+        Response response = CLIENT.newCall(request).execute();
+        return mapper.readValue(Objects.requireNonNull(response.body()).string(), Map.class);
     }
 
     /**
      * put request
-     * @param url
-     * @param token
-     * @param obj
-     * @return
-     * @throws IOException
+     * @param url url
+     * @param token token
+     * @param obj obj
+     * @return Map
+     * @throws IOException 异常
      */
     public static Map<?, ?> put(String url, String token, Object obj) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -98,8 +96,8 @@ public class OkHttpRestUtil {
                 .url(url)
                 .put(body)
                 .build();
-        Response response = client.newCall(request).execute();
-        String resBody = response.body().string();
+        Response response = CLIENT.newCall(request).execute();
+        String resBody = Objects.requireNonNull(response.body()).string();
         Map<?, ?> map = null;
         if (StringUtils.isNotEmpty(resBody)) {
             map = mapper.readValue(resBody, Map.class);
@@ -109,10 +107,10 @@ public class OkHttpRestUtil {
 
     /**
      * delete request
-     * @param url
-     * @param token
-     * @return
-     * @throws IOException
+     * @param url url
+     * @param token token
+     * @return Map
+     * @throws IOException 异常
      */
     public static Map<?, ?> delete(String url, String token) throws IOException {
         Request request = new Request.Builder()
@@ -120,19 +118,18 @@ public class OkHttpRestUtil {
                 .url(url)
                 .delete()
                 .build();
-        Response response = client.newCall(request).execute();
+        Response response = CLIENT.newCall(request).execute();
         ObjectMapper mapper = new ObjectMapper();
-        Map<?, ?> map = mapper.readValue(response.body().string(), Map.class);
-        return map;
+        return mapper.readValue(Objects.requireNonNull(response.body()).string(), Map.class);
     }
 
     /**
      * upload file to service
-     * @param url
-     * @param token
-     * @param binary
-     * @return
-     * @throws IOException
+     * @param url url
+     * @param token token
+     * @param binary 二进制
+     * @return Map
+     * @throws IOException 异常
      */
     public static Map<?, ?> uploadBinary(String url, String token, File binary) throws IOException {
         RequestBody body = RequestBody.create(binary, MediaType.parse("application/octet-stream"));
@@ -141,9 +138,8 @@ public class OkHttpRestUtil {
                 .url(url)
                 .post(body)
                 .build();
-        Response response = client.newCall(request).execute();
+        Response response = CLIENT.newCall(request).execute();
         ObjectMapper mapper = new ObjectMapper();
-        Map<?, ?> map = mapper.readValue(response.body().string(), Map.class);
-        return map;
+        return mapper.readValue(Objects.requireNonNull(response.body()).string(), Map.class);
     }
 }

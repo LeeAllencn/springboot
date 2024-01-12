@@ -25,9 +25,9 @@ public class DateUtil {
     /**
      * 功能：自定义日期的格式
      *
-     * @param date
-     * @param format
-     * @return
+     * @param date date
+     * @param format 格式
+     * @return String
      */
     public static String format(Date date, String format) {
         if (date == null) {
@@ -40,10 +40,10 @@ public class DateUtil {
     /**
      * 功能：按照地理位置来自定义日期的格式
      *
-     * @param date
-     * @param format
-     * @param locale
-     * @return
+     * @param date date
+     * @param format 格式
+     * @param locale 地理
+     * @return String
      */
     public static String format(Date date, String format, Locale locale) {
         if (date == null) {
@@ -56,8 +56,8 @@ public class DateUtil {
     /**
      * 功能：格式化DateTime
      *
-     * @param date
-     * @return
+     * @param date date
+     * @return String
      */
     public static String formatDateTime(Date date) {
         return format(date, DATE_TIME_FORMAT);
@@ -66,8 +66,8 @@ public class DateUtil {
     /**
      * 功能：格式化Date
      *
-     * @param date
-     * @return
+     * @param date date
+     * @return String
      */
     public static String formatDate(Date date) {
         return format(date, DATE_FORMAT);
@@ -76,8 +76,8 @@ public class DateUtil {
     /**
      * 功能：格式化Time
      *
-     * @param date
-     * @return
+     * @param date date
+     * @return String
      */
     public static String formatTime(Date date) {
         return format(date, TIEM_FORMAT);
@@ -86,9 +86,9 @@ public class DateUtil {
     /**
      * 功能：自定义解析日期字符串（转化成Date类型）
      *
-     * @param dateStr
-     * @param format
-     * @return
+     * @param dateStr 日期字符串
+     * @param format 格式
+     * @return Date
      */
     public static Date parse(String dateStr, String format) {
         if (StringUtils.isBlank(dateStr)) {
@@ -108,10 +108,10 @@ public class DateUtil {
     /**
      * 功能：按照地理位置来自定义解析日期字符串（转化成Date类型）
      *
-     * @param dateStr
-     * @param format
-     * @param locale
-     * @return
+     * @param dateStr 日期字符串
+     * @param format 格式
+     * @param locale 地理
+     * @return Date
      */
     public static Date parse(String dateStr, String format, Locale locale) {
         if (StringUtils.isBlank(dateStr)) {
@@ -131,8 +131,8 @@ public class DateUtil {
     /**
      * 功能：从数据库里获取创建时间，来显示更新时间
      *
-     * @param date
-     * @return
+     * @param date date
+     * @return String
      */
     public static String getInterval(Date date) {//传入的时间格式必须类似于2012-8-21 17:53:20这样的格式(数据库里时间的格式)
         if (date == null) {
@@ -172,17 +172,17 @@ public class DateUtil {
     /**
      * 功能：将毫秒时间转化为特定的时间格式
      *
-     * @param time
-     * @return
+     * @param time 时间
+     * @return String
      */
     public static String secToTime(Integer time) {
         if (time == null) {
             return "0秒";
         }
-        String timeStr = null;
-        int hour = 0;
-        int minute = 0;
-        int second = 0;
+        String timeStr;
+        int hour;
+        int minute;
+        int second;
         if (time < 0) {
             return "0秒";
         }
@@ -215,22 +215,21 @@ public class DateUtil {
     /**
      * 日期加减操作
      *
-     * @param time
-     * @return
-     * @throws ParseException
+     * @param time 时间
+     * @return String
+     * @throws ParseException 异常
      */
     public static String add8Hour(String time) throws ParseException {
         if (StringUtils.isBlank(time)) {
             return null;
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        Date date = null;
+        Date date;
         Calendar c = Calendar.getInstance();
         c.setTime(dateFormat.parse(time));
         //对年月日进行加减操作，减法就将amout改为负数
         c.add(Calendar.HOUR, 8);
         date = c.getTime();
-        String subTime = dateFormat.format(date);
-        return subTime;
+        return dateFormat.format(date);
     }
 }

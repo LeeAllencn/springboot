@@ -11,7 +11,7 @@ import java.util.UUID;
  */
 public class IdentitiesUtil {
 
-    private static SecureRandom random = new SecureRandom();
+    private static final SecureRandom RANDOM = new SecureRandom();
 
     /**
      * 封装JDK自带的UUID, 通过Random数字生成, 中间有-分割.
@@ -31,6 +31,6 @@ public class IdentitiesUtil {
      * 使用SecureRandom随机生成Long.
      */
     public static long randomLong() {
-        return Math.abs(random.nextLong());
+        return Math.abs(RANDOM.nextLong());
     }
 }

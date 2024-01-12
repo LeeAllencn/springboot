@@ -1,4 +1,4 @@
-package com.rocky.boot.common.exceptions;
+package com.rocky.boot.common.exception;
 
 /**
  * @author rocky

@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -24,10 +25,10 @@ public class HttpUtil {
      * @return URL 所代表远程资源的响应结果
      */
     public static String sendGet(String url, String param) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         BufferedReader in = null;
         try {
-            String urlNameString = "";
+            String urlNameString;
             if (param == null) {
                 urlNameString = url;
             } else {
@@ -54,7 +55,7 @@ public class HttpUtil {
                     connection.getInputStream()));
             String line;
             while ((line = in.readLine()) != null) {
-                result += line;
+                result.append(line);
             }
         } catch (Exception e) {
             System.out.println("发送GET请求出现异常！" + e);
@@ -70,14 +71,14 @@ public class HttpUtil {
                 e2.printStackTrace();
             }
         }
-        return result;
+        return result.toString();
     }
 
     public static String postRequest(String urlStr, String params) {
         BufferedReader in = null;
         PrintWriter printWriter = null;
         StringBuilder sb = new StringBuilder();
-        URL url = null;
+        URL url;
         HttpURLConnection conn = null;
         try {
             url = new URL(urlStr);
@@ -88,8 +89,8 @@ public class HttpUtil {
             printWriter = new PrintWriter(conn.getOutputStream());
             printWriter.write(params);
             printWriter.flush();
-            in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-            String str = null;
+            in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
+            String str;
             while ((str = in.readLine()) != null) {
                 sb.append(str);
             }

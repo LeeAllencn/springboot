@@ -12,10 +12,6 @@ public enum AppStatusEnum {
      *
      */
     CREATING("Creating", "创建中"),
-
-    /**
-     *
-     */
     RUNNING("Running", "运行中"),
     PENDING("Pending", "部署中"),
     FAILED("Failed", "失败"),
@@ -27,8 +23,8 @@ public enum AppStatusEnum {
     DELETING("Deleting", "删除中"),
     UPGRADING("Upgrading", "升级中");
 
-    private String key;
-    private String value;
+    private final String key;
+    private final String value;
 
     AppStatusEnum(String key, String value) {
         this.key = key;
