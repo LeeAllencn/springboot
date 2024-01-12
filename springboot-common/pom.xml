@@ -45,12 +45,6 @@
             <artifactId>fastjson</artifactId>
         </dependency>
 
-        <!--svn-->
-        <dependency>
-            <groupId>org.tmatesoft.svnkit</groupId>
-            <artifactId>svnkit</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>

@@ -1,6 +1,6 @@
 package com.rocky.boot.flowable.listener;
 
-import com.rocky.boot.common.enums.ResultCode;
+import com.rocky.boot.common.enums.ResultCodeEnum;
 import com.rocky.boot.common.model.BaseResult;
 import com.rocky.boot.flowable.config.FlowableServiceProp;
 import com.rocky.boot.flowable.constant.FlowableConstant;
@@ -26,6 +26,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * @author : rocky
@@ -108,13 +109,13 @@ public class UserTaskGlobalListener implements TaskListener {
             dto.setTaskKey(taskKey);
             dto.setTaskId(taskId);
             BaseResult<TaskHandleResp> result = taskRemoteService.taskExecute(beanName, dto);
-            if (result != null && ResultCode.SUCCESS.getCode().equalsIgnoreCase(result.getCode())) {
+            if (result != null && ResultCodeEnum.SUCCESS.getCode().equalsIgnoreCase(result.getCode())) {
                 TaskHandleResp resp = result.getData();
                 if (resp != null && resp.getUpdateVariables() != null) {
                     runtimeService.setVariables(processInstanceId, resp.getUpdateVariables());
                 }
-                String errorMessage = resp.getErrorMessage();
-                if (resp != null && StringUtils.isNotBlank(errorMessage)) {
+                String errorMessage = Objects.requireNonNull(resp).getErrorMessage();
+                if (StringUtils.isNotBlank(errorMessage)) {
                     taskService.setVariableLocal(taskId, FlowableConstant.ERROR_MESSAGE, errorMessage);
                 }
                 // 判断任务状态

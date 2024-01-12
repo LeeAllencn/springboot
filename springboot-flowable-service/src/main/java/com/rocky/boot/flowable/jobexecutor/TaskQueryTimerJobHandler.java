@@ -1,6 +1,6 @@
 package com.rocky.boot.flowable.jobexecutor;
 
-import com.rocky.boot.common.enums.ResultCode;
+import com.rocky.boot.common.enums.ResultCodeEnum;
 import com.rocky.boot.common.model.BaseResult;
 import com.rocky.boot.flowable.constant.FlowableConstant;
 import com.rocky.boot.flowable.enums.TaskStatus;
@@ -25,6 +25,7 @@ import org.flowable.variable.api.delegate.VariableScope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.Objects;
 
 /**
  * @author : rocky
@@ -93,14 +94,14 @@ public class TaskQueryTimerJobHandler implements JobHandler {
         dto.setProcessVariables(runtimeService.getVariables(processInstanceId));
         try {
             BaseResult<TaskHandleResp> result = taskRemoteService.taskQuery(beanName, isLast, dto);
-            if (result != null && ResultCode.SUCCESS.getCode().equalsIgnoreCase(result.getCode())) {
+            if (result != null && ResultCodeEnum.SUCCESS.getCode().equalsIgnoreCase(result.getCode())) {
                 TaskHandleResp resp = result.getData();
                 TaskStatus status = resp.getStatus();
                 String errorMessage = resp.getErrorMessage();
-                if (resp != null && resp.getUpdateVariables() != null) {
+                if (resp.getUpdateVariables() != null) {
                     runtimeService.setVariables(processInstanceId, resp.getUpdateVariables());
                 }
-                if (resp != null && StringUtils.isNotBlank(errorMessage)) {
+                if (StringUtils.isNotBlank(errorMessage)) {
                     taskService.setVariableLocal(taskId, FlowableConstant.ERROR_MESSAGE, errorMessage);
                 }
                 if (TaskStatus.EXECUTING.equals(status)) {
@@ -115,7 +116,7 @@ public class TaskQueryTimerJobHandler implements JobHandler {
                     job.setRepeat(null);
                 }
             } else {
-                userTaskHandler.failedTask(task, serviceName, beanName, result.getMessage());
+                userTaskHandler.failedTask(task, serviceName, beanName, Objects.requireNonNull(result).getMessage());
                 job.setRepeat(null);
             }
         } catch (Exception e) {

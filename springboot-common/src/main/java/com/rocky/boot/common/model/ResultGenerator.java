@@ -1,6 +1,6 @@
 package com.rocky.boot.common.model;
 
-import com.rocky.boot.common.enums.ResultCode;
+import com.rocky.boot.common.enums.ResultCodeEnum;
 
 /**
  * @author rocky
@@ -12,14 +12,14 @@ public class ResultGenerator {
     private static final String DEFAULT_SUCCESS_MESSAGE = "SUCCESS";
 
     public static <E> BaseResult<E> genSuccessResult() {
-        return new BaseResult<>(ResultCode.SUCCESS.getCode(), DEFAULT_SUCCESS_MESSAGE, null);
+        return new BaseResult<>(ResultCodeEnum.SUCCESS.getCode(), DEFAULT_SUCCESS_MESSAGE, null);
     }
 
     public static <E> BaseResult<E> genSuccessResult(E data) {
-        return new BaseResult<>(ResultCode.SUCCESS.getCode(), DEFAULT_SUCCESS_MESSAGE, data);
+        return new BaseResult<>(ResultCodeEnum.SUCCESS.getCode(), DEFAULT_SUCCESS_MESSAGE, data);
     }
 
-    public static <E> BaseResult<E> getFailResult(ResultCode resultCode, Object... args) {
-        return new BaseResult<>(resultCode.getCode(), resultCode.getWebMessage(args), null);
+    public static <E> BaseResult<E> getFailResult(ResultCodeEnum resultCodeEnum, Object... args) {
+        return new BaseResult<>(resultCodeEnum.getCode(), resultCodeEnum.getWebMessage(args), null);
     }
 }

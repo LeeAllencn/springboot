@@ -11,7 +11,7 @@ import com.rocky.boot.api.web.request.UserCreateReq;
 import com.rocky.boot.api.web.request.UserUpdateReq;
 import com.rocky.boot.api.web.response.UserDetailResp;
 import com.rocky.boot.api.web.response.UserListResp;
-import com.rocky.boot.common.exceptions.ParameterVerificationException;
+import com.rocky.boot.common.exception.ParameterVerificationException;
 import com.rocky.boot.common.model.PageParam;
 import com.rocky.boot.common.model.PageResult;
 import org.apache.commons.lang3.StringUtils;

@@ -2,7 +2,7 @@ package com.rocky.boot.api.web.config;
 
 import cn.hutool.json.JSONUtil;
 import com.rocky.boot.common.constant.KeyConstants;
-import com.rocky.boot.common.enums.ResultCode;
+import com.rocky.boot.common.enums.ResultCodeEnum;
 import com.rocky.boot.common.model.BaseResult;
 import com.rocky.boot.common.model.ResultGenerator;
 import lombok.extern.slf4j.Slf4j;
@@ -38,17 +38,17 @@ public class GlobalExceptionHandler {
             List<FieldError> fieldErrors = bindException.getFieldErrors();
             StringBuilder builder = new StringBuilder();
             fieldErrors.forEach(item -> builder.append(item.getField()).append(":").append(item.getDefaultMessage()).append(";\n"));
-            baseResult = ResultGenerator.getFailResult(ResultCode.PARAMETER_VERIFICATION_FAILED, builder.toString());
-            response.setStatus(ResultCode.PARAMETER_VERIFICATION_FAILED.getStatusCode());
+            baseResult = ResultGenerator.getFailResult(ResultCodeEnum.PARAMETER_VERIFICATION_FAILED, builder.toString());
+            response.setStatus(ResultCodeEnum.PARAMETER_VERIFICATION_FAILED.getStatusCode());
         } else if (e instanceof NoHandlerFoundException) {
             // 404 异常处理
             NoHandlerFoundException noHandlerFoundException = (NoHandlerFoundException) e;
-            baseResult = ResultGenerator.getFailResult(ResultCode.NOT_FOUND, noHandlerFoundException.getMessage());
-            response.setStatus(ResultCode.NOT_FOUND.getStatusCode());
+            baseResult = ResultGenerator.getFailResult(ResultCodeEnum.NOT_FOUND, noHandlerFoundException.getMessage());
+            response.setStatus(ResultCodeEnum.NOT_FOUND.getStatusCode());
         } else {
             // 未知异常统一处理
-            baseResult = ResultGenerator.getFailResult(ResultCode.INTERNAL_SERVER_ERROR);
-            response.setStatus(ResultCode.INTERNAL_SERVER_ERROR.getStatusCode());
+            baseResult = ResultGenerator.getFailResult(ResultCodeEnum.INTERNAL_SERVER_ERROR);
+            response.setStatus(ResultCodeEnum.INTERNAL_SERVER_ERROR.getStatusCode());
         }
         String traceId = MDC.get(KeyConstants.TRACE_ID);
         baseResult.setRequestId(traceId);
