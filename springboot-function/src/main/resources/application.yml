@@ -1,0 +1,19 @@
+spring:
+  # \u53D1\u9001\u90AE\u4EF6\u914D\u7F6E
+  mail:
+    host: smtp.qq.com # qq\u90AE\u7BB1\u670D\u52A1\u5668\u5730\u5740
+    username: example1@qq.com # \u7528\u6237\u540D
+    password:  # QQ\u7684\u6388\u6743\u7801
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+# \u53D1\u9001\u4EBA\u90AE\u4EF6\u914D\u7F6E
+mail:
+  fromMail:
+    addr: example1@qq.com

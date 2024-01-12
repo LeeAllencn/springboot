@@ -52,6 +52,7 @@
         <module>springboot-assembly</module>
         <module>springboot-netty-server</module>
         <module>springboot-netty-client</module>
+        <module>springboot-function</module>
     </modules>
 
 </project>

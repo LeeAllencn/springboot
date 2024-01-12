@@ -1,6 +1,7 @@
 package com.rocky.boot.api.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
@@ -29,9 +30,9 @@ public class User implements Serializable {
     private String password;
 
     /**
-     * 性别：0-女；1-男
+     * 性别:0-女;1-男
      */
-    private Boolean sex;
+    private Integer sex;
 
     /**
      * 电话号码
@@ -39,9 +40,10 @@ public class User implements Serializable {
     private String telephone;
 
     /**
-     * 是否删除：0-未删除；1-已删除
+     * 是否删除:1 表示删除;0 表示未删除
      */
-    private Boolean isDeleted;
+    @TableField("is_deleted")
+    private Boolean deleted;
 
     /**
      * 创建时间

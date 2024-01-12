@@ -22,7 +22,7 @@ public class UserDetailResp {
     private String username;
 
     @ApiModelProperty(value = "性别：0-女；1-男")
-    private Boolean sex;
+    private Integer sex;
 
     @ApiModelProperty(value = "电话号码")
     private String telephone;

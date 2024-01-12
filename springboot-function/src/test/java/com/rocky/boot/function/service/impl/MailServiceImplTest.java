@@ -1,6 +1,6 @@
-package com.rocky.boot.api.service.impl;
+package com.rocky.boot.function.service.impl;
 
-import com.rocky.boot.api.service.IMailService;
+import com.rocky.boot.function.service.IMailService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

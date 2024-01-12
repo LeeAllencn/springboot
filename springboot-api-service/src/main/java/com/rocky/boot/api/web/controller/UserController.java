@@ -34,7 +34,7 @@ public class UserController {
 
     @ApiOperation(value = "创建用户")
     @PostMapping
-//    @OperationalAudit(operate = "创建用户", resourceName = "username", paramType = "body_json", queryClass = "com.rocky.boot.api.mapper.UserMapper")
+    @OperationalAudit(operate = "创建用户", resourceName = "username", paramType = "body_json", queryClass = "com.rocky.boot.api.mapper.UserMapper")
     public BaseResult<Void> createUser(@RequestBody @Validated UserCreateReq userCreateReq) {
         userService.saveUser(userCreateReq);
         return ResultGenerator.genSuccessResult();

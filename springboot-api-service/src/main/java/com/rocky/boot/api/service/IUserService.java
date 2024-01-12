@@ -23,6 +23,13 @@ public interface IUserService {
     UserDetailResp getUser(Integer userId);
 
     /**
+     * 通过用户名获取用户详情
+     * @param username 用户名
+     * @return UserDetailResp
+     */
+    UserDetailResp getUserByUsername(String username);
+
+    /**
      * 创建用户
      * @param userCreateReq userCreateReq
      */
@@ -48,4 +55,11 @@ public interface IUserService {
      * @param userId userId
      */
     void deleteUser(Integer userId);
+
+    /**
+     * 判断用户名是否存在
+     * @param username 用户名
+     * @return Boolean
+     */
+    Boolean isExit(String username);
 }

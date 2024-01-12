@@ -35,12 +35,12 @@ public class OperationalAuditHandler {
     public void annotationPointcut() {}
 
     @AfterReturning(value = "annotationPointcut() && @annotation(operationalAudit)", returning = "result")
-    public void afterReturning(OperationalAudit operationalAudit, BaseResult result) throws IOException {
+    public void afterReturning(OperationalAudit operationalAudit, BaseResult<?> result) throws IOException {
         if (operationalAudit.paramType().equalsIgnoreCase(ParamTypeConstants.BODY_JSON)) {
             // 从json body获取参数
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             BufferedReader bufferedReader = null;
-            String content = "";
+            String content;
 
             try {
                 bufferedReader =  request.getReader() ;
@@ -50,15 +50,9 @@ public class OperationalAuditHandler {
                     sb.append(charBuffer, 0, bytesRead);
                 }
 
-            } catch (IOException ex) {
-                throw ex;
             } finally {
                 if (bufferedReader != null) {
-                    try {
-                        bufferedReader.close();
-                    } catch (IOException ex) {
-                        throw ex;
-                    }
+                    bufferedReader.close();
                 }
             }
 
@@ -66,6 +60,7 @@ public class OperationalAuditHandler {
 
             JSONObject jsonObject = JsonUtil.json2Obj(content);
             String resourceName = (String) jsonObject.get(operationalAudit.resourceName());
+            log.info("资源名称为:{}", resourceName);
 
         }
 

@@ -58,7 +58,7 @@ public class ControllerAspect {
     @AfterReturning(pointcut = "controllerAspect()", returning = "controllerResult")
     public void doAfterReturning(Object controllerResult) {
         if (controllerResult instanceof BaseResult) {
-            BaseResult baseResult = (BaseResult) controllerResult;
+            BaseResult<?> baseResult = (BaseResult<?>) controllerResult;
             baseResult.setRequestId(MDC.get(KeyConstants.TRACE_ID));
         }
         log.info("类型:{} URL:{} 执行结束，总耗时{}毫秒", request.getMethod(), request.getRequestURI(), System.currentTimeMillis() - startTime.get());

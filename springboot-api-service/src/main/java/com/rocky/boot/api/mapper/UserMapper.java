@@ -13,10 +13,10 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper extends BaseMapper<User> {
 
     /**
-     * 根据名称查询
-     * @param name 名称
+     * 根据用户名称查询
+     * @param username 用户名称
      * @return User
      */
-    @Select("select * from user where name = #{name}")
-    User queryByName(@Param("name") String name);
+    @Select("select * from user where username = #{username} and is_deleted = 0")
+    User getUserByUsername(@Param("username") String username);
 }

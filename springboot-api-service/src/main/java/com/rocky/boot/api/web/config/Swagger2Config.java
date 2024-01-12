@@ -19,10 +19,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-@ConditionalOnProperty(value = "spring.swagger.api.enable", havingValue = "true")
+@ConditionalOnProperty(value = "swagger.api.enable", havingValue = "true")
 public class Swagger2Config {
 
-    @Value("${spring.swagger.base-package}")
+    @Value("${swagger.base-package}")
     private String basePackage;
 
     @Bean

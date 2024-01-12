@@ -55,7 +55,7 @@
         <collections.version>3.2.2</collections.version>
         <feign-okhttp.version>12.2</feign-okhttp.version>
         <spring-cloud-openfeign>4.0.1</spring-cloud-openfeign>
-        <netty.version>5.0.0.Alpha2</netty.version>
+        <netty-all.version>5.0.0.Alpha2</netty-all.version>
     </properties>
 
     <!-- 公共jar包依赖管理 -->
@@ -65,7 +65,7 @@
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
-                <version>${netty.version}</version>
+                <version>${netty-all.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>

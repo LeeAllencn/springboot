@@ -1,6 +1,6 @@
-package com.rocky.boot.api.service.impl;
+package com.rocky.boot.function.service.impl;
 
-import com.rocky.boot.api.service.IMailService;
+import com.rocky.boot.function.service.IMailService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;

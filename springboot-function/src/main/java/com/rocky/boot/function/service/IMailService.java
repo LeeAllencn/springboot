@@ -1,4 +1,4 @@
-package com.rocky.boot.api.service;
+package com.rocky.boot.function.service;
 
 /**
  * @author rocky

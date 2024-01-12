@@ -11,6 +11,7 @@ import com.rocky.boot.api.web.request.UserCreateReq;
 import com.rocky.boot.api.web.request.UserUpdateReq;
 import com.rocky.boot.api.web.response.UserDetailResp;
 import com.rocky.boot.api.web.response.UserListResp;
+import com.rocky.boot.common.exceptions.ParameterVerificationException;
 import com.rocky.boot.common.model.PageParam;
 import com.rocky.boot.common.model.PageResult;
 import org.apache.commons.lang3.StringUtils;
@@ -47,14 +48,20 @@ public class UserServiceImpl implements IUserService {
         return userDetailResp;
     }
 
-    /**
-     * 当有Exception异常时，数据回滚
-     *
-     * @param userCreateReq 用户创建请求
-     */
+    @Override
+    public UserDetailResp getUserByUsername(String username) {
+        UserDetailResp userDetailResp = new UserDetailResp();
+        User user = userMapper.getUserByUsername(username);
+        BeanUtils.copyProperties(user, userDetailResp);
+        return userDetailResp;
+    }
+
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveUser(UserCreateReq userCreateReq) {
+        if (isExit(userCreateReq.getUsername())) {
+           throw new ParameterVerificationException("用户名已存在");
+        }
         User newUser = new User();
         BeanUtils.copyProperties(userCreateReq, newUser);
         Date date = new Date();
@@ -91,5 +98,11 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void deleteUser(Integer userId) {
         userMapper.deleteById(userId);
+    }
+
+    @Override
+    public Boolean isExit(String username) {
+        User user = userMapper.getUserByUsername(username);
+        return user != null;
     }
 }
