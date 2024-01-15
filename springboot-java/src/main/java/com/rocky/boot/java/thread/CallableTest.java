@@ -1,7 +1,7 @@
 package com.rocky.boot.java.thread;
 
 import com.google.common.util.concurrent.*;
-import com.rocky.boot.common.utils.ThreadPoolUtil;
+import com.rocky.boot.common.util.ThreadPoolUtil;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.jetbrains.annotations.NotNull;
 

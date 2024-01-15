@@ -1,4 +1,4 @@
-package com.rocky.boot.common.utils;
+package com.rocky.boot.common.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

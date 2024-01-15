@@ -1,6 +1,6 @@
 package com.rocky.boot.flowable.customer.process;
 
-import com.rocky.boot.common.utils.JsonUtil;
+import com.rocky.boot.common.util.JsonUtil;
 import com.rocky.boot.flowable.api.dto.ProcessNotifyDTO;
 import org.springframework.beans.BeanUtils;
 

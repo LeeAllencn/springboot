@@ -1,4 +1,4 @@
-package com.rocky.boot.common.utils;
+package com.rocky.boot.common.util;
 
 /**
  * @author rocky

@@ -1,6 +1,6 @@
 package com.rocky.boot.java.thread;
 
-import com.rocky.boot.common.utils.ThreadPoolUtil;
+import com.rocky.boot.common.util.ThreadPoolUtil;
 
 import java.util.concurrent.ThreadPoolExecutor;
 

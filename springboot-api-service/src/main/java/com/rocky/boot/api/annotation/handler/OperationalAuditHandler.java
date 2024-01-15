@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.rocky.boot.api.annotation.OperationalAudit;
 import com.rocky.boot.common.constant.ParamTypeConstants;
 import com.rocky.boot.common.model.BaseResult;
-import com.rocky.boot.common.utils.JsonUtil;
+import com.rocky.boot.common.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;

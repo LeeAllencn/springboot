@@ -1,4 +1,4 @@
-package com.rocky.boot.common.utils;
+package com.rocky.boot.common.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

@@ -1,7 +1,7 @@
 package com.rocky.boot.grpc.client;
 
-import com.rocky.boot.common.utils.GrpcBeanUtils;
-import com.rocky.boot.common.utils.JsonUtil;
+import com.rocky.boot.common.util.GrpcBeanUtils;
+import com.rocky.boot.common.util.JsonUtil;
 import com.rocky.boot.grpc.interfaces.HelloRequest;
 import com.rocky.boot.grpc.interfaces.MyServiceGrpc;
 import com.rocky.boot.grpc.interfaces.Proto3DefaultValue;
