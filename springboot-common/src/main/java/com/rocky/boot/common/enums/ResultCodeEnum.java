@@ -20,8 +20,11 @@ public enum ResultCodeEnum {
      * C 表示错误来源于第三方服务，比如CDN服务出错
      */
     SUCCESS("00000", "SUCCESS", 200),
+
     PARAMETER_VERIFICATION_FAILED("A0400", "Parameter Verification Failed : [{0}]", 400),
     NOT_FOUND("A0404", "Not Found : [{0}]", 404),
+
+    FILE_UPLOAD_FAILED("B0301", "File upload failed:[{0}]", 500),
     INTERNAL_SERVER_ERROR("B0500", "Internal Server Error", 500);
 
     /**

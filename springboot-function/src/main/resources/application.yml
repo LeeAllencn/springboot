@@ -1,4 +1,9 @@
 spring:
+  servlet:
+    multipart:
+      max-file-size: 128KB
+      max-request-size: 128KB
+
   # \u53D1\u9001\u90AE\u4EF6\u914D\u7F6E
   mail:
     host: smtp.qq.com # qq\u90AE\u7BB1\u670D\u52A1\u5668\u5730\u5740
