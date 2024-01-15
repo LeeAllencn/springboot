@@ -15,14 +15,9 @@
         <module>springboot-common</module>
         <module>springboot-api-service</module>
         <module>springboot-openapi-service</module>
-        <module>springboot-flowable-service</module>
-        <module>springboot-flowable-customer</module>
-        <module>springboot-quartz</module>
         <module>springboot-external-client</module>
         <module>springboot-code-generation</module>
-        <module>springboot-grpc-interfaces</module>
-        <module>springboot-grpc-server</module>
-        <module>springboot-grpc-client</module>
+        <module>springboot-quartz</module>
 
         <!-- 其他技术栈模块管理 -->
         <module>springboot-jpa</module>
@@ -48,12 +43,17 @@
         <module>springboot-kubernetes</module>
         <module>springboot-routing</module>
         <module>springboot-flowable-api</module>
+        <module>springboot-flowable-service</module>
+        <module>springboot-flowable-customer</module>
         <module>springboot-liteflow</module>
         <module>springboot-assembly</module>
         <module>springboot-netty-server</module>
         <module>springboot-netty-client</module>
         <module>springboot-function</module>
         <module>springboot-java</module>
+        <module>springboot-grpc-interfaces</module>
+        <module>springboot-grpc-server</module>
+        <module>springboot-grpc-client</module>
     </modules>
 
 </project>

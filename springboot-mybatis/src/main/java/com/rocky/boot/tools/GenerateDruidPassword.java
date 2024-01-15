@@ -3,7 +3,9 @@ package com.rocky.boot.tools;
 import com.alibaba.druid.filter.config.ConfigTools;
 
 /**
- * Created by Rocky on 2017-08-16.
+ *
+ * @author Rocky
+ * @date 2017-08-16
  */
 public class GenerateDruidPassword {
     public static void main(String[] args) throws Exception {

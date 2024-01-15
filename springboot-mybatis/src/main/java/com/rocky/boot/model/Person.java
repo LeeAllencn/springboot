@@ -1,7 +1,9 @@
 package com.rocky.boot.model;
 
 /**
- * Created by Rocky on 2017-08-14.
+ *
+ * @author Rocky
+ * @date 2017-08-14
  */
 public class Person {
     private Long id;

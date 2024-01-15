@@ -7,15 +7,11 @@ package com.rocky.boot.common.exception;
  */
 public class ServiceRuntimeException extends RuntimeException {
 
-    /**
-     * 业务编码
-     */
-    private String code;
+    public ServiceRuntimeException(String message) {
+        super(message);
+    }
 
-    /**
-     * 提示信息
-     */
-    private String message;
-
-
+    public ServiceRuntimeException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }
