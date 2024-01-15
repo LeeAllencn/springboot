@@ -1,9 +1,9 @@
 package com.rocky.boot.design.patterns.strategy;
 
 /**
+ * description: 模型鸭
  * @author rocky
- * @Description: 模型鸭
- * @Date: Created in 2018/11/19
+ * @date Created in 2018/11/19
  */
 public class ModelDuck extends Duck {
 

@@ -1,9 +1,9 @@
 package com.rocky.boot.design.patterns.strategy;
 
 /**
+ * description: 不出声，不会叫
  * @author rocky
- * @Description:
- * @Date: Created in 2018/11/19
+ * @date Created in 2018/11/19
  */
 public class MuteQuack implements QuackBehavior {
 

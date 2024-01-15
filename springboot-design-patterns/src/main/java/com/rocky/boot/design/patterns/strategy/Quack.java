@@ -1,8 +1,8 @@
 package com.rocky.boot.design.patterns.strategy;
 
 /**
+ * description: 呱呱叫
  * @author rocky
- * @Description:
  * @Date: Created in 2018/11/19
  */
 public class Quack implements QuackBehavior {

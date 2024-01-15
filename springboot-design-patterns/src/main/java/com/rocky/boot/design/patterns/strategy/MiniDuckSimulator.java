@@ -1,9 +1,9 @@
 package com.rocky.boot.design.patterns.strategy;
 
 /**
+ * description: 测试类
  * @author rocky
- * @Description:
- * @Date: Created in 2018/11/19
+ * @date Created in 2018/11/19
  */
 public class MiniDuckSimulator {
 
@@ -14,6 +14,7 @@ public class MiniDuckSimulator {
 
         Duck model = new ModelDuck();
         model.performFly();
+        // 动态改变模型鸭的飞行行为
         model.setFlyBehavior(new FlyRocketPowered());
         model.performFly();
     }
