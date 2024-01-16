@@ -7,7 +7,7 @@ package com.rocky.boot.design.patterns.factory.simplefactory;
  */
 public class Tester {
 
-    private char type;
+    private final char type;
     public Tester(char type) {
         this.type = type;
     }

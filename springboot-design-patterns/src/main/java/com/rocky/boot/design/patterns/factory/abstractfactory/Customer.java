@@ -7,7 +7,7 @@ package com.rocky.boot.design.patterns.factory.abstractfactory;
  */
 public class Customer {
 
-    private CompleteShoeFactory factory;
+    private final CompleteShoeFactory factory;
 
     public Customer(CompleteShoeFactory factory) {
         this.factory = factory;

@@ -6,7 +6,7 @@ package com.rocky.boot.design.patterns.factory.factorymethod;
  * @date : created in 2023/11/9
  */
 public class Tester {
-    private GameFactory gameFactory;
+    private final GameFactory gameFactory;
 
     public Tester(GameFactory gameFactory) {
         this.gameFactory = gameFactory;
