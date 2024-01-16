@@ -7,6 +7,9 @@ package com.rocky.boot.design.patterns.singleton;
  */
 public enum EnumerateSingleton {
 
-    INSTANCE;
+    /**
+     * 实例
+     */
+    INSTANCE
 
 }
