@@ -9,7 +9,8 @@ public abstract class CondimentDecorator extends Beverage {
 
     /**
      * 获取描述
-     * @return
+     * @return String
      */
+    @Override
     public abstract String getDescription();
 }

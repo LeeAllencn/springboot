@@ -7,11 +7,22 @@ package com.rocky.boot.design.patterns.decorator;
  */
 public abstract class Beverage {
 
+    /**
+     * 描述饮料
+     */
     String description = "Unknown Beverage";
 
+    /**
+     * 返回描述
+     * @return String
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * 花费抽象方法
+     * @return double
+     */
     public abstract double cost();
 }
