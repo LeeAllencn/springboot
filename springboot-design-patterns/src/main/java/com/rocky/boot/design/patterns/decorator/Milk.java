@@ -2,8 +2,8 @@ package com.rocky.boot.design.patterns.decorator;
 
 /**
  * @author rocky
- * @Description: 牛奶调料
- * @Date: Created in 2018/12/11
+ * description: 牛奶调料
+ * @date Created in 2018/12/11
  */
 public class Milk extends CondimentDecorator {
 

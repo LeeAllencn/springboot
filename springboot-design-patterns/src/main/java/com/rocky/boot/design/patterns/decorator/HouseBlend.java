@@ -2,8 +2,8 @@ package com.rocky.boot.design.patterns.decorator;
 
 /**
  * @author rocky
- * @Description: 综合咖啡
- * @Date: Created in 2018/12/11
+ * description: 综合咖啡
+ * @date Created in 2018/12/11
  */
 public class HouseBlend extends Beverage {
 

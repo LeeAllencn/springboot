@@ -2,8 +2,8 @@ package com.rocky.boot.design.patterns.decorator;
 
 /**
  * @author rocky
- * @Description: 摩卡调料
- * @Date: Created in 2018/12/11
+ * description: 摩卡调料
+ * @date Created in 2018/12/11
  */
 public class Mocha extends CondimentDecorator {
 

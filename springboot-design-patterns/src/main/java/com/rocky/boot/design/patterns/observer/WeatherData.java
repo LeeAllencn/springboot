@@ -5,12 +5,12 @@ import java.util.List;
 
 /**
  * @author rocky
- * @Description:
- * @Date: Created in 2018/11/19
+ * description: 气象数据
+ * @date Created in 2018/11/19
  */
 public class WeatherData implements Subject {
 
-    private List<Observer> observers;
+    private final List<Observer> observers;
 
     private float temperature;
 
@@ -19,7 +19,7 @@ public class WeatherData implements Subject {
     private float pressure;
 
     public WeatherData() {
-        observers = new ArrayList();
+        observers = new ArrayList<>();
     }
 
     @Override

@@ -6,8 +6,8 @@ import java.io.InputStream;
 
 /**
  * @author rocky
- * @Description: 编写自己的java.io装饰者LowerCaseInputStream
- * @Date: Created in 2018/12/11
+ * description: 编写自己的java.io装饰者LowerCaseInputStream
+ * @date Created in 2018/12/11
  */
 public class LowerCaseInputStream extends FilterInputStream {
     /**

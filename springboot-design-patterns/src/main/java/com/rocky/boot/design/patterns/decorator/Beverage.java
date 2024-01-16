@@ -2,8 +2,8 @@ package com.rocky.boot.design.patterns.decorator;
 
 /**
  * @author rocky
- * @Description: 饮料抽象类
- * @Date: Created in 2018/12/11
+ * description: 饮料抽象类
+ * @date Created in 2018/12/11
  */
 public abstract class Beverage {
 

@@ -2,8 +2,8 @@ package com.rocky.boot.design.patterns.observer;
 
 /**
  * @author rocky
- * @Description: 目前状况布告板
- * @Date: Created in 2018/11/19
+ * description: 目前状况布告板
+ * @date Created in 2018/11/19
  */
 public class CurrentConditionsDisplay implements Observer, DisplayElement {
 

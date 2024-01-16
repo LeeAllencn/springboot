@@ -2,8 +2,8 @@ package com.rocky.boot.design.patterns.decorator;
 
 /**
  * @author rocky
- * @Description: 奶泡调料
- * @Date: Created in 2018/12/11
+ * description: 奶泡调料
+ * @date Created in 2018/12/11
  */
 public class Whip extends CondimentDecorator {
 

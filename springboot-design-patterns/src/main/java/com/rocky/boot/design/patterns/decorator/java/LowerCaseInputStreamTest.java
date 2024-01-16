@@ -7,8 +7,8 @@ import java.io.InputStream;
 
 /**
  * @author rocky
- * @Description: LowerCaseInputStream测试类
- * @Date: Created in 2018/12/11
+ * description: LowerCaseInputStream测试类
+ * @date Created in 2018/12/11
  */
 public class LowerCaseInputStreamTest {
 

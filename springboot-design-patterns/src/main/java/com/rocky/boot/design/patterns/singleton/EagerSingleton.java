@@ -2,8 +2,8 @@ package com.rocky.boot.design.patterns.singleton;
 
 /**
  * @author rocky
- * @Description:
- * @Date: Created in 2018/11/19
+ * description:
+ * @date Created in 2018/11/19
  */
 public class EagerSingleton {
     /**

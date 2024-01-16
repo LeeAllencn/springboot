@@ -2,8 +2,8 @@ package com.rocky.boot.design.patterns.observer;
 
 /**
  * @author rocky
- * @Description:
- * @Date: Created in 2018/11/19
+ * description: ；布告板接口
+ * @date Created in 2018/11/19
  */
 public interface DisplayElement {
 

@@ -2,8 +2,8 @@ package com.rocky.boot.design.patterns.decorator;
 
 /**
  * @author rocky
- * @Description: 星巴克咖啡测试类
- * @Date: Created in 2018/12/11
+ * description: 星巴克咖啡测试类
+ * @date Created in 2018/12/11
  */
 public class StarbuzzCoffee {
 

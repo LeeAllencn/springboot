@@ -4,8 +4,8 @@ import java.util.Observable;
 
 /**
  * @author rocky
- * @Description: 使用java内置的观察者模式
- * @Date: Created in 2018/11/19
+ * description: 使用java内置的观察者模式
+ * @date Created in 2018/11/19
  */
 public class WeatherData extends Observable {
 

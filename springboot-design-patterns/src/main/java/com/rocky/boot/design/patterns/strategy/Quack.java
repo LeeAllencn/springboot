@@ -3,7 +3,7 @@ package com.rocky.boot.design.patterns.strategy;
 /**
  * description: 呱呱叫
  * @author rocky
- * @Date: Created in 2018/11/19
+ * @date Created in 2018/11/19
  */
 public class Quack implements QuackBehavior {
 
