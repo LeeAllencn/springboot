@@ -5,6 +5,7 @@ import com.rocky.boot.common.util.ThreadPoolUtil;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
+ * 实现Runnable接口创建线程类
  * @author : rocky
  * @date : created in 2021/7/12
  */

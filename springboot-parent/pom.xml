@@ -56,11 +56,19 @@
         <feign-okhttp.version>12.2</feign-okhttp.version>
         <spring-cloud-openfeign>4.0.1</spring-cloud-openfeign>
         <netty-all.version>5.0.0.Alpha2</netty-all.version>
+        <joda-time.version>2.12.5</joda-time.version>
     </properties>
 
     <!-- 公共jar包依赖管理 -->
     <dependencyManagement>
         <dependencies>
+
+            <!-- 能够支持更多的日历体系，并提供了很多非常方便的日期处理方法 -->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>io.netty</groupId>
@@ -134,6 +142,7 @@
                 <version>${validation-api.version}</version>
             </dependency>
 
+            <!-- 对java.lang的很好扩展，包含了大量非常实用的工具类，其中用的最多的有StringUtils，DateUtils，NumberUtils等 -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
@@ -169,6 +178,7 @@
                 <version>${grpc-spring-boot-starter.version}</version>
             </dependency>
 
+            <!-- 包含了Google对：集合,缓存,并发库,字符串处理, I/O等各个方面的支持 -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>

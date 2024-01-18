@@ -1,6 +1,7 @@
 package com.rocky.boot.java.thread;
 
 /**
+ * 继承Thread类创建线程类
  * @author : rocky
  * @date : created in 2021/7/12
  */

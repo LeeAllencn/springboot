@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.*;
 
 /**
+ * 实现Callable接口创建线程类
  * @author : rocky
  * @date : created in 2021/7/12
  */
