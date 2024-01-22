@@ -25,7 +25,6 @@
         <module>springboot-websocket</module>
         <module>springboot-cache</module>
         <module>springboot-mybatis</module>
-        <module>springboot-upload-file</module>
         <module>springboot-jms</module>
         <module>springboot-rabbitmq</module>
         <module>springboot-shiro</module>

@@ -13,7 +13,6 @@
     <artifactId>springboot-api-service</artifactId>
     <version>${springboot.version}</version>
     <name>springboot-api-service</name>
-    <description>Demo project for Spring Boot</description>
 
     <dependencies>
 

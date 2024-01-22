@@ -1,6 +1,8 @@
 package com.rocky.boot.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.github.pagehelper.PageInterceptor;
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -14,6 +16,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Properties;
 
 /**
@@ -56,7 +59,15 @@ public class DataSourceConfiguration {
         //指定基包
         fb.setTypeAliasesPackage(env.getProperty("mybatis.typeAliasesPackage"));
         //指定xml文件位置
-        fb.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(env.getProperty("mybatis.mapperLocations")));
+        fb.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(Objects.requireNonNull(env.getProperty("mybatis.mapperLocations"))));
+
+        // 配置分页插件
+        Interceptor interceptor = new PageInterceptor();
+        Properties properties = new Properties();
+        // 分页尺寸为0时查询所有纪录不再执行分页
+        properties.setProperty("pageSizeZero", "true");
+        interceptor.setProperties(properties);
+        fb.setPlugins(interceptor);
         return fb.getObject();
     }
 

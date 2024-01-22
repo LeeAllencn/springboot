@@ -2,6 +2,8 @@ package com.rocky.boot.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.rocky.boot.core.Result;
+import com.rocky.boot.core.ResultGenerator;
 import com.rocky.boot.model.Person;
 import com.rocky.boot.service.IPersonService;
 import org.springframework.stereotype.Controller;
@@ -24,15 +26,15 @@ public class PersonController {
 
     @GetMapping
     @ResponseBody
-    public PageInfo<Person> queryAll(@RequestParam("pageNum")int pageNum, @RequestParam("pageSize")int pageSize) {
+    public Result queryAll(@RequestParam("pageNum")int pageNum, @RequestParam("pageSize")int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<Person> personList = personService.queryAll();
-        return new PageInfo<>(personList);
+        return ResultGenerator.genSuccessResult(new PageInfo<>(personList));
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Person queryById(@PathVariable int id) {
-        return personService.queryById(id);
+    public Result queryById(@PathVariable int id) {
+        return ResultGenerator.genSuccessResult(personService.queryById(id));
     }
 }
