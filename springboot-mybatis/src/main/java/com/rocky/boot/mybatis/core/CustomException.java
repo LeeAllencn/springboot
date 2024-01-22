@@ -1,4 +1,4 @@
-package com.rocky.boot.core;
+package com.rocky.boot.mybatis.core;
 
 /**
  * @author rocky

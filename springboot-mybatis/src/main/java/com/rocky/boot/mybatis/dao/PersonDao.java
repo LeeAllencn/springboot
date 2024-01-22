@@ -1,7 +1,7 @@
-package com.rocky.boot.dao;
+package com.rocky.boot.mybatis.dao;
 
-import com.rocky.boot.core.Mapper;
-import com.rocky.boot.model.Person;
+import com.rocky.boot.mybatis.core.Mapper;
+import com.rocky.boot.mybatis.model.Person;
 
 import java.util.List;
 

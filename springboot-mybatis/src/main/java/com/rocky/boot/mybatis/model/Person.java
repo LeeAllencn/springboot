@@ -1,4 +1,4 @@
-package com.rocky.boot.model;
+package com.rocky.boot.mybatis.model;
 
 /**
  *

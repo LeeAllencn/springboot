@@ -1,4 +1,4 @@
-package com.rocky.boot.core;
+package com.rocky.boot.mybatis.core;
 
 /**
  * 响应结果生成工具

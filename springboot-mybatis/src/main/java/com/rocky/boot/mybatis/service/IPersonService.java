@@ -1,7 +1,7 @@
-package com.rocky.boot.service;
+package com.rocky.boot.mybatis.service;
 
-import com.rocky.boot.core.Service;
-import com.rocky.boot.model.Person;
+import com.rocky.boot.mybatis.core.Service;
+import com.rocky.boot.mybatis.model.Person;
 
 import java.util.List;
 

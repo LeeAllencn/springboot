@@ -1,4 +1,4 @@
-package com.rocky.boot.tools;
+package com.rocky.boot.mybatis.tools;
 
 import com.alibaba.druid.filter.config.ConfigTools;
 

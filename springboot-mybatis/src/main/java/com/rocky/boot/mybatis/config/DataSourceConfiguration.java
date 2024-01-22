@@ -1,4 +1,4 @@
-package com.rocky.boot.config;
+package com.rocky.boot.mybatis.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.github.pagehelper.PageInterceptor;
@@ -26,7 +26,7 @@ import java.util.Properties;
  */
 
 @Configuration
-@MapperScan(basePackages = "com.rocky.boot.dao")
+@MapperScan(basePackages = "com.rocky.boot.mybatis.dao")
 public class DataSourceConfiguration {
 
     @Resource

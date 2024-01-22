@@ -1,4 +1,4 @@
-package com.rocky.boot.core;
+package com.rocky.boot.mybatis.core;
 
 /**
  * 统一API响应结果封装

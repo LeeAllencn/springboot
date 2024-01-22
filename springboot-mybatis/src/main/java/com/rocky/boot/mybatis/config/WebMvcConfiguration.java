@@ -1,4 +1,4 @@
-package com.rocky.boot.config;
+package com.rocky.boot.mybatis.config;
 
 
 import cn.hutool.core.util.StrUtil;
@@ -6,10 +6,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
-import com.rocky.boot.core.CustomException;
-import com.rocky.boot.core.Result;
-import com.rocky.boot.core.ResultCode;
-import com.rocky.boot.core.ServiceException;
+import com.rocky.boot.mybatis.core.CustomException;
+import com.rocky.boot.mybatis.core.Result;
+import com.rocky.boot.mybatis.core.ResultCode;
+import com.rocky.boot.mybatis.core.ServiceException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;

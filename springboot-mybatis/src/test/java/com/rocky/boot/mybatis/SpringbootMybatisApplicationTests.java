@@ -1,4 +1,4 @@
-package com.rocky.boot;
+package com.rocky.boot.mybatis;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

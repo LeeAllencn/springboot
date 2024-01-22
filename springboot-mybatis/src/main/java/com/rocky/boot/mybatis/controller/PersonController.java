@@ -1,11 +1,11 @@
-package com.rocky.boot.controller;
+package com.rocky.boot.mybatis.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.rocky.boot.core.Result;
-import com.rocky.boot.core.ResultGenerator;
-import com.rocky.boot.model.Person;
-import com.rocky.boot.service.IPersonService;
+import com.rocky.boot.mybatis.core.Result;
+import com.rocky.boot.mybatis.core.ResultGenerator;
+import com.rocky.boot.mybatis.model.Person;
+import com.rocky.boot.mybatis.service.IPersonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

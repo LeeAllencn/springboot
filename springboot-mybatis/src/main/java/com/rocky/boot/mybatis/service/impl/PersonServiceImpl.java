@@ -1,9 +1,9 @@
-package com.rocky.boot.service.impl;
+package com.rocky.boot.mybatis.service.impl;
 
-import com.rocky.boot.core.AbstractService;
-import com.rocky.boot.dao.PersonDao;
-import com.rocky.boot.model.Person;
-import com.rocky.boot.service.IPersonService;
+import com.rocky.boot.mybatis.core.AbstractService;
+import com.rocky.boot.mybatis.dao.PersonDao;
+import com.rocky.boot.mybatis.model.Person;
+import com.rocky.boot.mybatis.service.IPersonService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

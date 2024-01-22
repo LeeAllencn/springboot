@@ -1,4 +1,4 @@
-package com.rocky.boot.core;
+package com.rocky.boot.mybatis.core;
 
 /**
  * 响应码枚举，参考HTTP状态码的语义
