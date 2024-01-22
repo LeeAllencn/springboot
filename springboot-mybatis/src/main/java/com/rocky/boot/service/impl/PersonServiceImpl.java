@@ -1,5 +1,6 @@
 package com.rocky.boot.service.impl;
 
+import com.rocky.boot.core.AbstractService;
 import com.rocky.boot.dao.PersonDao;
 import com.rocky.boot.model.Person;
 import com.rocky.boot.service.IPersonService;
@@ -14,7 +15,7 @@ import java.util.List;
  * @date 2017-08-14
  */
 @Service
-public class PersonServiceImpl implements IPersonService {
+public class PersonServiceImpl extends AbstractService<Person> implements IPersonService {
 
     @Resource
     private PersonDao personDao;
@@ -26,6 +27,6 @@ public class PersonServiceImpl implements IPersonService {
 
     @Override
     public List<Person> queryAll() {
-        return personDao.selectAll();
+        return personDao.selectAllData();
     }
 }

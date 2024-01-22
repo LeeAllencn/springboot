@@ -17,7 +17,7 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
 
-    <select id="selectAll" resultMap="baseResultMap">
+    <select id="selectAllData" resultMap="baseResultMap">
         select
         <include refid="baseColumnList"/>
         from person

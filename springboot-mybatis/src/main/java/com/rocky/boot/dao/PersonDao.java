@@ -1,5 +1,6 @@
 package com.rocky.boot.dao;
 
+import com.rocky.boot.core.Mapper;
 import com.rocky.boot.model.Person;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * @author Rocky
  * @date 2017-08-14
  */
-public interface PersonDao {
+public interface PersonDao extends Mapper<Person> {
     /**
      * 查询
      * @param id id
@@ -21,5 +22,5 @@ public interface PersonDao {
      * 查询列表
      * @return List
      */
-    List<Person> selectAll();
+    List<Person> selectAllData();
 }

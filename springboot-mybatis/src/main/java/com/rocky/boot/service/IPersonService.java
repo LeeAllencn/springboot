@@ -1,5 +1,6 @@
 package com.rocky.boot.service;
 
+import com.rocky.boot.core.Service;
 import com.rocky.boot.model.Person;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * @author Rocky
  * @date 2017-08-14
  */
-public interface IPersonService {
+public interface IPersonService extends Service<Person> {
 
     /**
      * 查询
