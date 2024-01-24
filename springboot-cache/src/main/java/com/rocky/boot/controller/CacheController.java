@@ -2,14 +2,18 @@ package com.rocky.boot.controller;
 
 import com.rocky.boot.model.Person;
 import com.rocky.boot.service.DemoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
+/**
+ * @author rocky
+ */
 @RestController
 public class CacheController {
 	
-	@Autowired
+	@Resource
 	DemoService demoService;
 	
 	

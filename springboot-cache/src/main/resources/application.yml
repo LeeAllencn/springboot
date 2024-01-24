@@ -1,13 +1,13 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/spring_boot_jpa
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring_boot_jpa?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&nullCatalogMeansCurrent=true&serverTimezone=UTC
     username: root
     password: adminpwd
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true    # 设置hibernate操作时控制台显示其真实的sql语句
+    show-sql: true
   jackson:
     serialization:
-      indent_output: true   # 格式化控制器输出的json字符串
+      indent_output: true
