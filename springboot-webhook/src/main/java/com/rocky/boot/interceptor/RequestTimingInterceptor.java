@@ -8,7 +8,9 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /**
- * Created by Rocky on 2017-12-08.
+ *
+ * @author Rocky
+ * @date 2017-12-08
  */
 public class RequestTimingInterceptor extends HandlerInterceptorAdapter {
 
@@ -18,7 +20,7 @@ public class RequestTimingInterceptor extends HandlerInterceptorAdapter {
 
     // Note (1)
 
-    private static final Summary responseTimeInMs = Summary
+    private static final Summary RESPONSE_TIME_IN_MS = Summary
             .build()
             .name("http_response_time_milliseconds")
             .labelNames("method", "handler", "status")
@@ -28,7 +30,7 @@ public class RequestTimingInterceptor extends HandlerInterceptorAdapter {
 
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         // Note (2)
 
         request.setAttribute(REQ_PARAM_TIMING, System.currentTimeMillis());
@@ -36,7 +38,7 @@ public class RequestTimingInterceptor extends HandlerInterceptorAdapter {
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
         Long timingAttr = (Long) request.getAttribute(REQ_PARAM_TIMING);
         long completedTime = System.currentTimeMillis() - timingAttr;
         String handlerLabel = handler.toString();
@@ -48,7 +50,7 @@ public class RequestTimingInterceptor extends HandlerInterceptorAdapter {
         }
         // Note (3)
 
-        responseTimeInMs.labels(request.getMethod(), handlerLabel,
+        RESPONSE_TIME_IN_MS.labels(request.getMethod(), handlerLabel,
                 Integer.toString(response.getStatus())).observe(completedTime);
     }
 }

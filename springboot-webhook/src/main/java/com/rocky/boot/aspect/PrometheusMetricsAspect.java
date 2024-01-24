@@ -14,16 +14,18 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
- * Created by Rocky on 2017-12-08.
+ *
+ * @author Rocky
+ * @date 2017-12-08
  */
 @Aspect
 @Component
 public class PrometheusMetricsAspect {
-    private static final Counter requestTotal = Counter.build().name("couter_all").labelNames("api").help
+    private static final Counter REQUEST_TOTAL = Counter.build().name("couter_all").labelNames("api").help
             ("total request couter of api").register();
-    private static final Counter requestError = Counter.build().name("couter_error").labelNames("api").help
+    private static final Counter REQUEST_ERROR = Counter.build().name("couter_error").labelNames("api").help
             ("response Error couter of api").register();
-    private static final Histogram histogram = Histogram.build().name("histogram_consuming").labelNames("api").help
+    private static final Histogram HISTOGRAM = Histogram.build().name("histogram_consuming").labelNames("api").help
             ("response consuming of api").register();
 
     @Pointcut("@annotation(com.rocky.boot.aspect.PrometheusMetrics)")
@@ -31,7 +33,7 @@ public class PrometheusMetricsAspect {
     }
 
     @Around(value="pcMethod() && @annotation(annotation)")
-    public Object MetricsCollector(ProceedingJoinPoint joinPoint, PrometheusMetrics annotation) throws Throwable {
+    public Object metricsCollector(ProceedingJoinPoint joinPoint, PrometheusMetrics annotation) throws Throwable {
 
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         PrometheusMetrics prometheusMetrics = methodSignature.getMethod().getAnnotation(PrometheusMetrics.class);
@@ -45,13 +47,13 @@ public class PrometheusMetricsAspect {
                 name = request.getRequestURI();
             }
 
-            requestTotal.labels(name).inc();
-            Histogram.Timer requestTimer = histogram.labels(name).startTimer();
+            REQUEST_TOTAL.labels(name).inc();
+            Histogram.Timer requestTimer = HISTOGRAM.labels(name).startTimer();
             Object object;
             try {
                 object = joinPoint.proceed();
             } catch (Exception e) {
-                requestError.labels(name).inc();
+                REQUEST_ERROR.labels(name).inc();
                 throw e;
             } finally {
                 requestTimer.observeDuration();

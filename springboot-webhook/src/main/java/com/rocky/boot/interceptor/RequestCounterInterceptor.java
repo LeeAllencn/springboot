@@ -11,7 +11,9 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /**
- * Created by Rocky on 2017-12-08.
+ *
+ * @author Rocky
+ * @date 2017-12-08
  */
 public class RequestCounterInterceptor extends HandlerInterceptorAdapter {
 
@@ -19,7 +21,7 @@ public class RequestCounterInterceptor extends HandlerInterceptorAdapter {
 
     // Note (1)
 
-    private static final Counter requestTotal = Counter.build()
+    private static final Counter REQUEST_TOTAL = Counter.build()
             .name("http_requests_total")
             .labelNames("method", "handler", "status")
             .help("Http Request Total").register();
@@ -27,8 +29,7 @@ public class RequestCounterInterceptor extends HandlerInterceptorAdapter {
 
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e)
-            throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) {
         // Update counters
 
         String handlerLabel = handler.toString();
@@ -40,6 +41,6 @@ public class RequestCounterInterceptor extends HandlerInterceptorAdapter {
         }
         // Note (2)
 
-        requestTotal.labels(request.getMethod(), handlerLabel, Integer.toString(response.getStatus())).inc();
+        REQUEST_TOTAL.labels(request.getMethod(), handlerLabel, Integer.toString(response.getStatus())).inc();
     }
 }
