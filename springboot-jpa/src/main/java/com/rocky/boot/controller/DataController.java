@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.rocky.boot.Repository.PersonRepository;
 import com.rocky.boot.model.Person;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -12,12 +11,17 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 
+
+/**
+ * @author rocky
+ */
 @RestController
 public class DataController {
-	//1 Spring Data JPA已自动为你注册bean，所以可自动注入
-	@Autowired
-	PersonRepository personRepository;
+
+	@Resource
+	private PersonRepository personRepository;
 	
 	/**
 	 * 保存
@@ -33,10 +37,7 @@ public class DataController {
 	 */
 	@RequestMapping("/save")
 	public Person save(String name,String address,Integer age){
-		
-		Person p = personRepository.save(new Person(null, name, age, address));
-		
-		return p;
+		return personRepository.save(new Person(null, name, age, address));
 		
 	}
 	
@@ -47,11 +48,7 @@ public class DataController {
 	 */
 	@RequestMapping("/q1")
 	public List<Person> q1(String address){
-		
-		List<Person> people = personRepository.findByAddress(address);
-		
-		return people;
-		
+		return personRepository.findByAddress(address);
 	}
 	
 	/**
@@ -59,11 +56,7 @@ public class DataController {
 	 */
 	@RequestMapping("/q2")
 	public Person q2(String name,String address){
-		
-		Person people = personRepository.findByNameAndAddress(name, address);
-		
-		return people;
-		
+		return personRepository.findByNameAndAddress(name, address);
 	}
 	
 	/**
@@ -71,11 +64,7 @@ public class DataController {
 	 */
 	@RequestMapping("/q3")
 	public Person q3(String name,String address){
-		
-		Person p = personRepository.withNameAndAddressQuery(name, address);
-		
-		return p;
-		
+		return personRepository.withNameAndAddressQuery(name, address);
 	}
 	
 	/**
@@ -83,11 +72,7 @@ public class DataController {
 	 */
 	@RequestMapping("/q4")
 	public Person q4(String name,String address){
-		
-		Person p = personRepository.withNameAndAddressNamedQuery(name, address);
-		
-		return p;
-		
+		return personRepository.withNameAndAddressNamedQuery(name, address);
 	}
 	
 	/**
@@ -95,11 +80,7 @@ public class DataController {
 	 */
 	@RequestMapping("/sort")
 	public List<Person> sort(){
-		
-		List<Person> people = personRepository.findAll(new Sort(Direction.ASC,"age"));
-		
-		return people;
-		
+		return personRepository.findAll(new Sort(Direction.ASC,"age"));
 	}
 	
 	/**
@@ -107,23 +88,6 @@ public class DataController {
 	 */
 	@RequestMapping("/page")
 	public Page<Person> page(){
-		
-		Page<Person> pagePeople = personRepository.findAll(new PageRequest(1, 2));
-		
-		return pagePeople;
-		
+		return personRepository.findAll(new PageRequest(1, 2));
 	}
-	
-	
-	/*@RequestMapping("/auto")
-	public Page<Person> auto(Person person){
-		
-		Page<Person> pagePeople = personRepository.findByAuto(person, new PageRequest(0, 10));
-		
-		return pagePeople;
-		
-	}*/
-	
-	
-
 }

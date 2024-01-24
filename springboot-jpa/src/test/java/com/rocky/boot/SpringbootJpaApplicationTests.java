@@ -25,7 +25,7 @@ public class SpringbootJpaApplicationTests {
 
 	// 基本查询测试
 	@Test
-	public void testBaseQuery() throws Exception {
+	public void testBaseQuery() {
 		Person person=new Person(8L,"TT",30,"海口");
 		personRepository.findAll();
 		personRepository.findOne(8L);
@@ -38,11 +38,13 @@ public class SpringbootJpaApplicationTests {
 
 	//分页查询测试
 	@Test
-	public void testPageQuery() throws Exception {
+	public void testPageQuery() {
 		int page=0,size=2;
 		Sort sort = new Sort(Sort.Direction.DESC, "id");
 		Pageable pageable = new PageRequest(page, size, sort);
 		Page<Person> record1 = personRepository.findAll(pageable);
+		System.out.println(record1);
 		Page<Person> record2 = personRepository.findByAge(27, pageable);
+		System.out.println(record2);
 	}
 }

@@ -5,12 +5,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
-@Entity //1 指明这是一个和数据库表映射的实体类
-@NamedQuery(name = "Person.withNameAndAddressNamedQuery",
-query = "select p from Person p where p.name=?1 and address=?2")
+/**
+ * @author rocky
+ * Entity注解 指明这是一个和数据库表映射的实体类
+ */
+@Entity
+@NamedQuery(name = "Person.withNameAndAddressNamedQuery", query = "select p from Person p where p.name=?1 and p.address=?2")
 public class Person {
-	@Id //2 主键
-	@GeneratedValue //3 默认使用主键的方式自增
+	/**
+	 * Id注解 表示主键
+	 * GeneratedValue注解 表示默认使用主键的方式自增
+	 */
+	@Id
+	@GeneratedValue
 	private Long id;
 	
 	private String name;
