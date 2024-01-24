@@ -1,7 +1,10 @@
 package com.rocky.boot.model;
 
+/**
+ * @author rocky
+ */
 public class WiselyResponse {
-    private String responseMessage;
+    private final String responseMessage;
     public WiselyResponse(String responseMessage){
         this.responseMessage = responseMessage;
     }

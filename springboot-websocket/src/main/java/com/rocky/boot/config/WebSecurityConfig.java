@@ -7,6 +7,9 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+/**
+ * @author rocky
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
@@ -14,19 +17,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/login").permitAll()//1根路径和/login路径不拦截
+                // 1根路径和/login路径不拦截
+                .antMatchers("/","/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login") //2登陆页面
-                .defaultSuccessUrl("/chat") //3登陆成功转向该页面
+                // 2登陆页面
+                .loginPage("/login")
+                // 3登陆成功转向该页面
+                .defaultSuccessUrl("/chat")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
     }
 
-    //4
+    /**
+     * 4
+     * @param auth auth
+     * @throws Exception Exception
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     		auth
@@ -35,9 +45,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
                 .withUser("wisely").password("wisely").roles("USER");
     }
-    //5忽略静态资源的拦截
+
+    /**
+     * 5忽略静态资源的拦截
+     * @param web web
+     */
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web) {
         web.ignoring().antMatchers("/resources/static/**");
     }
 
