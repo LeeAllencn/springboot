@@ -31,7 +31,6 @@
         <module>springboot-mybatis-multidatasource</module>
         <module>springboot-mongodb</module>
         <module>springboot-jsp</module>
-        <module>springboot-api-project-seed</module>
         <module>springboot-promethues</module>
         <module>springboot-webhook</module>
         <module>springboot-elasticsearch</module>
