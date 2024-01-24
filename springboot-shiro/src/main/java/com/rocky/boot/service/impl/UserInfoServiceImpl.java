@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
- * Created by Rocky on 2017-09-19.
+ *
+ * @author Rocky
+ * @date 2017-09-19
  */
 @Service
 public class UserInfoServiceImpl implements UserInfoService {

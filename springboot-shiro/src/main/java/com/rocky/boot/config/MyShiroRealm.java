@@ -14,7 +14,9 @@ import org.apache.shiro.util.ByteSource;
 import javax.annotation.Resource;
 
 /**
- * Created by Rocky on 2017-09-19.
+ *
+ * @author Rocky
+ * @date 2017-09-19
  */
 public class MyShiroRealm extends AuthorizingRealm {
     @Resource
@@ -33,7 +35,12 @@ public class MyShiroRealm extends AuthorizingRealm {
         return authorizationInfo;
     }
 
-    /*主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。*/
+    /**
+     * 主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。
+     * @param token token
+     * @return AuthenticationInfo
+     * @throws AuthenticationException 异常
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
             throws AuthenticationException {
@@ -56,13 +63,16 @@ public class MyShiroRealm extends AuthorizingRealm {
             // 抛出 帐号锁定异常
             throw new LockedAccountException();
         }
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                userInfo, //用户名
-                userInfo.getPassword(), //密码
-                ByteSource.Util.bytes(userInfo.getCredentialsSalt()),//salt=username+salt
-                getName()  //realm name
+        return new SimpleAuthenticationInfo(
+                // 用户名
+                userInfo,
+                // 密码
+                userInfo.getPassword(),
+                // salt=username+salt
+                ByteSource.Util.bytes(userInfo.getCredentialsSalt()),
+                // realm name
+                getName()
         );
-        return authenticationInfo;
     }
 
 }

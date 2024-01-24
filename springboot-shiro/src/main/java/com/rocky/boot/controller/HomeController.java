@@ -1,6 +1,5 @@
 package com.rocky.boot.controller;
 
-import com.rocky.boot.entry.UserInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -22,7 +21,9 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Created by Rocky on 2017-09-19.
+ *
+ * @author Rocky
+ * @date 2017-09-19
  */
 @Controller
 public class HomeController {
@@ -32,7 +33,7 @@ public class HomeController {
     }
 
     @RequestMapping("/login")
-    public String login(HttpServletRequest request, Map<String, Object> map) throws Exception{
+    public String login(HttpServletRequest request, Map<String, Object> map) {
         System.out.println("HomeController.login()");
         // 登录失败从request中获取shiro处理的异常信息。
         // shiroLoginFailure:就是shiro异常类的全类名.
@@ -67,7 +68,8 @@ public class HomeController {
                 username, password.toCharArray());
         token.setRememberMe(rememberMe);
         try {
-            currentUser.login(token);	// 执行到这时就会跳转到shiro的认证方法doGetAuthenticationInfo中去
+            // 执行到这时就会跳转到shiro的认证方法doGetAuthenticationInfo中去
+            currentUser.login(token);
         } catch ( UnknownAccountException uae ) {
             //username wasn't in the system, show them an error message?
             System.out.println("1-用户名不存在");
@@ -128,12 +130,14 @@ public class HomeController {
         //生成并输出随机的验证文字
         g.setFont(font);
         String randsString = "";
-        int itmp = 0;
+        int itmp;
         for(int i=0;i<4;i++){
             if(random.nextInt(2) == 1){
-                itmp = random.nextInt(26) + 65;	//生成A-Z的字母
+                //生成A-Z的字母
+                itmp = random.nextInt(26) + 65;
             }else{
-                itmp = random.nextInt(10) + 48;	//生成0-9的数字
+                // 生成0-9的数字
+                itmp = random.nextInt(10) + 48;
             }
 
             char ctmp = (char)itmp;
@@ -142,11 +146,11 @@ public class HomeController {
             g.setColor(color);
 
             //文字旋转指定角度
-            Graphics2D g2d_word = (Graphics2D)g;
+            Graphics2D g2dWord = (Graphics2D)g;
             AffineTransform trans = new AffineTransform();
             trans.rotate(random.nextInt(10) * 3.14 / 180,i,7);
 
-            g2d_word.setTransform(trans);
+            g2dWord.setTransform(trans);
             g.drawString(String.valueOf(ctmp),i*20+10,25);
         }
 
@@ -159,8 +163,12 @@ public class HomeController {
 
     public Color getRandColor(int s, int e){
         Random random = new Random();
-        if(s > 255) s = 255;
-        if(e > 255) e = 255;
+        if(s > 255) {
+            s = 255;
+        }
+        if(e > 255) {
+            e = 255;
+        }
 
         int r = s + random.nextInt(e - s);
         int g = s + random.nextInt(e - s);
