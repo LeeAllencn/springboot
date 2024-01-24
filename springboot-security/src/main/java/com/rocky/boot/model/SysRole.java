@@ -4,12 +4,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * @author rocky
+ */
 @Entity
 public class SysRole {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String name;  //name为角色名称
+	/**
+	 * 角色名称
+	 */
+	private String name;
 	public Long getId() {
 		return id;
 	}
@@ -22,7 +28,4 @@ public class SysRole {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-
 }

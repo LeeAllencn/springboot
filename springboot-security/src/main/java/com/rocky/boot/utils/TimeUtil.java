@@ -6,7 +6,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by Rocky on 2017/8/6.
+ *
+ * @author Rocky
+ * @date 2017/8/6
  */
 @Component
 public class TimeUtil implements Serializable {

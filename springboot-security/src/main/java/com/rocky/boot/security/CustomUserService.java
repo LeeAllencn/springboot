@@ -7,7 +7,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-
+/**
+ * @author rocky
+ */
 public class CustomUserService implements UserDetailsService { //1 自定义需要实现UserDetailsService接口
 	@Autowired
 	SysUserRepository userRepository;
@@ -19,8 +21,8 @@ public class CustomUserService implements UserDetailsService { //1 自定义需�
 		if(user == null){
 			throw new UsernameNotFoundException("用户名不存在");
 		}
-		
-		return user; //3 直接返回给Spring Security使用
+		//3 直接返回给Spring Security使用
+		return user;
 	}
 
 }

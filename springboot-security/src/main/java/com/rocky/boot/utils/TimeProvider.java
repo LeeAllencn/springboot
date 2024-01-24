@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @author rocky
+ */
 @Component
 public class TimeProvider implements Serializable {
 

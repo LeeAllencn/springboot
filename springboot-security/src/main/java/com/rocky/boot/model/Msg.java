@@ -1,15 +1,18 @@
 package com.rocky.boot.model;
 
+/**
+ * @author rocky
+ */
 public class Msg {
 	private String title;
 	private String content;
-	private String etraInfo;
+	private String extraInfo;
 	
-	public Msg(String title, String content, String etraInfo) {
+	public Msg(String title, String content, String extraInfo) {
 		super();
 		this.title = title;
 		this.content = content;
-		this.etraInfo = etraInfo;
+		this.extraInfo = extraInfo;
 	}
 	public String getTitle() {
 		return title;
@@ -23,11 +26,12 @@ public class Msg {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getEtraInfo() {
-		return etraInfo;
+
+	public String getExtraInfo() {
+		return extraInfo;
 	}
-	public void setEtraInfo(String etraInfo) {
-		this.etraInfo = etraInfo;
+
+	public void setExtraInfo(String extraInfo) {
+		this.extraInfo = extraInfo;
 	}
-	
 }

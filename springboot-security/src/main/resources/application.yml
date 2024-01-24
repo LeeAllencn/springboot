@@ -1,9 +1,9 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.0.86:3306/spring_boot_security
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring_boot_security?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&nullCatalogMeansCurrent=true&serverTimezone=UTC
     username: root
-    password:
+    password: adminpwd
   thymeleaf:
     cache: false
   jpa:

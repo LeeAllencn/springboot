@@ -3,8 +3,9 @@ package com.rocky.boot.service.impl;
 import com.rocky.boot.model.User;
 import com.rocky.boot.repository.UserRepository;
 import com.rocky.boot.service.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author lixin
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements IUserService {
 
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
     @Override

@@ -6,7 +6,6 @@ import com.rocky.boot.jwt.JwtTokenUtil;
 import com.rocky.boot.jwt.JwtUser;
 import com.rocky.boot.model.User;
 import com.rocky.boot.service.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mobile.device.Device;
@@ -19,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -30,16 +30,16 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/user")
 public class AuthenticationRestController {
 
-    @Autowired
+    @Resource
     private AuthenticationManager authenticationManager;
 
-    @Autowired
+    @Resource
     private UserDetailsService userDetailsService;
 
-    @Autowired
+    @Resource
     private JwtTokenUtil jwtTokenUtil;
 
-    @Autowired
+    @Resource
     private IUserService userService;
 
     @Value("${jwt.header}")
@@ -47,8 +47,8 @@ public class AuthenticationRestController {
 
     /**
      * 用户注册
-     * @param user
-     * @return
+     * @param user user
+     * @return ResponseEntity
      */
     @PostMapping("/registration")
     public ResponseEntity<?> userRegistration(@RequestBody User user) {
@@ -61,9 +61,9 @@ public class AuthenticationRestController {
 
     /**
      * 用户登录
-     * @param jwtAuthenticationRequest
-     * @param device
-     * @return
+     * @param jwtAuthenticationRequest request
+     * @param device device
+     * @return ResponseEntity
      */
     @PostMapping("/auth")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest jwtAuthenticationRequest, Device device) {
@@ -85,8 +85,8 @@ public class AuthenticationRestController {
 
     /**
      * 刷新token
-     * @param request
-     * @return
+     * @param request request
+     * @return ResponseEntity
      */
     @GetMapping("/refresh")
     public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
@@ -104,8 +104,8 @@ public class AuthenticationRestController {
 
     /**
      * 获取用户信息
-     * @param request
-     * @return
+     * @param request request
+     * @return ResponseEntity
      */
     @GetMapping
     public ResponseEntity<?> getCurrentUserInfoFromToken(HttpServletRequest request) {

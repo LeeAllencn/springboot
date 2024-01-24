@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface UserRepository extends JpaRepository<User, Long> {
     /**
      * 查询用户信息
-     * @param username
-     * @return
+     * @param username 用户名
+     * @return User
      */
     User findByUsername(String username);
 }

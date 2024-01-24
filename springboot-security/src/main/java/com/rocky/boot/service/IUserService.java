@@ -10,7 +10,7 @@ import com.rocky.boot.model.User;
 public interface IUserService {
     /**
      * 用户注册接口
-     * @param user
+     * @param user user
      */
     void addUser(User user);
 }

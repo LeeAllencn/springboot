@@ -14,6 +14,10 @@ import javax.persistence.ManyToMany;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+/**
+ * @author rocky
+ */
 @Entity
 public class SysUser implements UserDetails{ //1 实现UserDetails接口，即为Spring Security所使用的用户
 	
@@ -29,7 +33,7 @@ public class SysUser implements UserDetails{ //1 实现UserDetails接口，即�
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() { //3 重写getAuthorities方法，将用户的角色作为权限
-		List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
+		List<GrantedAuthority> auths = new ArrayList<>();
 		List<SysRole> roles=this.getRoles();
 		for(SysRole role:roles){
 			auths.add(new SimpleGrantedAuthority(role.getName()));
@@ -59,12 +63,14 @@ public class SysUser implements UserDetails{ //1 实现UserDetails接口，即�
 	public void setId(Long id) {
 		this.id = id;
 	}
+	@Override
 	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	@Override
 	public String getPassword() {
 		return password;
 	}

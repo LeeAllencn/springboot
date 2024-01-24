@@ -2,9 +2,7 @@ package com.rocky.boot.config;
 
 import com.rocky.boot.jwt.JwtAuthenticationEntryPoint;
 import com.rocky.boot.jwt.JwtAuthenticationTokenFilter;
-import com.rocky.boot.security.CustomUserService;
 import com.rocky.boot.service.impl.JwtUserDetailsServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,13 +13,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.annotation.Resource;
+
 /**
  * @author rocky
  */
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{//1 需继承WebSecurityConfigurerAdapter
 
-	@Autowired
+	@Resource
 	private JwtAuthenticationEntryPoint unauthorizedHandler;
 	
 	@Bean
@@ -42,8 +42,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{//1 需继�
 
 	/**
 	 * 用户认证
-	 * @param auth
-	 * @throws Exception
+	 * @param auth auth
+	 * @throws Exception 异常
 	 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -56,8 +56,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{//1 需继�
 
 	/**
 	 * 请求授权
-	 * @param http
-	 * @throws Exception
+	 * @param http http
+	 * @throws Exception 异常
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -85,7 +85,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{//1 需继�
 				.logout().permitAll(); //6 定制注销行为，注销请求可任意访问
 
 		// Custom JWT based security filter
-		http
-				.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 	}
 }

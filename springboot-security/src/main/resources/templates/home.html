@@ -39,7 +39,7 @@ body {
 		<p class="bg-primary" th:text="${msg.content}"></p>
 		
 		<div sec:authorize="hasRole('ROLE_ADMIN')"> <!-- 3 只有用户为ROLE_ADMIN时，才可显示的内容 -->
-		 	<p class="bg-info" th:text="${msg.etraInfo}"></p>
+		 	<p class="bg-info" th:text="${msg.extraInfo}"></p>
 		</div>	
 		
 		<div sec:authorize="hasRole('ROLE_USER')"> <!-- 4 只有用户为ROLE_USER时，才可显示的内容 -->
