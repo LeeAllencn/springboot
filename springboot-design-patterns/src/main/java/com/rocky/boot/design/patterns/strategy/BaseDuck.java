@@ -8,7 +8,7 @@ package com.rocky.boot.design.patterns.strategy;
  * @author rocky
  * @date Created in 2018/11/19
  */
-public abstract class Duck {
+public abstract class BaseDuck {
 
     /**
      * 飞行行为
@@ -20,7 +20,7 @@ public abstract class Duck {
      */
     QuackBehavior quackBehavior;
 
-    public Duck() {}
+    public BaseDuck() {}
 
     public void setFlyBehavior(FlyBehavior flyBehavior) {
         this.flyBehavior = flyBehavior;

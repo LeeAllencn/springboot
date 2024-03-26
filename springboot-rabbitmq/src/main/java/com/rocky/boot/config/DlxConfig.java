@@ -31,7 +31,7 @@ public class DlxConfig {
      */
     @Bean
     public Queue normalQueue() {
-        Map<String, Object> args = new HashMap<>();
+        Map<String, Object> args = new HashMap<>(16);
         // 声明死信交换器
         args.put("x-dead-letter-exchange", "exchange.dlx");
         // 声明死信路由键

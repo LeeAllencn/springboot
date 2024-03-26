@@ -13,6 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 public interface ProcessNotifyClientService {
 
+    /**
+     * 通知
+     * @param beanName beanName
+     * @param dto dto
+     * @return BaseResult
+     */
     @RequestMapping(value = "/remote/flowable/client/process/notify", method = RequestMethod.POST)
     BaseResult<Void> notify(@RequestParam("beanName") String beanName, @RequestBody ProcessNotifyDTO dto);
 }

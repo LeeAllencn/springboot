@@ -1,4 +1,4 @@
-package com.rocky.boot.Repository;
+package com.rocky.boot.repository;
 
 import com.rocky.boot.model.Person;
 import org.springframework.data.domain.Page;

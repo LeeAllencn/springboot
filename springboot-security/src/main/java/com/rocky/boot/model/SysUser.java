@@ -27,7 +27,10 @@ public class SysUser implements UserDetails{ //1 实现UserDetails接口，即�
 	private Long id;
 	private String username;
 	private String password;
-	@ManyToMany(cascade = {CascadeType.REFRESH},fetch = FetchType.EAGER) //2 配置用户和角色为多对多的关系
+	/**
+	 * 2 配置用户和角色为多对多的关系
+	 */
+	@ManyToMany(cascade = {CascadeType.REFRESH},fetch = FetchType.EAGER)
 	private List<SysRole> roles;
 	
 	

@@ -5,7 +5,7 @@ package com.rocky.boot.design.patterns.decorator;
  * description: 饮料抽象类
  * @date Created in 2018/12/11
  */
-public abstract class Beverage {
+public abstract class BaseBeverage {
 
     /**
      * 描述饮料

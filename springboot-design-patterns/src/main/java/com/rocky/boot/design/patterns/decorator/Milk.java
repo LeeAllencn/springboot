@@ -5,11 +5,11 @@ package com.rocky.boot.design.patterns.decorator;
  * description: 牛奶调料
  * @date Created in 2018/12/11
  */
-public class Milk extends CondimentDecorator {
+public class Milk extends BaseCondimentDecorator {
 
-    private Beverage beverage;
+    private BaseBeverage beverage;
 
-    public Milk(Beverage beverage) {
+    public Milk(BaseBeverage beverage) {
         this.beverage = beverage;
     }
 

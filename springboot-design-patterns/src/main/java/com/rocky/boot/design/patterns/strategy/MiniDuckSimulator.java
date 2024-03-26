@@ -8,11 +8,11 @@ package com.rocky.boot.design.patterns.strategy;
 public class MiniDuckSimulator {
 
     public static void main(String[] args) {
-        Duck mallard = new MallardDuck();
+        BaseDuck mallard = new MallardDuck();
         mallard.performQuack();
         mallard.performFly();
 
-        Duck model = new ModelDuck();
+        BaseDuck model = new ModelDuck();
         model.performFly();
         // 动态改变模型鸭的飞行行为
         model.setFlyBehavior(new FlyRocketPowered());

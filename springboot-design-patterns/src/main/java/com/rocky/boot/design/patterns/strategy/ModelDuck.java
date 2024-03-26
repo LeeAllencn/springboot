@@ -5,7 +5,7 @@ package com.rocky.boot.design.patterns.strategy;
  * @author rocky
  * @date Created in 2018/11/19
  */
-public class ModelDuck extends Duck {
+public class ModelDuck extends BaseDuck {
 
     public ModelDuck() {
         flyBehavior = new FlyNoWay();

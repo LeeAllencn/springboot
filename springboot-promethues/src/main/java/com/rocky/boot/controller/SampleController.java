@@ -12,23 +12,27 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Random;
 
 /**
- * Created by Rocky on 2017-12-08.
+ *
+ * @author Rocky
+ * @date 2017-12-08
  */
 @RestController
 public class SampleController {
 
-    // Counter
-    static final Counter requests = Counter.build()
+    /**
+     * Counter
+     */
+    static final Counter REQUESTS = Counter.build()
             .name("requests_total").help("Total requests.").register();
-    static final Counter failedRequests = Counter.build()
+    static final Counter FAILED_REQUESTS = Counter.build()
             .name("requests_failed_total").help("Total failed requests.").register();
 
     public void processRequest() {
-        requests.inc();
+        REQUESTS.inc();
         try {
             // Your code here.
         } catch (Exception e) {
-            failedRequests.inc();
+            FAILED_REQUESTS.inc();
             throw e;
         }
     }

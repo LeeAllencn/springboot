@@ -5,11 +5,11 @@ package com.rocky.boot.design.patterns.decorator;
  * description: 摩卡调料
  * @date Created in 2018/12/11
  */
-public class Mocha extends CondimentDecorator {
+public class Mocha extends BaseCondimentDecorator {
 
-    private Beverage beverage;
+    private BaseBeverage beverage;
 
-    public Mocha(Beverage beverage) {
+    public Mocha(BaseBeverage beverage) {
         this.beverage = beverage;
     }
 

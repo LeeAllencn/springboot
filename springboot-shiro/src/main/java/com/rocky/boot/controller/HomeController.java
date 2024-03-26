@@ -27,6 +27,9 @@ import java.util.Random;
  */
 @Controller
 public class HomeController {
+
+    private static final String KAPTCHA_VALIDATE_FAILED = "kaptchaValidateFailed";
+
     @RequestMapping({"/","/index"})
     public String index(){
         return"/index";
@@ -47,7 +50,7 @@ public class HomeController {
             } else if (IncorrectCredentialsException.class.getName().equals(exception)) {
                 System.out.println("IncorrectCredentialsException -- > 密码不正确：");
                 msg = "IncorrectCredentialsException -- > 密码不正确：";
-            } else if ("kaptchaValidateFailed".equals(exception)) {
+            } else if (KAPTCHA_VALIDATE_FAILED.equals(exception)) {
                 System.out.println("kaptchaValidateFailed -- > 验证码错误");
                 msg = "kaptchaValidateFailed -- > 验证码错误";
             } else {

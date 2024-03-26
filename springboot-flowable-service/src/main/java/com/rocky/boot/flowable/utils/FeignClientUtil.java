@@ -56,7 +56,7 @@ public class FeignClientUtil {
     public static Decoder feignDecoder() {
         HttpMessageConverter jacksonConverter = new MappingJackson2HttpMessageConverter(customObjectMapper());
         ObjectFactory<HttpMessageConverters> objectFactory = () -> new HttpMessageConverters(jacksonConverter);
-        return new ResponseEntityDecoder(new SpringDecoder(objectFactory));
+        return new ResponseEntityDecoder(new SpringDecoder(objectFactory, null));
     }
 
     private static ObjectMapper customObjectMapper() {

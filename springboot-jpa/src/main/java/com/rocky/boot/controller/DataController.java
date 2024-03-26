@@ -2,7 +2,7 @@ package com.rocky.boot.controller;
 
 import java.util.List;
 
-import com.rocky.boot.Repository.PersonRepository;
+import com.rocky.boot.repository.PersonRepository;
 import com.rocky.boot.model.Person;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -3,16 +3,36 @@ package com.rocky.boot.dao;
 import com.rocky.boot.entry.UserEntity;
 
 /**
- * Created by Rocky on 2017-10-16.
+ *
+ * @author Rocky
+ * @date 2017-10-16
  */
 public interface UserDao  {
 
-    public void saveUser(UserEntity user);
+    /**
+     * save user
+     * @param user user
+     */
+    void saveUser(UserEntity user);
 
-    public UserEntity findUserByUserName(String userName);
+    /**
+     * find user
+     * @param userName userName
+     * @return Object
+     */
+    UserEntity findUserByUserName(String userName);
 
-    public int updateUser(UserEntity user);
+    /**
+     * update user
+     * @param user user
+     * @return int
+     */
+    int updateUser(UserEntity user);
 
-    public void deleteUserById(Long id);
+    /**
+     * delete user
+     * @param id id
+     */
+    void deleteUserById(Long id);
 
 }

@@ -5,7 +5,7 @@ package com.rocky.boot.design.patterns.decorator;
  * description: 低咖啡因咖啡
  * @date Created in 2018/12/11
  */
-public class Decaf extends Beverage {
+public class Decaf extends BaseBeverage {
 
     public Decaf() {
         description = "Decaf Coffee";

@@ -9,18 +9,18 @@ public class StarbuzzCoffee {
 
     public static void main(String[] args) {
         // 点一份浓缩咖啡
-        Beverage espresso = new Espresso();
+        BaseBeverage espresso = new Espresso();
         System.out.println(espresso.getDescription() + " $" + espresso.cost());
 
         // 点一份深焙咖啡，加两份摩卡，加一份奶泡
-        Beverage darkRoast = new DarkRoast();
+        BaseBeverage darkRoast = new DarkRoast();
         darkRoast = new Mocha(darkRoast);
         darkRoast = new Mocha(darkRoast);
         darkRoast = new Whip(darkRoast);
         System.out.println(darkRoast.getDescription() + " $" + darkRoast.cost());
 
         // 点一份综合咖啡，加一份豆浆,加一份摩卡，加一份奶泡
-        Beverage houseBlend = new HouseBlend();
+        BaseBeverage houseBlend = new HouseBlend();
         houseBlend = new Soy(houseBlend);
         houseBlend = new Mocha(houseBlend);
         houseBlend = new Whip(houseBlend);

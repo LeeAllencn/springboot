@@ -1,6 +1,6 @@
 package com.rocky.boot;
 
-import com.rocky.boot.Repository.PersonRepository;
+import com.rocky.boot.repository.PersonRepository;
 import com.rocky.boot.model.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;

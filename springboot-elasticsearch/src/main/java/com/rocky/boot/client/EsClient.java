@@ -12,9 +12,11 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 
 /**
- * Created by Rocky on 2018-03-01.
+ *
+ * @author Rocky
+ * @date 2018-03-01
  */
-public class ESClient {
+public class EsClient {
 
     private static String elasticUrl = "localhost";
 

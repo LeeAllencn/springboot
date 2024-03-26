@@ -5,7 +5,9 @@ import com.rocky.boot.enums.UserSexEnum;
 import java.io.Serializable;
 
 /**
- * Created by Rocky on 2017-09-26.
+ *
+ * @author Rocky
+ * @date 2017-09-26
  */
 public class UserEntity implements Serializable {
 

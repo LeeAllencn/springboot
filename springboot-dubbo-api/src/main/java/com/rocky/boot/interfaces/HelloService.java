@@ -2,10 +2,14 @@ package com.rocky.boot.interfaces;
 
 /**
  * @author rocky
- * @Description:
- * @Date: Created in 2018/9/5
+ * @date Created in 2018/9/5
  */
 public interface HelloService {
 
+    /**
+     * say hello
+     * @param name name
+     * @return String
+     */
     String sayHello(String name);
 }

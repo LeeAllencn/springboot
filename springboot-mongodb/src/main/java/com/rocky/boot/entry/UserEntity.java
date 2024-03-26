@@ -3,7 +3,9 @@ package com.rocky.boot.entry;
 import java.io.Serializable;
 
 /**
- * Created by Rocky on 2017-10-16.
+ *
+ * @author Rocky
+ * @date 2017-10-16
  */
 public class UserEntity implements Serializable {
 

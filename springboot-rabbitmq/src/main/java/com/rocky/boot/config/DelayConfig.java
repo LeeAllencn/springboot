@@ -16,13 +16,13 @@ import java.util.Map;
 public class DelayConfig {
 
     @Bean
-    public Exchange DelayExchange() {
+    public Exchange delayExchange() {
         return ExchangeBuilder.directExchange("exchange.delay").durable(true).build();
     }
 
     @Bean
     public Queue s5Queue() {
-        Map<String, Object> args = new HashMap<>();
+        Map<String, Object> args = new HashMap<>(16);
         args.put("x-dead-letter-exchange", "exchange.dlx-5s");
         args.put("x-message-ttl", 5000);
         return QueueBuilder.durable("queue-5s").withArguments(args).build();
@@ -30,7 +30,7 @@ public class DelayConfig {
 
     @Bean
     public Queue s10Queue() {
-        Map<String, Object> args = new HashMap<>();
+        Map<String, Object> args = new HashMap<>(16);
         args.put("x-dead-letter-exchange", "exchange.dlx-10s");
         args.put("x-message-ttl", 10000);
         return QueueBuilder.durable("queue-10s").withArguments(args).build();

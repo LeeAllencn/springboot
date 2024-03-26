@@ -11,7 +11,9 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by Rocky on 2017-10-16.
+ *
+ * @author Rocky
+ * @date 2017-10-16
  */
 @Component
 public class UserDaoImpl implements UserDao {
@@ -50,12 +52,16 @@ public class UserDaoImpl implements UserDao {
         Update update= new Update().set("userName", user.getUserName()).set("passWord", user.getPassWord());
         //更新查询返回结果集的第一条
         WriteResult result =mongoTemplate.updateFirst(query,update,UserEntity.class);
-        //更新查询返回结果集的所有
-        // mongoTemplate.updateMulti(query,update,UserEntity.class);
-        if(result!=null)
+
+        // 更新查询返回结果集的所有
+//        mongoTemplate.updateMulti(query,update,UserEntity.class);
+
+
+        if(result!=null) {
             return result.getN();
-        else
+        } else {
             return 0;
+        }
     }
 
     /**

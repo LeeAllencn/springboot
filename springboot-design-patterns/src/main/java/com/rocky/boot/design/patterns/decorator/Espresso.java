@@ -5,7 +5,7 @@ package com.rocky.boot.design.patterns.decorator;
  * description: 浓缩咖啡
  * @date Created in 2018/12/11
  */
-public class Espresso extends Beverage {
+public class Espresso extends BaseBeverage {
 
     public Espresso() {
         description = "Espresso";

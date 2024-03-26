@@ -5,7 +5,7 @@ package com.rocky.boot.design.patterns.strategy;
  * @author rocky
  * @date Created in 2018/11/19
  */
-public class MallardDuck extends Duck {
+public class MallardDuck extends BaseDuck {
 
     public MallardDuck() {
         quackBehavior = new Quack();

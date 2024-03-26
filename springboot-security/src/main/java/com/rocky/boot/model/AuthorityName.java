@@ -5,5 +5,12 @@ package com.rocky.boot.model;
  * @date 2017/8/6
  */
 public enum AuthorityName {
-    ROLE_USER, ROLE_ADMIN
+    /**
+     * 用户角色
+     */
+    ROLE_USER,
+    /**
+     * 管理员角色
+     */
+    ROLE_ADMIN
 }

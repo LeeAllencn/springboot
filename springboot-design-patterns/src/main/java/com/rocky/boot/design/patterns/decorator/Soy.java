@@ -5,11 +5,11 @@ package com.rocky.boot.design.patterns.decorator;
  * description: 豆浆调料
  * @date Created in 2018/12/11
  */
-public class Soy extends CondimentDecorator {
+public class Soy extends BaseCondimentDecorator {
 
-    private Beverage beverage;
+    private BaseBeverage beverage;
 
-    public Soy(Beverage beverage) {
+    public Soy(BaseBeverage beverage) {
         this.beverage = beverage;
     }
 

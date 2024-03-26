@@ -9,8 +9,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
  * @author rocky
+ * 1 自定义需要实现UserDetailsService接口
  */
-public class CustomUserService implements UserDetailsService { //1 自定义需要实现UserDetailsService接口
+public class CustomUserService implements UserDetailsService {
 	@Autowired
 	SysUserRepository userRepository;
 

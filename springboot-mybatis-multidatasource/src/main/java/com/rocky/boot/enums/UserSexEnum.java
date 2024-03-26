@@ -1,8 +1,18 @@
 package com.rocky.boot.enums;
 
 /**
- * Created by Rocky on 2017-09-26.
+ *
+ * @author Rocky
+ * @date 2017-09-26
  */
 public enum UserSexEnum {
-    MAN, WOMAN
+    /**
+     * 男人
+     */
+    MAN,
+
+    /**
+     * 女人
+     */
+    WOMAN
 }
